@@ -21,6 +21,8 @@ public class lobby extends Command implements Listener {
         player.sendMessage(ChatColor.GRAY + "CORE: " + ChatColor.RED + "/lobby now allow on this server!");
       } else if (player.getServer().getInfo().getName().equalsIgnoreCase("auth")) {
         player.sendMessage(ChatColor.GRAY + "CORE: " + ChatColor.RED + "/lobby now allow on this server!");
+      } else if (player.getServer().getInfo().getName().equalsIgnoreCase("Realms")) {
+        player.sendMessage(ChatColor.GRAY + "CORE: " + ChatColor.RED + "/lobby now allow on this server!");
       } else {
         player.sendMessage(ChatColor.GRAY + "Portal: " + ChatColor.YELLOW + "คุณถูกย้าย " + player.getServer().getInfo().getName() + " > Lobby");
         player.sendMessage(ChatColor.GRAY + "Portal: " + ChatColor.YELLOW + "คุณกำลังถูกส่งกลับไปที่ล๊อบบี้");

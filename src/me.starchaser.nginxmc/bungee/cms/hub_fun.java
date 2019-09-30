@@ -26,6 +26,8 @@ public class hub_fun extends Command implements Listener {
         player.sendMessage(new TextComponent(ChatColor.GRAY + "CORE: " + ChatColor.RED + "/hub now allow on this server!"));
       } else if (player.getServer().getInfo().getName().equalsIgnoreCase("auth")) {
         player.sendMessage(new TextComponent(ChatColor.GRAY + "CORE: " + ChatColor.RED + "/hub now allow on this server!"));
+      } else if (player.getServer().getInfo().getName().equalsIgnoreCase("Realms")) {
+        player.sendMessage(ChatColor.GRAY + "CORE: " + ChatColor.RED + "/hub now allow on this server!");
       } else {
         player.sendMessage(new TextComponent(ChatColor.GRAY + "Portal: " + ChatColor.YELLOW + "คุณถูกย้าย " + player.getServer().getInfo().getName() + " > Lobby"));
         player.sendMessage(new TextComponent(ChatColor.GRAY + "Portal: " + ChatColor.YELLOW + "คุณกำลังถูกส่งกลับไปที่ล๊อบบี้"));
