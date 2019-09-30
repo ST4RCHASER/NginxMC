@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="NginxMC_Master">
+    <output-path>$PROJECT_DIR$/out/artifacts/NginxMC_Master</output-path>
+    <root id="archive" name="NginxMC_Master.jar">
+      <element id="module-output" name="NginxMC" />
+      <element id="file-copy" path="$PROJECT_DIR$/res/plugin.yml" />
+      <element id="file-copy" path="$PROJECT_DIR$/res/bungee.yml" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,14 @@
+name: NginxMC
+version: 1.8.14.2 preview build
+description: a non-minecraft deluxe core plugin for siamcraft
+authors: [_StarChaser]
+main: me.starchaser.nginxmc.bukkit.core
+commands:
+  nginx:
+    description: Main commands
+    aliases: [nginx]
+    usage: /nginxmc
+  coins:
+    description: Main commands
+    aliases: [bal,balance,money,coin]
+    usage: /coins

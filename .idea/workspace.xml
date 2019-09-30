@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="NginxMC" />
+    </artifacts-to-build>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ca26d092-ea7e-4c26-b53a-2ee06f8f07bc" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="testRunner" value="GRADLE" />
+    <option name="delegatedBuild" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>addCoi</find>
+      <find>give</find>
+      <find>give_xp</find>
+      <find>xp</find>
+      <find>xp giv</find>
+      <find>Title</find>
+      <find>NginxTitle</find>
+      <find>setPre</find>
+      <find>class</find>
+      <find>Chat</find>
+      <find>Damage</find>
+      <find>join</find>
+      <find>Nginx</find>
+      <find>running as</find>
+      <find>by _</find>
+      <find>addCoins</find>
+      <find>coins</find>
+      <find>override</find>
+      <find>getStr</find>
+      <find>&amp;</find>
+      <find>ถูก</find>
+      <find>chat</find>
+      <find>command</find>
+      <find>โปร</find>
+      <find>Player</find>
+      <find>Leave</find>
+      <find>P</find>
+      <find>NameTagEdit</find>
+      <find>setPrefix</find>
+      <find>setprefix</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>getNginxMC</replace>
+      <replace>getSqlConnection()</replace>
+      <replace>NginxPlayer</replace>
+      <replace>minigames</replace>
+      <replace>Minigames</replace>
+      <replace>`nginxmc`</replace>
+      <replace>nginx</replace>
+      <replace>p</replace>
+      <replace>ooc</replace>
+      <replace>§</replace>
+    </replaceStrings>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="240" />
+    <option name="y" value="131" />
+    <option name="width" value="1440" />
+    <option name="height" value="788" />
+  </component>
+  <component name="ProjectId" id="1Qy7JBoULOJuIqYl5cgfftH4Roi" />
+  <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="GenerateAntBuildDialog.backupFiles" value="true" />
+    <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
+    <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
+    <property name="GenerateAntBuildDialog.outputFileNameProperty" value="nginxmc" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558621595760" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../scprivate" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.1640625" />
+    <property name="project.structure.side.proportion" value="0.25467288" />
+    <property name="settings.editor.selected.configurable" value="instant.run" />
+  </component>
+  <component name="RecentsManager">
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="me.starchaser.nginxmc" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\work\java_project\NginxMC\src" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="Remote" nameIsGenerated="true">
+      <module name="NginxMC" />
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" />
+      <option name="HOST" value="siamcraft.net" />
+      <option name="PORT" value="19872" />
+      <option name="AUTO_RESTART" value="false" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="19872" />
+        <option name="LOCAL" value="false" />
+      </RunnerSettings>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ca26d092-ea7e-4c26-b53a-2ee06f8f07bc" name="Default Changelist" comment="" />
+      <created>1539337076818</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1539337076818</updated>
+      <workItem from="1539337083452" duration="673000" />
+      <workItem from="1542961182598" duration="2011000" />
+      <workItem from="1543039417427" duration="1926000" />
+      <workItem from="1543054063567" duration="633000" />
+      <workItem from="1543141618158" duration="69000" />
+      <workItem from="1543142379318" duration="3000" />
+      <workItem from="1554283160379" duration="2518000" />
+      <workItem from="1554285708677" duration="16708000" />
+      <workItem from="1554385127445" duration="306000" />
+      <workItem from="1554615056213" duration="14672000" />
+      <workItem from="1554644177682" duration="956000" />
+      <workItem from="1554817492543" duration="47000" />
+      <workItem from="1554919352578" duration="3938000" />
+      <workItem from="1555059711564" duration="2000" />
+      <workItem from="1555059914520" duration="812000" />
+      <workItem from="1555061225826" duration="4734000" />
+      <workItem from="1555066433882" duration="8154000" />
+      <workItem from="1555099904025" duration="592000" />
+      <workItem from="1555230453872" duration="90000" />
+      <workItem from="1555237353126" duration="2115000" />
+      <workItem from="1555240106957" duration="321000" />
+      <workItem from="1555240745257" duration="132000" />
+      <workItem from="1555241862152" duration="237000" />
+      <workItem from="1555516291964" duration="1263000" />
+      <workItem from="1555600579673" duration="799000" />
+      <workItem from="1555613309380" duration="2359000" />
+      <workItem from="1555654244155" duration="1047000" />
+      <workItem from="1555655743769" duration="3643000" />
+      <workItem from="1555679771527" duration="3827000" />
+      <workItem from="1555701596980" duration="371000" />
+      <workItem from="1555704210667" duration="207000" />
+      <workItem from="1555707614542" duration="1119000" />
+      <workItem from="1555765340546" duration="2044000" />
+      <workItem from="1555857961427" duration="3116000" />
+      <workItem from="1555943180397" duration="410000" />
+      <workItem from="1556125580696" duration="5867000" />
+      <workItem from="1556131701504" duration="2209000" />
+      <workItem from="1556134094648" duration="1066000" />
+      <workItem from="1556804210703" duration="2785000" />
+      <workItem from="1557053577609" duration="102000" />
+      <workItem from="1557162448566" duration="1237000" />
+      <workItem from="1557164940442" duration="1987000" />
+      <workItem from="1557330839160" duration="2960000" />
+      <workItem from="1557334411061" duration="1890000" />
+      <workItem from="1557511412083" duration="499000" />
+      <workItem from="1557763698945" duration="684000" />
+      <workItem from="1557854516285" duration="332000" />
+      <workItem from="1557855266384" duration="861000" />
+      <workItem from="1558253661779" duration="9193000" />
+      <workItem from="1558292292855" duration="94000" />
+      <workItem from="1558451093556" duration="3976000" />
+      <workItem from="1558455377023" duration="746000" />
+      <workItem from="1558457093489" duration="746000" />
+      <workItem from="1558615912057" duration="3130000" />
+      <workItem from="1558622073353" duration="212000" />
+      <workItem from="1558622623360" duration="675000" />
+      <workItem from="1558623728152" duration="715000" />
+      <workItem from="1559453955156" duration="37000" />
+      <workItem from="1559817513365" duration="1304000" />
+      <workItem from="1559825382988" duration="17000" />
+      <workItem from="1559825463403" duration="1285000" />
+      <workItem from="1560589875806" duration="4431000" />
+      <workItem from="1560672551295" duration="3108000" />
+      <workItem from="1560677500943" duration="1169000" />
+      <workItem from="1560686496663" duration="4883000" />
+      <workItem from="1565207588550" duration="260000" />
+      <workItem from="1568730917331" duration="54000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>NginxMC</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.25467288" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>Invalid</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.25467288" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.25467288" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>Obfuscation|NginxMC</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.25467288" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>spigot18</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.25467288" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

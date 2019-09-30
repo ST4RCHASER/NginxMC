@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="spigot18">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../Bukkit_Spigot_Bungeecord/spigot18.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../Bukkit_Spigot_Bungeecord/spigot18.jar!/" />
+    </SOURCES>
+  </library>
+</component>
