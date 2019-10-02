@@ -8,13 +8,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ca26d092-ea7e-4c26-b53a-2ee06f8f07bc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/NginxMC/NginxMC.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/NginxMC/NginxMC.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/NginxMC_Master/NginxMC.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/NginxMC_Master/NginxMC_Master.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/NginxMC_Master/NginxMC_Master.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bungee/cms/hub_fun.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bungee/cms/hub_fun.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bungee/cms/lobby.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bungee/cms/lobby.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/me.starchaser.nginxmc/bungee/cms/hub_fun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me.starchaser.nginxmc/bungee/cms/hub_fun.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/me.starchaser.nginxmc/bungee/cms/lobby.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me.starchaser.nginxmc/bungee/cms/lobby.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,52 +39,6 @@
         <option value="Class" />
       </list>
     </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>addCoi</find>
-      <find>give</find>
-      <find>give_xp</find>
-      <find>xp</find>
-      <find>xp giv</find>
-      <find>Title</find>
-      <find>NginxTitle</find>
-      <find>setPre</find>
-      <find>class</find>
-      <find>Chat</find>
-      <find>Damage</find>
-      <find>join</find>
-      <find>Nginx</find>
-      <find>running as</find>
-      <find>by _</find>
-      <find>addCoins</find>
-      <find>coins</find>
-      <find>override</find>
-      <find>getStr</find>
-      <find>&amp;</find>
-      <find>ถูก</find>
-      <find>chat</find>
-      <find>command</find>
-      <find>โปร</find>
-      <find>Player</find>
-      <find>Leave</find>
-      <find>P</find>
-      <find>NameTagEdit</find>
-      <find>setPrefix</find>
-      <find>setprefix</find>
-    </findStrings>
-    <replaceStrings>
-      <replace>getNginxMC</replace>
-      <replace>getSqlConnection()</replace>
-      <replace>NginxPlayer</replace>
-      <replace>minigames</replace>
-      <replace>Minigames</replace>
-      <replace>`nginxmc`</replace>
-      <replace>nginx</replace>
-      <replace>p</replace>
-      <replace>ooc</replace>
-      <replace>§</replace>
-    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -238,6 +185,9 @@
       <workItem from="1569819755923" duration="41000" />
       <workItem from="1569829855613" duration="68000" />
       <workItem from="1569847481051" duration="734000" />
+      <workItem from="1569851160321" duration="5000" />
+      <workItem from="1569906106145" duration="590000" />
+      <workItem from="1569907439137" duration="1215000" />
     </task>
     <servers />
   </component>
