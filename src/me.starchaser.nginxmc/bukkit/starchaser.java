@@ -2,7 +2,6 @@ package me.starchaser.nginxmc.bukkit;
 
 import com.gmail.filoghost.holographicdisplays.api.Hologram;
 import com.gmail.filoghost.holographicdisplays.api.HologramsAPI;
-import com.nametagedit.plugin.NametagEdit;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -153,7 +152,7 @@ public class starchaser {
                     int class_id = getClassID(player);
                     ResultSet resultSet = core.getSqlConnection().createStatement().executeQuery("SELECT * FROM `players` WHERE `username` LIKE '" + player.getName() + "'");
                     resultSet.next();
-                    NginxPlayer dp = new NginxPlayer(resultSet.getInt("id"), resultSet.getString("username"), class_id, resultSet.getInt("level"), resultSet.getInt("xp"), resultSet.getInt("title"), resultSet.getInt("coins"), true, resultSet.getInt("feather"));
+                    NginxPlayer dp = new NginxPlayer(resultSet.getInt("id"), resultSet.getString("username"), class_id, resultSet.getInt("level"), resultSet.getInt("xp"), resultSet.getInt("title"), resultSet.getInt("coins"), true,true, resultSet.getInt("feather"));
                     NginxPlayer.addNginxPlayer(dp);
                     Logger(starchaser.LOG_TYPE.DEBUG, "ID:" + dp.getId());
                     Logger(starchaser.LOG_TYPE.DEBUG, "String: " + dp.getName());
@@ -161,7 +160,7 @@ public class starchaser {
                     Logger(starchaser.LOG_TYPE.DEBUG, "XP: " + dp.getLevel().getXP());
                     Logger(starchaser.LOG_TYPE.PLAYER, "§aPlayer data get!... [" + player.getName() + "]");
                     player.sendMessage("§7Account: §eเรียบร้อยแล้ว!");
-                    dp.getPlayerClass().updateNTE(false);
+                    dp.getPlayerClass().updateRankLine(false);
                 } catch (Exception var6) {
                     var6.printStackTrace();
                     Logger(starchaser.LOG_TYPE.PLAYER, "§cError on get player data... [" + player.getName() + "]");
@@ -211,20 +210,15 @@ public class starchaser {
         }.runTaskAsynchronously(core.getNginxMC);
     return true;
     }
-    public static void updateNewNameTag(Player p , String value){
+    public static void updateNewRankLine(Player p , String value){
        if (p == null) {
             throw new IllegalArgumentException("Nginx error! (Player cannot be null)");
         }
-        if (NametagEdit.getApi() == null) {
-            throw new IllegalArgumentException("Nginx error! (NTE-API cannot be null)");
-        }
-        starchaser.Logger(LOG_TYPE.DEBUG, "New nametag update request! " + p.getName() + " value [" + value + "]");
+        starchaser.Logger(LOG_TYPE.DEBUG, "New rankline update request! " + p.getName() + " value [" + value + "]");
         new BukkitRunnable() {
             @Override
             public void run() {
-                Bukkit.dispatchCommand(Bukkit.getConsoleSender() , "nte player " + p.getName() + " prefix " + value);
-                NametagEdit.getApi().setPrefix(p, value);
-                starchaser.Logger(LOG_TYPE.DEBUG, "New nametag for player " + p.getName() + " update! [" + value + "]");
+                starchaser.Logger(LOG_TYPE.DEBUG, "New rankline for player " + p.getName() + " update! [" + value + "]");
             }
         }.runTaskLater(core.getNginxMC,10L);
     }
@@ -254,7 +248,7 @@ public class starchaser {
                             this.out_tricks = 100;
                         }
                         if (player == null || !player.isOnline() || popupchat.this.force_remove) {
-                            hologram.teleport(loc.clone().add(0.0D, 4.1D, 0.0D));
+                            hologram.teleport(loc.clone().add(0.0D, 4.3D, 0.0D));
                             new BukkitRunnable() {
                                 @Override
                                 public void run() {
@@ -266,9 +260,9 @@ public class starchaser {
                         return;
                         }
                         if (this.ticksRun > this.out_tricks) {
-                            hologram.teleport(loc.clone().add(0.0D, 4.1D, 0.0D));
+                            hologram.teleport(loc.clone().add(0.0D, 4.3D, 0.0D));
                         } else {
-                            hologram.teleport(loc.clone().add(0.0D, 2.9D, 0.0D));
+                            hologram.teleport(loc.clone().add(0.0D, 3.15D, 0.0D));
                         }
 
                         if (this.ticksRun > this.out_tricks + 3) {

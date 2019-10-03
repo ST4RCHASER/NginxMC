@@ -1,7 +1,6 @@
 package me.starchaser.nginxmc.bukkit;
 
 import com.comphenix.protocol.PacketType;
-import com.nametagedit.plugin.NametagEdit;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -18,6 +17,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.scoreboard.Scoreboard;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -33,9 +33,11 @@ public class events implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent evt) {
         if (servergamemode == starchaser.SERVERGAMEMODE.Minigames || servergamemode == starchaser.SERVERGAMEMODE.Lobby){
+            core.color_state = 0;
+            evt.getPlayer().getScoreboard().getTeam("nginx_0").addPlayer(evt.getPlayer());
             evt.setJoinMessage(null);
-            if (evt.getPlayer() != null && NametagEdit.getApi() != null) {
-                starchaser.updateNewNameTag(evt.getPlayer() , "§b§lWELCOME! §7");
+            if (evt.getPlayer() != null) {
+                starchaser.updateNewRankLine(evt.getPlayer() , "§b§lWELCOME! §7");
             }
             evt.getPlayer().getInventory().clear();
             FastJoinTask(evt.getPlayer());
@@ -110,8 +112,8 @@ public class events implements Listener {
                             }
                         }).runTaskTimerAsynchronously(core.getNginxMC, 40L, 20L);
                     }
-                } catch (SQLException var3) {
-                    var3.printStackTrace();
+                } catch (SQLException exx) {
+                    exx.printStackTrace();
                     starchaser.Logger(starchaser.LOG_TYPE.PLAYER, "§cError on get player data... (TASK: events.onJoin) [" + p.getName() + "]");
                     new BukkitRunnable() {
                         @Override
@@ -165,7 +167,7 @@ public class events implements Listener {
     public void onPlayerClick(PlayerInteractEvent e) {
         if (servergamemode == starchaser.SERVERGAMEMODE.Lobby && e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK && e.getPlayer().getItemInHand() != null) {
             if (e.getPlayer().getItemInHand().getType() == Material.COMPASS && e.getPlayer().getItemInHand().getItemMeta().getDisplayName() != null && e.getPlayer().getItemInHand().getItemMeta().getDisplayName().equals("§bรายชื่อเซิร์ฟเวอร์ §7(คลิกขวา)")) {
-                Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "bs open gui " + e.getPlayer().getName());
+                Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "dm open server " + e.getPlayer().getName());
             }
         }
     }

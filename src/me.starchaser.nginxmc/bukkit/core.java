@@ -13,6 +13,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.scoreboard.Scoreboard;
 
 import java.io.File;
 import java.sql.Connection;
@@ -36,6 +37,10 @@ public class core extends JavaPlugin {
     public static boolean server_chat_pop = false;
     public static boolean holo_title = false;
     public static boolean manage_chat = false;
+    private String[] colors = {
+            "a","b","c","d","e","f","1","2","3","4","5","6","7","8","9","0"
+    };
+    static int color_state = 0;
     @Override
     public void onEnable() {
         path = this.getDataFolder().getAbsoluteFile().getParentFile().getParentFile().getAbsolutePath() + File.separator;
@@ -93,6 +98,20 @@ public class core extends JavaPlugin {
 
                     @Override
                     public void run() {
+                        if (starchaser.servergamemode == starchaser.SERVERGAMEMODE.Lobby) {
+                            new BukkitRunnable() {
+                                @Override
+                                public void run() {
+                                    if (color_state >= colors.length -1) {
+                                        color_state = 0;
+                                    }else {
+                                        color_state++;
+                                    }
+                                    Bukkit.getScoreboardManager().getMainScoreboard().getTeam("nginx_0").setPrefix("§" + colors[color_state]);
+                                }
+                            }.runTask(core.getNginxMC);
+                        }
+
                         if (Bukkit.getOnlinePlayers().size() <= 3) {
                             this.timer = 0;
                             core.world_scam = "#NONE#";
@@ -170,6 +189,8 @@ public class core extends JavaPlugin {
             starchaser.sendPlayerData(pp);
         }
         for (Player pp : Bukkit.getOnlinePlayers()) {
+            NginxPlayer.getNginxPlayer(pp).DistoryRankHologram();
+            NginxPlayer.getNginxPlayer(pp).DistoryTitleHologram();
             NginxPlayer.removeNginxPlayer(pp);
         }
         YamlReader config = new YamlReader(path+".mc-deluxe/nginx.yml");
