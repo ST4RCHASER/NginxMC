@@ -3,24 +3,30 @@ package me.starchaser.nginxmc.bukkit;
 import com.gmail.filoghost.holographicdisplays.api.Hologram;
 import com.gmail.filoghost.holographicdisplays.api.HologramsAPI;
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.permissions.PermissionAttachmentInfo;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.io.File;
 import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Random;
 
+import static me.starchaser.nginxmc.bukkit.events.chat_history;
+
 public class starchaser {
     public static SERVERGAMEMODE servergamemode = SERVERGAMEMODE.Lobby;
     public static int max_level = 500;
+    public static int gamemode_virtual_lobby_size = 18;
+    public static int virtual_lobby_player_size = 15;
 
 
     public static void giveItemLobby(Player p) {
@@ -37,6 +43,15 @@ public class starchaser {
         sword_meta.setLore(Arrays.asList("§b§nเมื่อถือแล้วจะคุณจะเข้าสู่โหมดนักล่าและสังหารผู้อื่นที่ถือดาบด้วยกันได้!"));
         sword.setItemMeta(sword_meta);
         p.getInventory().setItem(5, sword);
+
+        ItemStack hopper = new ItemStack(Material.HOPPER);
+        ItemMeta hopper_meta = hopper.getItemMeta();
+        hopper_meta.setDisplayName("§eรายชื่อล๊อบบี้ §7(คลิกขวา)");
+        hopper_meta.setLore(Arrays.asList("§fคลิกขวาเพื่อเปิดรายชื่อเล๊อบบี้เปิดอยู่"));
+        hopper.setItemMeta(hopper_meta);
+        p.getInventory().setItem(8, hopper);
+
+
     }
     public enum SERVERGAMEMODE{
         Lobby,Minigames,MINIGAMES_HOOK,Disabled
@@ -169,6 +184,39 @@ public class starchaser {
         }.runTaskAsynchronously(core.getNginxMC);
         return true;
     }
+    public static void AddPlayerChatPOP(Player p, String message){
+        Boolean allow = true;
+        NginxPlayer np = NginxPlayer.getNginxPlayer(p);
+        for (PotionEffect pot : p.getActivePotionEffects()) {
+            if (pot.getType().equals(PotionEffectType.INVISIBILITY)) allow = false;
+        }
+        if (p.getWorld().equals(core.main_world)) {
+            if (core.server_chat_pop && p.getGameMode() != GameMode.SPECTATOR && allow) {
+                Boolean is_chat_pop_enable = true;
+                try {
+                    is_chat_pop_enable = np.isChatPOPEnabled();
+                }catch (Exception exc) {
+                    if(core.debug) {
+                        exc.printStackTrace();
+                    }
+                }
+                if (is_chat_pop_enable) {
+                    for (starchaser.popupchat popupchat : chat_history) {
+                        if (popupchat.getOwner() == p) {
+                            popupchat.setForce_remove(true);
+                            new BukkitRunnable() {
+                                @Override
+                                public void run() {
+                                    chat_history.remove(popupchat);
+                                }
+                            }.runTaskLaterAsynchronously(core.getNginxMC, 10L);
+                        }
+                    }
+                    chat_history.add(new starchaser.popupchat(p, message));
+                }
+            }
+        }
+    }
 
 //    public static NginxPlayer MakePlayerData(String name) {
 //        try {
@@ -214,6 +262,7 @@ public class starchaser {
        if (p == null) {
             throw new IllegalArgumentException("Nginx error! (Player cannot be null)");
         }
+    if (core.debug) {
         starchaser.Logger(LOG_TYPE.DEBUG, "New rankline update request! " + p.getName() + " value [" + value + "]");
         new BukkitRunnable() {
             @Override
@@ -222,13 +271,15 @@ public class starchaser {
             }
         }.runTaskLater(core.getNginxMC,10L);
     }
+    }
     public static class popupchat {
         final Player player;
         final String chat;
         boolean force_remove;
-
+        Location last_loc;
         popupchat(final Player player, final String chat) {
             this.player = player;
+            last_loc = player.getLocation().add(0.0D, 2.0D, 0.0D);
             this.chat = chat;
             if (servergamemode == SERVERGAMEMODE.Minigames && player.getLocation().getWorld() != core.main_world) return;
             final Hologram hologram = HologramsAPI.createHologram(core.getNginxMC, player.getLocation().add(0.0D, 2.0D, 0.0D));
@@ -236,7 +287,6 @@ public class starchaser {
             (new BukkitRunnable() {
                 int ticksRun;
                 int out_tricks = chat.length() * 5;
-                int is_out_ing = 0;
                 Location loc = player.getLocation();
                 public void run() {
                     try {
@@ -262,14 +312,34 @@ public class starchaser {
                         if (this.ticksRun > this.out_tricks) {
                             hologram.teleport(loc.clone().add(0.0D, 4.3D, 0.0D));
                         } else {
-                            hologram.teleport(loc.clone().add(0.0D, 3.15D, 0.0D));
+                            if (!(player.getLocation().getBlockX() == last_loc.getBlockX() && player.getLocation().getBlockY() == last_loc.getBlockY() && player.getLocation().getBlockZ() == last_loc.getBlockZ()))
+                            {
+                                hologram.teleport(loc.clone().add(0.0D, 3.15D, 0.0D));
+                            }else {
+                                last_loc = player.getLocation();
+                            }
                         }
 
                         if (this.ticksRun > this.out_tricks + 3) {
                             hologram.delete();
                             this.cancel();
                         }
-
+                        for (Player target : Bukkit.getOnlinePlayers()) {
+                            if (hologram != null && player != null) {
+                                if (target != player && target != null)
+                                    if (starchaser.servergamemode == SERVERGAMEMODE.Lobby)  {
+                                        if (NginxPlayer.getNginxPlayer(player) != null && NginxPlayer.getNginxPlayer(target) != null && NginxPlayer.getNginxPlayer(player).getLobby_Number() == NginxPlayer.getNginxPlayer(target).getLobby_Number()) {
+                                            hologram.getVisibilityManager().showTo(target);
+                                        }else {
+                                            hologram.getVisibilityManager().hideTo(target);
+                                        }
+                                    }else {
+                                        hologram.getVisibilityManager().showTo(target);
+                                    }
+                            }else {
+                                hologram.getVisibilityManager().hideTo(target);
+                            }
+                        }
                     } catch (IllegalArgumentException var2) {
                         this.cancel();
                     }
@@ -284,6 +354,13 @@ public class starchaser {
         public void setForce_remove(boolean force_remove) {
             this.force_remove = force_remove;
         }
+    }
+    public static ArrayList<NginxPlayer> getPlayerLobby(int LobbyID) {
+        ArrayList<NginxPlayer> list = new ArrayList();
+        for (NginxPlayer np : core.PlayerRef) {
+            if (np.getLobby_Number() == LobbyID) list.add(np);
+        }
+        return list;
     }
     public static String getSaltStringSet(int length) {
         String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefthijklmnopqrstuvwxyz";

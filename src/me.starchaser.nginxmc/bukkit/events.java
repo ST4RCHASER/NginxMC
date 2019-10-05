@@ -2,10 +2,12 @@ package me.starchaser.nginxmc.bukkit;
 
 import com.comphenix.protocol.PacketType;
 import org.bukkit.*;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
@@ -13,7 +15,10 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.event.weather.WeatherChangeEvent;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -22,9 +27,10 @@ import org.bukkit.scoreboard.Scoreboard;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Random;
 
-import static me.starchaser.nginxmc.bukkit.starchaser.getClassID;
-import static me.starchaser.nginxmc.bukkit.starchaser.servergamemode;
+import static me.starchaser.nginxmc.bukkit.core.*;
+import static me.starchaser.nginxmc.bukkit.starchaser.*;
 
 public class events implements Listener {
     public static ArrayList<starchaser.popupchat> chat_history = new ArrayList();
@@ -32,25 +38,31 @@ public class events implements Listener {
 
     @EventHandler
     public void onJoin(PlayerJoinEvent evt) {
+        Player p = evt.getPlayer();
+        if (servergamemode == starchaser.SERVERGAMEMODE.Lobby){
+            p.teleport(spawn_point);
+        }
         if (servergamemode == starchaser.SERVERGAMEMODE.Minigames || servergamemode == starchaser.SERVERGAMEMODE.Lobby){
             core.color_state = 0;
-            evt.getPlayer().getScoreboard().getTeam("nginx_0").addPlayer(evt.getPlayer());
+            evt.getPlayer().getScoreboard().getTeam("nginx_colors").addPlayer(evt.getPlayer());
             evt.setJoinMessage(null);
             if (evt.getPlayer() != null) {
-                starchaser.updateNewRankLine(evt.getPlayer() , "§b§lWELCOME! §7");
+                starchaser.AddPlayerChatPOP(evt.getPlayer(),"§b§lWELCOME! §7");
             }
             evt.getPlayer().getInventory().clear();
             FastJoinTask(evt.getPlayer());
         }
-        if (servergamemode == starchaser.SERVERGAMEMODE.Lobby){
-            evt.getPlayer().teleport(core.spawn_point);
-    }
     }
     @EventHandler
     public void onPlayerItemHoldEvent(PlayerItemHeldEvent e){
         if (servergamemode == starchaser.SERVERGAMEMODE.Lobby && e.getPlayer().getWorld().equals(core.main_world)) {
+            NginxPlayer np = NginxPlayer.getNginxPlayer(e.getPlayer());
             if (e.getNewSlot() == 5) {
                 if (true) {
+                    if (np != null) {
+                        np.setHideTitle(true);
+                        np.setHideRank(true);
+                    }
                     e.getPlayer().getInventory().setBoots(new ItemStack(Material.DIAMOND_BOOTS));
                     e.getPlayer().getInventory().setChestplate(new ItemStack(Material.DIAMOND_CHESTPLATE));
                     e.getPlayer().getInventory().setLeggings(new ItemStack(Material.DIAMOND_LEGGINGS));
@@ -58,6 +70,10 @@ public class events implements Listener {
                     e.getPlayer().sendMessage("§7PVP: §aได้เข้าสู่โหมด PVP แล้ว!");
                 }
             }else if (e.getPreviousSlot() == 5) {
+                if (np != null) {
+                    np.setHideTitle(false);
+                    np.setHideRank(false);
+                }
                 e.getPlayer().getInventory().setBoots(new ItemStack(Material.AIR));
                 e.getPlayer().getInventory().setChestplate(new ItemStack(Material.AIR));
                 e.getPlayer().getInventory().setLeggings(new ItemStack(Material.AIR));
@@ -66,6 +82,7 @@ public class events implements Listener {
             }
         }
     }
+
     public static void FastJoinTask(Player p) {
         if (servergamemode == starchaser.SERVERGAMEMODE.Lobby) {
             starchaser.giveItemLobby(p);
@@ -99,15 +116,16 @@ public class events implements Listener {
                         p.sendMessage("§7Account: §eกำลังอ่านโปรไฟล์...");
                         (new BukkitRunnable() {
                             public void run() {
-                                if (!starchaser.getPlayerData(p)) {
-                                    new BukkitRunnable() {
-                                        @Override
-                                        public void run() {
-                                            p.kickPlayer(kick_msg);
-                                        }
-                                    }.runTask(core.getNginxMC);
+                                if (p != null) {
+                                    if (!starchaser.getPlayerData(p)) {
+                                        new BukkitRunnable() {
+                                            @Override
+                                            public void run() {
+                                                p.kickPlayer(kick_msg);
+                                            }
+                                        }.runTask(core.getNginxMC);
+                                    }
                                 }
-
                                 this.cancel();
                             }
                         }).runTaskTimerAsynchronously(core.getNginxMC, 40L, 20L);
@@ -142,14 +160,29 @@ public class events implements Listener {
     public void onFoodLevelChange(FoodLevelChangeEvent e) {
         if (servergamemode == starchaser.SERVERGAMEMODE.Lobby) {
             e.setCancelled(true);
+            if (e.getFoodLevel() < 20) {
+                e.setFoodLevel(20);
+            }
         }
 
     }
-
     @EventHandler
     public void onPlayerLeave(final PlayerQuitEvent evt) {
         evt.setQuitMessage((String) null);
         starchaser.sendPlayerData(evt.getPlayer());
+        for (NginxPlayer np : core.PlayerRef) {
+            try {
+                if (np.getName().equalsIgnoreCase(evt.getPlayer().getName())) {
+                    np.setRemoved();
+                    np.DistoryTitleHologram();
+                    np.DistoryRankHologram();
+                }
+            }catch (Exception exc) {
+                if (core.debug) {
+                    exc.printStackTrace();
+                }
+            }
+        }
         (new BukkitRunnable() {
             public void run() {
                 try {
@@ -169,9 +202,52 @@ public class events implements Listener {
             if (e.getPlayer().getItemInHand().getType() == Material.COMPASS && e.getPlayer().getItemInHand().getItemMeta().getDisplayName() != null && e.getPlayer().getItemInHand().getItemMeta().getDisplayName().equals("§bรายชื่อเซิร์ฟเวอร์ §7(คลิกขวา)")) {
                 Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "dm open server " + e.getPlayer().getName());
             }
+            if (e.getPlayer().getItemInHand().getType() == Material.HOPPER && e.getPlayer().getItemInHand().getItemMeta().getDisplayName() != null && e.getPlayer().getItemInHand().getItemMeta().getDisplayName().equals("§eรายชื่อล๊อบบี้ §7(คลิกขวา)")) {
+                Inventory inventory = Bukkit.createInventory(null,36,"§a§l▶ §b§nรายชื่อล๊อบบี้§r §a§l◀");
+                ItemStack is = new ItemStack(Material.STAINED_GLASS_PANE,1,(byte)1);
+                ItemMeta im = is.getItemMeta();
+                im.setDisplayName("§r");
+                is.setItemMeta(im);
+
+                for (int i = 0; i < 9; i++) {
+                    inventory.setItem(i,is);
+                }
+                for (int i = 27; i < 36; i++) {
+                    inventory.setItem(i,is);
+                }
+                int server_id = 1;
+                    for (int i = 9; i < 27; i++) {
+                        is = new ItemStack(Material.RAW_CHICKEN, server_id);
+                        if (getPlayerLobby(server_id).size() >= virtual_lobby_player_size)
+                            is.setType(Material.COOKED_CHICKEN);
+                        im = is.getItemMeta();
+                        im.setDisplayName("§d§l✪ §b§lLobby §a§l" + server_id + " §d§l✪");
+                        if (server_id == NginxPlayer.getNginxPlayer(e.getPlayer()).getLobby_Number()) {
+                            im.addEnchant(Enchantment.DURABILITY, 1, false);
+                            im.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+                        }
+                        ArrayList<String> lore = new ArrayList();
+                        lore.add("§r");
+                        lore.add("§b§l➣ §dผู้เล่นตอนนี้: §e" + getPlayerLobby(server_id).size() + "§f/§e" + virtual_lobby_player_size);
+                        lore.add("§r");
+                        for (NginxPlayer np : starchaser.getPlayerLobby(server_id)) {
+                            lore.add("§b" + np.getName());
+                        }
+                        im.setLore(lore);
+                        is.setItemMeta(im);
+                        inventory.setItem(i, is);
+                        server_id++;
+                    }
+                e.getPlayer().openInventory(inventory);
+            }
         }
     }
-
+    @EventHandler
+    public void onBlockPlace(BlockPlaceEvent e) {
+        if (e.getPlayer().getItemInHand().getType() == Material.HOPPER && e.getPlayer().getItemInHand().getItemMeta().getDisplayName() != null && e.getPlayer().getItemInHand().getItemMeta().getDisplayName().equals("§eรายชื่อล๊อบบี้ §7(คลิกขวา)")){
+            e.setCancelled(true);
+        }
+    }
     @EventHandler
     public void PlayerDamage(EntityDamageEvent evt) {
         if (servergamemode == starchaser.SERVERGAMEMODE.Lobby) {
@@ -197,7 +273,7 @@ public class events implements Listener {
                             NginxPlayer damager_np = NginxPlayer.getNginxPlayer((Player) evt.getDamager());
                             damager_np.getLevel().give_xp(10 , false);
                             ((Player) evt.getDamager()).sendMessage("§7Level: §aคุณได้รับ 10 XP จากการสังหาร §7" + evt.getEntity().getName());
-                            evt.getEntity().teleport(core.spawn_point);
+                            evt.getEntity().teleport(spawn_point);
                             ((Player) evt.getEntity()).setHealth(((Player) evt.getEntity()).getMaxHealth());
                             ((Player) evt.getEntity()).getInventory().setHeldItemSlot(0);
                             ((Player) evt.getEntity()).getInventory().setBoots(new ItemStack(Material.AIR));
@@ -216,12 +292,25 @@ public class events implements Listener {
         }
     }
 
-
+    @EventHandler
+    public void onInvClick(InventoryClickEvent evt) {
+        if (evt.getClickedInventory() != null && evt.getClickedInventory().getTitle() != null && evt.getClickedInventory().getTitle().equalsIgnoreCase("§a§l▶ §b§nรายชื่อล๊อบบี้§r §a§l◀")){
+            if (evt.getCurrentItem() != null && evt.getCurrentItem().getType() != Material.RAW_CHICKEN && evt.getCurrentItem().getType() != Material.COOKED_CHICKEN) {
+                evt.setCancelled(true);
+                return;
+            }else {
+                NginxPlayer.getNginxPlayer((Player) evt.getWhoClicked()).setLobby_Number(evt.getCurrentItem().getAmount());
+                evt.getWhoClicked().closeInventory();
+            }
+            evt.setCancelled(true);
+        }
+    }
     @EventHandler
     public void PlayerMoveEvt(PlayerMoveEvent evt) {
+        PlayerMoveEvent e = evt;
         if (evt.getTo().getY() < -5) {
             if (evt.getPlayer().getWorld().getName().equalsIgnoreCase(core.main_world.getName())) {
-                evt.getPlayer().teleport(core.spawn_point);
+                evt.getPlayer().teleport(spawn_point);
             }
         }
     }
@@ -276,29 +365,8 @@ public class events implements Listener {
             evt.setMessage(evt.getMessage().replaceAll(core.world_scam, "§8§l[ §d§l" + core.world_scam + " §8§l]§r"));
             core.world_scam = "#WIN#";
         }
-        Boolean allow = true;
-        NginxPlayer np = NginxPlayer.getNginxPlayer(evt.getPlayer());
-        for (PotionEffect pot : evt.getPlayer().getActivePotionEffects()) {
-            if (pot.getType().equals(PotionEffectType.INVISIBILITY)) allow = false;
-        }
-        if (evt.getPlayer().getWorld().equals(core.main_world)) {
-            if (core.server_chat_pop && evt.getPlayer().getGameMode() != GameMode.SPECTATOR && allow) {
-                if (np.isChatPOPEnabled()) {
-                    for (starchaser.popupchat popupchat : chat_history) {
-                        if (popupchat.getOwner() == evt.getPlayer()) {
-                            popupchat.setForce_remove(true);
-                            new BukkitRunnable() {
-                                @Override
-                                public void run() {
-                                    chat_history.remove(popupchat);
-                                }
-                            }.runTaskLaterAsynchronously(core.getNginxMC, 10L);
-                        }
-                    }
-                    chat_history.add(new starchaser.popupchat(evt.getPlayer(), evt.getMessage()));
-                }
-            }
-        }
+
+       starchaser.AddPlayerChatPOP(evt.getPlayer(),evt.getMessage());
 
     }
 

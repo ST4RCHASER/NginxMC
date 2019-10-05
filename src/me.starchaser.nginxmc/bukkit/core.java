@@ -1,11 +1,10 @@
 package me.starchaser.nginxmc.bukkit;
 
-import me.clip.placeholderapi.external.EZPlaceholderHook;
 import me.starchaser.nginxmc.MySQL;
 import me.starchaser.nginxmc.YamlReader;
-import me.starchaser.nginxmc.api.NginxAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -14,6 +13,7 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scoreboard.Scoreboard;
+import org.bukkit.scoreboard.Team;
 
 import java.io.File;
 import java.sql.Connection;
@@ -61,9 +61,6 @@ public class core extends JavaPlugin {
             Bukkit.getPluginManager().disablePlugin(this);
         }else {
             YamlReader config = new YamlReader(path+".mc-deluxe/nginx.yml");
-            if (!config.getBoolean("disalbe_cpf")) {
-                customplayloadfixer.customPlayloadOnEnable();
-            }
             manage_chat = config.getBoolean("override_chat");
             server_chat_pop = !config.getBoolean("disable_chat_pop");
             holo_title = !config.getBoolean("disable_title_holo");
@@ -92,6 +89,15 @@ public class core extends JavaPlugin {
                 return;
             }
             if (starchaser.servergamemode == starchaser.SERVERGAMEMODE.Lobby) {
+                Scoreboard sb = Bukkit.getScoreboardManager().getMainScoreboard();
+                if (sb.getTeam("nginx_colors") == null) {
+                    Team team = sb.registerNewTeam("nginx_colors");
+                    team.setPrefix("§a");
+                }else {
+                    for (OfflinePlayer pp : sb.getTeam("nginx_colors").getPlayers()) {
+                        sb.getTeam("nginx_colors").removePlayer(pp);
+                    }
+                }
                 new BukkitRunnable() {
                     int timer = 0;
                     int auto_save_task = 60;
@@ -107,7 +113,7 @@ public class core extends JavaPlugin {
                                     }else {
                                         color_state++;
                                     }
-                                    Bukkit.getScoreboardManager().getMainScoreboard().getTeam("nginx_0").setPrefix("§" + colors[color_state]);
+                                    Bukkit.getScoreboardManager().getMainScoreboard().getTeam("nginx_colors").setPrefix("§" + colors[color_state]);
                                 }
                             }.runTask(core.getNginxMC);
                         }
@@ -150,6 +156,12 @@ public class core extends JavaPlugin {
                         }else {
                             auto_save_task--;
                         }
+                        NginxPlayer np_remove = null;
+                        for (NginxPlayer nginxPlayer : PlayerRef) {
+                            nginxPlayer.UpdateLocaction();
+                            if (nginxPlayer.getPlayer() == null) np_remove = nginxPlayer;
+                        }
+                        if (np_remove != null) NginxPlayer.removeNginxPlayer(np_remove);
                     }
                 }.runTaskTimerAsynchronously(getNginxMC, 20L, 20L);
             }
@@ -193,10 +205,6 @@ public class core extends JavaPlugin {
             NginxPlayer.getNginxPlayer(pp).DistoryTitleHologram();
             NginxPlayer.removeNginxPlayer(pp);
         }
-        YamlReader config = new YamlReader(path+".mc-deluxe/nginx.yml");
-        if (!config.getBoolean("disalbe_cpf")) {
-            customplayloadfixer.customPlayloadOnDisable();
-        }
     }
 
     @Override
@@ -218,9 +226,20 @@ public class core extends JavaPlugin {
                 if (args.length > 1) {
                     if (args[0].equalsIgnoreCase("debug")) {
                         debug = !debug;
-                        sender.sendMessage("§7Nginx: Console debug has been set to: " + Boolean.toString(debug));
+                        sender.sendMessage("§7Nginx: Console debug has been set to: §c" + Boolean.toString(debug));
                         starchaser.Logger(starchaser.LOG_TYPE.PLUGIN , sender.getName()  + " has set debug value to " + Boolean.toString(debug));
                         return true;
+                    }
+                    if (args[0].equalsIgnoreCase("lobby")) {
+                        if (starchaser.servergamemode != starchaser.SERVERGAMEMODE.Lobby) {
+                            sender.sendMessage("§7Nginx: §cThis command is disable with server gamemode is " + starchaser.servergamemode.toString());
+                        }else {
+                            if (args.length < 2) {
+                                sender.sendMessage("§7Usage: §c/nginx lobby join <lobby_id>");
+                            }else {
+                                nginxPlayer.setLobby_Number(Integer.parseInt(args[2]));
+                            }
+                        }
                     }
                     if (args[0].equalsIgnoreCase("coins")) {
                         if (args.length < 4) {

@@ -29,6 +29,7 @@ public class papi extends EZPlaceholderHook {
         if(identifier.equals("title_id")) {return String.valueOf(np.getTitle().getId());}
         if(identifier.equals("paid_points")) {return String.valueOf(np.getPaid_points());}
         if(identifier.equals("reward_points")) {return String.valueOf(np.getReward_points());}
+        if(identifier.equals("lobby_id")) {return String.valueOf(np.getLobby_Number());}
         return "";
     }
 }
