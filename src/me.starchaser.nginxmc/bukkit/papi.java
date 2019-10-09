@@ -14,8 +14,7 @@ public class papi extends EZPlaceholderHook {
             return "";
         }
         NginxPlayer np = NginxPlayer.getNginxPlayer(player);
-
-        if (np == null) return "§oLoading...";
+        if (np == null) return "§r §7§o(Loading...) §r";
         if(identifier.equals("level")) {return np.getLevel().getStr();}
         if(identifier.equals("xp")) {return String.valueOf(np.getLevel().getXP());}
         if(identifier.equals("level_raw")) {return String.valueOf(np.getLevel().get_Int());}
@@ -30,6 +29,7 @@ public class papi extends EZPlaceholderHook {
         if(identifier.equals("paid_points")) {return String.valueOf(np.getPaid_points());}
         if(identifier.equals("reward_points")) {return String.valueOf(np.getReward_points());}
         if(identifier.equals("lobby_id")) {return String.valueOf(np.getLobby_Number());}
+        if(identifier.equals("rank_animate_frame")) {return String.valueOf(np.getRankAnimateCurrentFrame());}
         return "";
     }
 }

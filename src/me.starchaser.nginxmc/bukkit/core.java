@@ -21,32 +21,29 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Random;
-
 public class core extends JavaPlugin {
     public static Plugin getNginxMC;
     public static String path;
     public static boolean debug = false;
     public static ArrayList<NginxPlayer> PlayerRef;
+    public static ArrayList<AnimateRank> AnimemateRankList;
     public static Connection SQL_CONNECTION;
     public static Connection SQL_CONNECTION_SC;
-    public static MySQL sql = new MySQL("localhost", "3306", "nginxmc", "siamcraft_plugin", "v6gAKopaMeK73ET78uCis7G2cib3wo");
-    public static MySQL sql_SC = new MySQL("localhost", "3306", "siamcraft", "siamcraft_plugin", "v6gAKopaMeK73ET78uCis7G2cib3wo");
+    public static MySQL sql = new MySQL("sql.siamcraft.net", "3306", "nginxmc", "siamcraft_plugin", "v6gAKopaMeK73ET78uCis7G2cib3wo");
+    public static MySQL sql_SC = new MySQL("sql.siamcraft.net", "3306", "siamcraft", "siamcraft_plugin", "v6gAKopaMeK73ET78uCis7G2cib3wo");
     public static String world_scam = "#NONE#";
     public static World main_world = null;
     public static Location spawn_point = null;
     public static boolean server_chat_pop = false;
-    public static boolean holo_title = false;
     public static boolean manage_chat = false;
-    private String[] colors = {
-            "a","b","c","d","e","f","1","2","3","4","5","6","7","8","9","0"
-    };
-    static int color_state = 0;
+    public static boolean void_spawn = true;
     @Override
     public void onEnable() {
         path = this.getDataFolder().getAbsoluteFile().getParentFile().getParentFile().getAbsolutePath() + File.separator;
         getNginxMC = this;
         File f = new File(path+".mc-deluxe/nginx.yml");
         PlayerRef = new ArrayList<>();
+        AnimemateRankList = new ArrayList<>();
         try {
             SQL_CONNECTION = sql.openConnection();
             SQL_CONNECTION_SC = sql_SC.openConnection();
@@ -63,7 +60,7 @@ public class core extends JavaPlugin {
             YamlReader config = new YamlReader(path+".mc-deluxe/nginx.yml");
             manage_chat = config.getBoolean("override_chat");
             server_chat_pop = !config.getBoolean("disable_chat_pop");
-            holo_title = !config.getBoolean("disable_title_holo");
+            void_spawn = config.getBoolean("main_world.void_spawn");
             try{
                 starchaser.servergamemode = starchaser.SERVERGAMEMODE.valueOf(config.getString("server_gamemode"));
             }catch (Exception | Error ex) {
@@ -88,36 +85,29 @@ public class core extends JavaPlugin {
                 Bukkit.getPluginManager().disablePlugin(this);
                 return;
             }
-            if (starchaser.servergamemode == starchaser.SERVERGAMEMODE.Lobby) {
-                Scoreboard sb = Bukkit.getScoreboardManager().getMainScoreboard();
-                if (sb.getTeam("nginx_colors") == null) {
-                    Team team = sb.registerNewTeam("nginx_colors");
-                    team.setPrefix("§a");
-                }else {
-                    for (OfflinePlayer pp : sb.getTeam("nginx_colors").getPlayers()) {
-                        sb.getTeam("nginx_colors").removePlayer(pp);
+            AnimemateRankList.add(new AnimateRank(9,2));
+            AnimemateRankList.add(new AnimateRank(7,3));
+            AnimemateRankList.add(new AnimateRank(6,4));
+            AnimemateRankList.add(new AnimateRank(5,2));
+            AnimemateRankList.add(new AnimateRank(4,2));
+            AnimemateRankList.add(new AnimateRank(3,2));
+            AnimemateRankList.add(new AnimateRank(2,3));
+            AnimemateRankList.add(new AnimateRank(1,3));
+            AnimemateRankList.add(new AnimateRank(0,2));
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    for (AnimateRank animateRank : AnimemateRankList) {
+                        animateRank.renderFrame();
                     }
                 }
+            }.runTaskTimerAsynchronously(core.getNginxMC , 1L,1L);
+            if (starchaser.servergamemode == starchaser.SERVERGAMEMODE.Lobby) {
                 new BukkitRunnable() {
                     int timer = 0;
                     int auto_save_task = 60;
-
                     @Override
                     public void run() {
-                        if (starchaser.servergamemode == starchaser.SERVERGAMEMODE.Lobby) {
-                            new BukkitRunnable() {
-                                @Override
-                                public void run() {
-                                    if (color_state >= colors.length -1) {
-                                        color_state = 0;
-                                    }else {
-                                        color_state++;
-                                    }
-                                    Bukkit.getScoreboardManager().getMainScoreboard().getTeam("nginx_colors").setPrefix("§" + colors[color_state]);
-                                }
-                            }.runTask(core.getNginxMC);
-                        }
-
                         if (Bukkit.getOnlinePlayers().size() <= 3) {
                             this.timer = 0;
                             core.world_scam = "#NONE#";
@@ -158,10 +148,39 @@ public class core extends JavaPlugin {
                         }
                         NginxPlayer np_remove = null;
                         for (NginxPlayer nginxPlayer : PlayerRef) {
-                            nginxPlayer.UpdateLocaction();
                             if (nginxPlayer.getPlayer() == null) np_remove = nginxPlayer;
                         }
                         if (np_remove != null) NginxPlayer.removeNginxPlayer(np_remove);
+
+//                        try {
+//                            for (Player pz : Bukkit.getOnlinePlayers()) {
+//                                NginxPlayer pznx = NginxPlayer.getNginxPlayer(pz);
+//                                new BukkitRunnable() {
+//                                    @Override
+//                                    public void run() {
+//                                        for(Player target : Bukkit.getOnlinePlayers()) {
+//                                            NginxPlayer pzTarget = NginxPlayer.getNginxPlayer(target);
+//                                            if (pznx == null || pzTarget == null) {
+//                                                pz.hidePlayer(target);
+//                                                target.hidePlayer(pz);
+//                                            }else {
+//                                                if (pznx.getLobby_Number() == pzTarget.getLobby_Number()) {
+//                                                    pz.showPlayer(target);
+//                                                    target.showPlayer(pz);
+//                                                }else {
+//                                                    pz.hidePlayer(target);
+//                                                    target.hidePlayer(pz);
+//                                                }
+//                                            }
+//                                        }
+//                                    }
+//                                }.runTask(core.getNginxMC);
+//                            }
+//                        }catch (Exception exc) {
+//                            if (core.debug) {
+//                                exc.printStackTrace();
+//                            }
+//                        } //TODO: MULTI LOBBY SYSTEM
                     }
                 }.runTaskTimerAsynchronously(getNginxMC, 20L, 20L);
             }
@@ -201,8 +220,6 @@ public class core extends JavaPlugin {
             starchaser.sendPlayerData(pp);
         }
         for (Player pp : Bukkit.getOnlinePlayers()) {
-            NginxPlayer.getNginxPlayer(pp).DistoryRankHologram();
-            NginxPlayer.getNginxPlayer(pp).DistoryTitleHologram();
             NginxPlayer.removeNginxPlayer(pp);
         }
     }

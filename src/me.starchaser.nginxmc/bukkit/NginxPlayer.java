@@ -2,20 +2,16 @@ package me.starchaser.nginxmc.bukkit;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
-import com.gmail.filoghost.holographicdisplays.api.Hologram;
-import com.gmail.filoghost.holographicdisplays.api.HologramsAPI;
 import org.bukkit.Bukkit;
-import org.bukkit.GameMode;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.scoreboard.Team;
+
+import static me.starchaser.nginxmc.bukkit.core.AnimemateRankList;
+import static me.starchaser.nginxmc.bukkit.core.debug;
 
 public class NginxPlayer {
     final String name;
@@ -26,33 +22,29 @@ public class NginxPlayer {
     private int coins;
     private String is_enter_password;
     private String server_target;
-    private boolean show_title;
-    private boolean show_rank;
-    private Hologram hologram_title;
-    private Hologram hologram_rank;
     private int feather_points;
     private int paid_points = 0;
     private int ooc_count = 0;
     private int reward_points = 0;
+    private boolean show_title;
     private boolean force_hide_title = false;
-    private boolean force_hide_rank = false;
     private boolean chat_pop = false;
     private int Lobby_Number = 0;
-    private BukkitRunnable task;
     private boolean is_removed = false;
-    NginxPlayer(int id, final String name, int class_id, int level, int xp, int title_id, int coins, boolean show_title_on_head, boolean show_rank_on_head, int feather_point) {
+    private Team player_sb_team;
+    NginxPlayer(int id, final String name, int class_id, int level, int xp, int title_id, int coins, boolean show_title_on_head, int feather_point) {
         this.id = id;
         this.name = name;
         this.coins = coins;
-        this.playerClass = new NginxPlayer.PlayerClass(class_id);
-        this.title = new NginxPlayer.NginxTitle(title_id);
-        this.player_level = new NginxPlayer.PlayerLevel(level, xp, getName());
-        this.show_title = show_title_on_head;
+        this.playerClass = new PlayerClass(class_id);
+        this.title = new NginxTitle(title_id);
+        this.player_level = new PlayerLevel(level, xp, getName());
         this.feather_points = feather_point;
-        this.show_rank = show_rank_on_head;
+        this.show_title = show_title_on_head;
         setChatPOP(core.server_chat_pop);
         if (starchaser.servergamemode == starchaser.SERVERGAMEMODE.Lobby) {
-            FillLobby();
+            //FillLobby();
+            JoinLobby(1);
         }
         new BukkitRunnable() {
             @Override
@@ -66,157 +58,6 @@ public class NginxPlayer {
                 reward_points = getNewRewardPoints();
             }
         }.runTaskTimerAsynchronously(core.getNginxMC , 1,2400);
-        if (this.show_title) {
-            final Player player1 = getPlayer();
-            if (player1 != null) {
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        hologram_title = HologramsAPI.createHologram(core.getNginxMC, player1.getLocation().add(0.0D, 2.0D, 0.0D));
-                        hologram_title.getVisibilityManager().hideTo(player1);
-                        hologram_title.appendTextLine(getTitle().getStr());
-                        hologram_title.getVisibilityManager().setVisibleByDefault(false);
-                    }
-                }.runTask(core.getNginxMC);
-            }
-        }
-        if (this.show_rank) {
-            if (getPlayer() != null) {
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        hologram_rank = HologramsAPI.createHologram(core.getNginxMC, getPlayer().getLocation().add(0.0D, 2.0D, 0.0D));
-                        hologram_rank.getVisibilityManager().hideTo(getPlayer());
-                        hologram_rank.appendTextLine(getPlayerClass().getStr());
-                        hologram_rank.getVisibilityManager().setVisibleByDefault(false);
-                    }
-                }.runTask(core.getNginxMC);
-            }
-        }
-
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                if (getPlayer() == null) cancel();
-                try{
-                    UpdateLocaction();
-                }catch (Exception exc) {
-                    cancel();
-                    if (core.debug){
-                        exc.printStackTrace();
-                    }
-                }
-            }
-        }.runTaskTimerAsynchronously(core.getNginxMC,1L,1L);
-        task = new BukkitRunnable() {
-            @Override
-            public void run() {
-                if (starchaser.servergamemode == starchaser.SERVERGAMEMODE.Lobby) {
-                    try {
-                        for (Player pz : Bukkit.getOnlinePlayers()) {
-                            NginxPlayer pznx = NginxPlayer.getNginxPlayer(pz);
-                            if (pznx == null || getLobby_Number() != pznx.getLobby_Number()) {
-                                getPlayer().hidePlayer(pz);
-                            }else {
-                                getPlayer().showPlayer(pz);
-                            }
-                        }
-                    }catch (Exception exc) {
-                        if (core.debug) {
-                            exc.printStackTrace();
-                        }
-                    }
-                }
-            }
-        };
-        task.runTaskTimer(core.getNginxMC,20L , 20L);
-    }
-    public void UpdateLocaction() {
-        if (getPlayer() == null) return;
-        if (getPlayer() == null  || !show_title) {
-            DistoryTitleHologram();
-        }
-        if (getPlayer() != null) {
-            if (NginxPlayer.this.hologram_title != null && getPlayer() != null) {
-                NginxPlayer.this.hologram_title.teleport(getPlayer().getLocation().add(0.0D, 2.6D, 0.0D));
-                boolean set_hide = false;
-                if (starchaser.servergamemode == starchaser.SERVERGAMEMODE.Minigames && getPlayer().getLocation().getWorld() != core.main_world) set_hide = true;
-                if (getPlayer().isSneaking()) set_hide = true;
-                if (getPlayer().getGameMode() == GameMode.SPECTATOR) set_hide = true;
-                for (PotionEffect pot : getPlayer().getActivePotionEffects()) {
-                    if (pot.getType().equals(PotionEffectType.INVISIBILITY)) set_hide = true;
-                }
-                if (set_hide || force_hide_title) {
-                    for (Player target : Bukkit.getOnlinePlayers()) {
-                        if (target != null && hologram_title != null && getPlayer() != null) {
-                            NginxPlayer.this.hologram_title.getVisibilityManager().hideTo(target);
-                        }
-                    }
-                } else {
-                    if (hologram_title != null && getPlayer() != null) {
-                        for (Player target : Bukkit.getOnlinePlayers()) {
-                            if (hologram_title != null && getPlayer() != null && target != null) {
-                                if (getPlayer() == target) {
-                                    NginxPlayer.this.hologram_title.getVisibilityManager().hideTo(target);
-                                    continue;
-                                }
-                                if (starchaser.servergamemode == starchaser.SERVERGAMEMODE.Lobby)  {
-                                    if (NginxPlayer.getNginxPlayer(target) != null && getLobby_Number() == NginxPlayer.getNginxPlayer(target).getLobby_Number()) {
-                                        NginxPlayer.this.hologram_title.getVisibilityManager().showTo(target);
-                                    }else {
-                                        NginxPlayer.this.hologram_title.getVisibilityManager().hideTo(target);
-                                    }
-                                }else {
-                                    NginxPlayer.this.hologram_title.getVisibilityManager().showTo(target);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        if (getPlayer() == null  || !show_rank) {
-            DistoryRankHologram();
-        }
-        if (getPlayer() != null) {
-            if (NginxPlayer.this.hologram_rank != null && getPlayer() != null) {
-                NginxPlayer.this.hologram_rank.teleport(getPlayer().getLocation().add(0.0D, 2.85D, 0.0D));
-                boolean set_hide = false;
-                if (starchaser.servergamemode == starchaser.SERVERGAMEMODE.Minigames && getPlayer().getLocation().getWorld() != core.main_world) set_hide = true;
-                if (getPlayer().isSneaking()) set_hide = true;
-                if (getPlayer().getGameMode() == GameMode.SPECTATOR) set_hide = true;
-                for (PotionEffect pot : getPlayer().getActivePotionEffects()) {
-                    if (pot.getType().equals(PotionEffectType.INVISIBILITY)) set_hide = true;
-                }
-                if (set_hide || force_hide_rank) {
-                    for (Player target : Bukkit.getOnlinePlayers()) {
-                        if (target != null && hologram_rank != null && getPlayer() != null) {
-                            NginxPlayer.this.hologram_rank.getVisibilityManager().hideTo(target);
-                        }
-                    }
-                } else {
-                    if (hologram_rank != null && getPlayer() != null) {
-                        for (Player target : Bukkit.getOnlinePlayers()) {
-                            if (hologram_rank != null && getPlayer() != null && target != null) {
-                                if (getPlayer() == target) {
-                                    NginxPlayer.this.hologram_rank.getVisibilityManager().hideTo(target);
-                                    continue;
-                                }
-                                if (starchaser.servergamemode == starchaser.SERVERGAMEMODE.Lobby)  {
-                                    if (NginxPlayer.getNginxPlayer(target) != null && getLobby_Number() == NginxPlayer.getNginxPlayer(target).getLobby_Number()) {
-                                        NginxPlayer.this.hologram_rank.getVisibilityManager().showTo(target);
-                                    }else {
-                                        NginxPlayer.this.hologram_rank.getVisibilityManager().hideTo(target);
-                                    }
-                                }else {
-                                    NginxPlayer.this.hologram_rank.getVisibilityManager().showTo(target);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
     }
     public NginxPlayer.PlayerClass getPlayerClass() {
         return this.playerClass;
@@ -229,8 +70,8 @@ public class NginxPlayer {
     public void setLobby_Number(int lobby_Number) {
         Lobby_Number = lobby_Number;
         if (getPlayer() != null) {
-            getPlayer().sendMessage("§7Lobby: §aคุณอยู่ใน Lobby: §e" + getLobby_Number());
-            getPlayer().playSound(getPlayer().getLocation(), Sound.LEVEL_UP,3.0F, 3.533F);
+            //getPlayer().sendMessage("§7Lobby: §aคุณอยู่ใน Lobby: §e" + getLobby_Number());
+            //getPlayer().playSound(getPlayer().getLocation(), Sound.LEVEL_UP,3.0F, 3.533F);
         }
     }
     public void JoinLobby(int lobby_Number) {
@@ -306,16 +147,9 @@ public class NginxPlayer {
 
     public void setTitle(int id) {
         this.title = new NginxTitle(id);
-        if (this.hologram_title != null) {
-            this.hologram_title.removeLine(0);
-            this.hologram_title.appendTextLine(this.title.getStr());
-        }
     }
     public void setHideTitle(Boolean value ){
         force_hide_title = value;
-    }
-    public void setHideRank(Boolean value ){
-        force_hide_rank = value;
     }
 
     public int getFeather_points() {
@@ -333,15 +167,6 @@ public class NginxPlayer {
     public boolean isShow_title() {
         return this.show_title;
     }
-
-    public Hologram getTitleHologram() {
-        return this.hologram_title;
-    }
-
-    public Hologram getRankHologram() {
-        return hologram_rank;
-    }
-
     public NginxPlayer.PlayerLevel getLevel() {
         return this.player_level;
     }
@@ -397,18 +222,6 @@ public class NginxPlayer {
     public void takeCoins(int num) {
         setCoins(this.coins - num);
     }
-    public void DistoryTitleHologram() {
-        show_title = false;
-        for (Player ppz : Bukkit.getOnlinePlayers()) {
-            hologram_title.getVisibilityManager().hideTo(ppz);
-        }
-    }
-    public void DistoryRankHologram() {
-        show_rank = false;
-        for (Player ppz : Bukkit.getOnlinePlayers()) {
-            hologram_rank.getVisibilityManager().hideTo(ppz);
-        }
-    }
     public void setChatPOP(Boolean value){
         chat_pop = value;
     }
@@ -448,17 +261,12 @@ public class NginxPlayer {
     }
 
     public static NginxPlayer getNginxPlayer(Player p) {
-        NginxPlayer result = null;
-        Iterator var2 = core.PlayerRef.iterator();
-
-        while(var2.hasNext()) {
-            NginxPlayer dp = (NginxPlayer)var2.next();
-            if (dp.getName().equalsIgnoreCase(p.getName())) {
-                result = dp;
+        for (NginxPlayer nginxPlayer : core.PlayerRef) {
+            if (nginxPlayer.getName().equalsIgnoreCase(p.getName())) {
+                return nginxPlayer;
             }
         }
-
-        return result;
+        return null;
     }
 
     public static void addNginxPlayer(NginxPlayer dp) {
@@ -467,44 +275,35 @@ public class NginxPlayer {
 
     public static void removeNginxPlayer(Player p) {
         NginxPlayer npz = null;
-        try {
             for (NginxPlayer np : core.PlayerRef) {
                 if (np.getName().equalsIgnoreCase(p.getName())) {
-                    np.setRemoved();
-                    np.DistoryTitleHologram();
-                    np.DistoryRankHologram();
                     npz = np;
-                    np.getTask().cancel();
                 }
             }
-        }catch (Exception exc) {
-            if (core.debug) {
-                exc.printStackTrace();
+            if (npz != null) {
+                removeNginxPlayer(npz);
             }
-        }
-        core.PlayerRef.remove(npz);
-        starchaser.Logger(starchaser.LOG_TYPE.PLAYER, "§fPlayer memory removed! [§e" + p.getName() + "§f]");
     }
 
-    public BukkitRunnable getTask() {
-        return task;
-    }
     public void setRemoved() {
         is_removed = true;
     }
     public static void removeNginxPlayer(NginxPlayer np) {
-        try {
-            np.setRemoved();
-            np.DistoryTitleHologram();
-            np.DistoryRankHologram();
-            np.getTask().cancel();
-        }catch (Exception exc) {
-            if (core.debug) {
-                exc.printStackTrace();
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                try {
+                    np.setRemoved();
+                    np.player_sb_team.unregister();
+                }catch (Exception exc) {
+                    if (debug) {
+                        exc.printStackTrace();
+                    }
+                }
+                core.PlayerRef.remove(np);
+                starchaser.Logger(starchaser.LOG_TYPE.PLAYER, "§fPlayer memory removed! [§e" + np.getName() + "§f]");
             }
-        }
-        core.PlayerRef.remove(np);
-        starchaser.Logger(starchaser.LOG_TYPE.PLAYER, "§fPlayer memory removed! [§e" + np.getName() + "§f]");
+        }.runTaskAsynchronously(core.getNginxMC);
     }
     public class NginxTitle {
         private int title_id;
@@ -538,7 +337,7 @@ public class NginxPlayer {
     public Player getBukkitPlayer()  {
         return Bukkit.getPlayerExact(getName());
     }
-    public class PlayerClass {
+    public class PlayerClass{
         private int id;
         public void reloadClassID() {
             this.id = starchaser.getClassID(getBukkitPlayer());
@@ -568,29 +367,26 @@ public class NginxPlayer {
             }
             ministr = ministr.replaceAll(" §r" , " ").replaceAll("§r " , "");
             try {
-                if (hologram_title != null) {
-                    hologram_title.removeLine(0);
-                    hologram_title.appendTextLine(ministr);
+                if (player_sb_team != null) {
+                    player_sb_team.setPrefix(ministr);
                 }
             }catch (Exception exa) {
 
             }
-
         }
-
-
         public int getId() {
             return this.id;
         }
-
         public String getStr() {
             String p_class_str;
             if (this.id == 9) {
                 p_class_str = " §c§lADMIN ";
+            } else if (this.id == 7) {
+                p_class_str = " §c§lYOU§f§lTUBER ";
             } else if (this.id == 6) {
                 p_class_str = " §5§lSTAFF ";
             } else if (this.id == 5) {
-                p_class_str = " §c§lSU§f§lPREME ";
+                p_class_str = " §c§lSUPREME ";
             } else if (this.id == 4) {
                 p_class_str = " §a§lLEGEND ";
             } else if (this.id == 3) {
@@ -812,5 +608,13 @@ public class NginxPlayer {
 
             return newword;
         }
+    }
+    public String getRankAnimateCurrentFrame() {
+        for (AnimateRank animateRank : AnimemateRankList) {
+            if (animateRank.getClassID() == getPlayerClass().getId()) {
+                return animateRank.getCurrentDisplay();
+            }
+        }
+        return "";
     }
 }

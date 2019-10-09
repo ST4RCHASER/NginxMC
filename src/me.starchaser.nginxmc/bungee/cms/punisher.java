@@ -49,7 +49,7 @@ public class punisher extends Command implements Listener {
                                         }
 
                                         if (args[0].equalsIgnoreCase("kick")) {
-                                            int i = 1;
+                                            int i = 2;
 
                                             String aaabbbcc;
                                             for (aaabbbcc = ""; i < args.length; ++i) {
@@ -61,13 +61,7 @@ public class punisher extends Command implements Listener {
                                                 sender.sendMessage("§7Kick: §cผู้เล่นนี้ไม่ได้ออนไลน์อยู่ในขนะนี้");
                                                 return;
                                             }
-
-                                            String res_str;
-                                            for (res_str = ""; i < args.length; ++i) {
-                                                res_str = res_str + args[i];
-                                            }
-
-                                            ProxyServer.getInstance().broadcast("§7Kick: §b" + a.getName() + " §cถูกเชิญออกจาเซิร์ฟเวอร์โดย " + a.getName() + " ในสาเหตุ: §f" + res_str);
+                                            ProxyServer.getInstance().broadcast("§7Kick: §b" + a.getName() + " §cถูกเชิญออกจาเซิร์ฟเวอร์โดย " + a.getName() + " ในสาเหตุ: §f" + aaabbbcc);
                                             a.disconnect(aaabbbcc);
                                             return;
                                         }

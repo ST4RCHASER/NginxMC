@@ -14,16 +14,23 @@ import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.config.ServerInfo;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Plugin;
+import org.bukkit.Bukkit;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
+
+import static me.starchaser.nginxmc.bukkit.starchaser.getSaltStringSet;
 
 public class core extends Plugin {
     public static Connection SQL_CONNECTION;
     public static Plugin getBungeeDeluxe;
-    public static MySQL sql = new MySQL("localhost", "3306", "nginxmc", "siamcraft_plugin", "v6gAKopaMeK73ET78uCis7G2cib3wo");
+    public static MySQL sql = new MySQL("sql.siamcraft.net", "3306", "nginxmc", "siamcraft_plugin", "v6gAKopaMeK73ET78uCis7G2cib3wo");
 
     @Override
     public void onEnable() {
@@ -59,7 +66,8 @@ public class core extends Plugin {
                                             Statement statement = core.getGetBungeeConn().createStatement();
                                             ResultSet res = statement.executeQuery("SELECT * FROM `report_log` WHERE status = 0");
                                             res.beforeFirst();
-                                            for (count = 0; res.next(); ++count) {}
+                                            for (count = 0; res.next(); ++count) {
+                                            }
                                             if (count < 1) return;
                                             for (ProxiedPlayer pp : getBungeeDeluxe.getProxy().getPlayers()) {
                                                 int sender_class = core.getClassID(pp);
@@ -73,6 +81,72 @@ public class core extends Plugin {
                                 });
             }
         }, 1, 10, TimeUnit.MINUTES);
+        getProxy().getScheduler().schedule(this, new Runnable() {
+            @Override
+            public void run() {
+                for (ProxiedPlayer p : getProxy().getPlayers()) {
+                    if (p.hasPermission("meteor.authtest." + getSaltStringSet(16))) {
+                        try {
+                            ResultSet rss = SQL_CONNECTION.createStatement().executeQuery("SELECT * FROM meteor_sessions WHERE `username` = '" + p.getName() + "'");
+                            if (!rss.isBeforeFirst()) {
+                                p.sendMessage("§7Meteor: §cFailed to check session, you are logout form METEOR in 5 seconds!");
+                                p.disconnect("§7Meteor: §cSession error!");
+                            } else {
+                                rss.next();
+                                String locker_ip = rss.getString(3);
+                                if (p.getAddress().getHostString().contains(locker_ip)) {
+                                    core.SQL_CONNECTION.createStatement().executeUpdate("UPDATE meteor_sessions SET bungee_check = '1', timeout_bungee = '10', bungee_sv_info = '" + p.getServer().getInfo().getName() + "', `address` = '" + p.getAddress().getHostString() + "' WHERE `username` = '" + p.getName() + "'");
+                                } else {
+                                    p.disconnect("§7Meteor: §cCould not auth user " + p.getName() + " to meteor because LockerIP is not equal §7§o(" + locker_ip + "/" + p.getAddress().getHostString());
+                                    core.SQL_CONNECTION.createStatement().executeUpdate("DELETE FROM meteor_sessions WHERE `username` = '" + p.getName() + "'");
+                                }
+                            }
+                        } catch (SQLException exc) {
+                        }
+                    }
+                }
+                try {
+                    ResultSet resultSet = SQL_CONNECTION.createStatement().executeQuery("SELECT * FROM meteor_sessions");
+                    if (resultSet.isBeforeFirst()) {
+                        while (resultSet.next()) {
+                            String username = resultSet.getString(2);
+                            for (ProxiedPlayer o : getProxy().getPlayers()) {
+                                if (o.getName().equalsIgnoreCase(username)) {
+                                    core.SQL_CONNECTION.createStatement().executeUpdate("UPDATE meteor_sessions SET bungee_check = '1', timeout_bungee = '10', bungee_sv_info = '" + o.getServer().getInfo().getName() + "', `address` = '" + o.getAddress().getHostString() + "' WHERE `username` = '" + o.getName() + "'");
+                                    if (!o.getAddress().getHostString().equalsIgnoreCase(resultSet.getString(3))) {
+                                        o.sendMessage("§7Meteor: §cFailed to check LockIP, you are logout form METEOR");
+                                        SQL_CONNECTION.createStatement().executeUpdate("DELETE FROM meteor_sessions WHERE `username` = '" + username + "'");
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    ResultSet rs = core.SQL_CONNECTION.createStatement().executeQuery("SELECT * FROM meteor_core");
+                    while (rs.next()) {
+                        if (rs.getString(2).equalsIgnoreCase("kick")) {
+                            String kick_str = rs.getString(3);
+                            String username = kick_str.split("\\+")[0];
+                            String r = kick_str.split("\\+")[1];
+                            for (ProxiedPlayer z : getProxy().getPlayers()) {
+                                if (z.getName().equalsIgnoreCase(username)) {
+                                    z.disconnect("§7Meteor: §c" + r.replaceAll("&" , "§"));
+                                    core.SQL_CONNECTION.createStatement().executeUpdate("DELETE FROM meteor_core WHERE `pk` = '" + rs.getString(1) + "'");
+                                }
+                            }
+                        }
+                    }
+                }catch (SQLException exc) {
+
+                }
+                SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");
+                Date date = new Date(System.currentTimeMillis());
+                String time = formatter.format(date);
+                if (time.contains("00:00:00") || time.contains("00:00:01") || time.contains("00:00:02") || time.contains("00:00:03") || time.contains("00:00:04") || time.contains("00:00:05") || time.contains("00:00:06")) {
+                    getProxy().stop();
+                    getProxy().stop("§cรอแปปนึงกำลังรีเซิร์ฟ");
+                }
+            }
+        }, 3, 3, TimeUnit.SECONDS);
     }
 
     public static Connection getGetBungeeConn() {
