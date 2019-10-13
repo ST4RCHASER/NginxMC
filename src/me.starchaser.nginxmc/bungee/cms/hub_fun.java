@@ -21,7 +21,7 @@ public class hub_fun extends Command implements Listener {
   @Override
   public void execute(CommandSender sender, String[] args) {
     ProxiedPlayer player = (ProxiedPlayer)sender;
-    if (!player.getServer().getInfo().getName().equalsIgnoreCase("lobby/01") && !player.getServer().getInfo().getName().equalsIgnoreCase("lobby/02") && !player.getServer().getInfo().getName().equalsIgnoreCase("lobby")) {
+    if (!player.getServer().getInfo().getName().equalsIgnoreCase("lobby/01") && !player.getServer().getInfo().getName().equalsIgnoreCase("lobby/02") && !player.getServer().getInfo().getName().equalsIgnoreCase("lobby/03") && !player.getServer().getInfo().getName().equalsIgnoreCase("lobby")) {
       if (player.getServer().getInfo().getName().equalsIgnoreCase("lobbymaster")) {
         player.sendMessage(new TextComponent(ChatColor.GRAY + "CORE: " + ChatColor.RED + "/hub now allow on this server!"));
       } else if (player.getServer().getInfo().getName().equalsIgnoreCase("auth")) {

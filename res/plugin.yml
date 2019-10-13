@@ -1,11 +1,13 @@
 name: NginxMC
-version: 1.8.19 preview build
+version: 1.8.20a preview build
 description: a non-minecraft deluxe core plugin for siamcraft
 authors: [_StarChaser]
 main: me.starchaser.nginxmc.bukkit.core
 load: POSTWORLD
 softdepend:
   - Multiverse-Core
+  - MVdWPlaceholderAPI
+  - PlaceholderAPI
 commands:
   nginx:
     description: Main commands

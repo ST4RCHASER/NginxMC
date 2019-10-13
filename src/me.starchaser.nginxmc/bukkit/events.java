@@ -45,7 +45,9 @@ public class events implements Listener {
             if (evt.getPlayer() != null) {
                 starchaser.AddPlayerChatPOP(evt.getPlayer(),"§b§lWELCOME! §7");
             }
-            evt.getPlayer().getInventory().clear();
+            if (clear_on_join) {
+                evt.getPlayer().getInventory().clear();
+            }
             FastJoinTask(evt.getPlayer());
         }
     }

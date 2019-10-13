@@ -16,7 +16,7 @@ public class lobby extends Command implements Listener {
   @Override
   public void execute(CommandSender sender, String[] args) {
     ProxiedPlayer player = (ProxiedPlayer)sender;
-    if (!player.getServer().getInfo().getName().equalsIgnoreCase("lobby/01") && !player.getServer().getInfo().getName().equalsIgnoreCase("lobby/02") && !player.getServer().getInfo().getName().equalsIgnoreCase("lobby")) {
+    if (!player.getServer().getInfo().getName().equalsIgnoreCase("lobby/01") && !player.getServer().getInfo().getName().equalsIgnoreCase("lobby/02") && !player.getServer().getInfo().getName().equalsIgnoreCase("lobby/03") && !player.getServer().getInfo().getName().equalsIgnoreCase("lobby")) {
       if (player.getServer().getInfo().getName().equalsIgnoreCase("lobbymaster")) {
         player.sendMessage(ChatColor.GRAY + "CORE: " + ChatColor.RED + "/lobby now allow on this server!");
       } else if (player.getServer().getInfo().getName().equalsIgnoreCase("auth")) {

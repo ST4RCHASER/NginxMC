@@ -56,5 +56,6 @@
     <orderEntry type="library" name="HolographicDisplays" level="project" />
     <orderEntry type="library" name="PlaceholderAPI-2.9.21" level="project" />
     <orderEntry type="library" name="spigot18" level="project" />
+    <orderEntry type="library" name="MVdWPlaceholderAPI" level="project" />
   </component>
 </module>

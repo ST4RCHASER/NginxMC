@@ -89,7 +89,7 @@ public class evt extends Plugin implements Listener{
                                 Server sv = event.getPlayer().getServer();
                                 if (sv != null) {
                                     ServerInfo info = event.getPlayer().getServer().getInfo();
-                                    if (info != null && info.equals(ProxyServer.getInstance().getServerInfo("Lobby"))) {
+                                    if (info != null && info.getName().contains("lobby")) {
                                         try {
                                             ResultSet result = core.getGetBungeeConn().createStatement().executeQuery("SELECT * FROM `players` WHERE `username` LIKE '" + event.getPlayer().getName() + "'");
                                             if (result.next()) {

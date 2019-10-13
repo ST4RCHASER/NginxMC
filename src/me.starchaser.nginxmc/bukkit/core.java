@@ -37,6 +37,7 @@ public class core extends JavaPlugin {
     public static boolean server_chat_pop = false;
     public static boolean manage_chat = false;
     public static boolean void_spawn = true;
+    public static boolean clear_on_join = true;
     @Override
     public void onEnable() {
         path = this.getDataFolder().getAbsoluteFile().getParentFile().getParentFile().getAbsolutePath() + File.separator;
@@ -61,6 +62,7 @@ public class core extends JavaPlugin {
             manage_chat = config.getBoolean("override_chat");
             server_chat_pop = !config.getBoolean("disable_chat_pop");
             void_spawn = config.getBoolean("main_world.void_spawn");
+            clear_on_join = !config.getBoolean("disable_clear_inventory");
             try{
                 starchaser.servergamemode = starchaser.SERVERGAMEMODE.valueOf(config.getString("server_gamemode"));
             }catch (Exception | Error ex) {
@@ -94,6 +96,13 @@ public class core extends JavaPlugin {
             AnimemateRankList.add(new AnimateRank(2,3));
             AnimemateRankList.add(new AnimateRank(1,3));
             AnimemateRankList.add(new AnimateRank(0,2));
+            try{
+                if (Bukkit.getPluginManager().getPlugin("MVdWPlaceholderAPI") != null && Bukkit.getPluginManager().isPluginEnabled("MVdWPlaceholderAPI")) {
+                    getLogger().info("Starting hook MVdWPlaceholderAPI!");
+                    mvdwpapi.registerMCdWAPI();
+                    getLogger().info("MVdWPlaceholderAPI hooked!");
+                }
+            }catch (Exception ex){}
             new BukkitRunnable() {
                 @Override
                 public void run() {
@@ -102,6 +111,7 @@ public class core extends JavaPlugin {
                     }
                 }
             }.runTaskTimerAsynchronously(core.getNginxMC , 1L,1L);
+
             if (starchaser.servergamemode == starchaser.SERVERGAMEMODE.Lobby) {
                 new BukkitRunnable() {
                     int timer = 0;
@@ -186,9 +196,11 @@ public class core extends JavaPlugin {
             }
         }
 
-        if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
-            new papi(this).hook();
-        }
+        try {
+            if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+                new papi(this).hook();
+            }
+        }catch (Exception ex) {}
         for (Player pp : Bukkit.getOnlinePlayers()) {
             events.FastJoinTask(pp);
         }

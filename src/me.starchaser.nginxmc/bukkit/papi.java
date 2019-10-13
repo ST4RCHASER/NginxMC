@@ -1,5 +1,4 @@
 package me.starchaser.nginxmc.bukkit;
-
 import me.clip.placeholderapi.external.EZPlaceholderHook;
 import org.bukkit.entity.Player;
 

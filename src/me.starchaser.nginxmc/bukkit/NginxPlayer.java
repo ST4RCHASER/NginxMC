@@ -395,14 +395,14 @@ public class NginxPlayer {
                 p_class_str = " §d§lHERO ";
             } else if (this.id == 1) {
                 p_class_str = " §b§lTITAN ";
-            } else if (this.id == 0) {
-                p_class_str = "§r ";
-            } else {
-                p_class_str = "§r §cERROR_CLASS_ID_" + this.id + "_NOT_FOUND §r";
-            }
+    } else if (this.id == 0) {
+        p_class_str = " §b§lSC ";
+    } else {
+        p_class_str = "§r §cERROR_CLASS_ID_" + this.id + "_NOT_FOUND §r";
+    }
 
             return p_class_str;
-        }
+}
 
         PlayerClass(int id) {
             this.id = id;
