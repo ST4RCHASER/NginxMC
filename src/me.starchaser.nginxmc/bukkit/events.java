@@ -286,7 +286,7 @@ public class events implements Listener {
             }
         }
     }
-
+/*
     @EventHandler
     public void onInvClick(InventoryClickEvent evt) {
         if(servergamemode == SERVERGAMEMODE.Lobby) {
@@ -302,6 +302,7 @@ public class events implements Listener {
             }
         }
     }
+    */
     @EventHandler
     public void PlayerMoveEvt(PlayerMoveEvent evt) {
         PlayerMoveEvent e = evt;

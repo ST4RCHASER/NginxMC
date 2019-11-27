@@ -30,12 +30,12 @@ public class MySQL
   private final String password;
   private final String port;
   private final String hostname;
-  
+
   public MySQL(String hostname, String port, String username, String password)
   {
     this(hostname, port, null, username, password);
   }
-  
+
 
 
 
@@ -69,7 +69,7 @@ public class MySQL
     String connectionURL = "jdbc:mysql://" + hostname + ":" + port;
     
     if (database != null) {
-      connectionURL = connectionURL + "/" + database + "?useUnicode=true&characterEncoding=UTF-8";
+      connectionURL = connectionURL + "/" + database + "?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8";
     }
     
     Class.forName("com.mysql.jdbc.Driver");

@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="BungeeCord">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../Bukkit_Spigot_Bungeecord/BungeeCord.jar!/" />
+      <root url="jar://D:/eTemps/BungeeCord.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
