@@ -199,7 +199,7 @@ public class core extends JavaPlugin {
 
         try {
             if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
-                new papi(this).hook();
+                new papi().register();
             }
         }catch (Exception ex) {}
         for (Player pp : Bukkit.getOnlinePlayers()) {

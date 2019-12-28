@@ -35,7 +35,7 @@ public class events implements Listener {
     static String kick_msg = "§7Error: §cเกิดข้อผิดพลาดในการตรวจสอบข้อมูลของท่านโปรเลองใหม่ภายหลังหรือติตต่อแอดมิน!";
 
     @EventHandler
-    public void onJoin(PlayerJoinEvent evt) {
+    public void onJoin(PlayerJoinEvent evt) throws Exception {
         Player p = evt.getPlayer();
         if (servergamemode == starchaser.SERVERGAMEMODE.Lobby){
             p.teleport(spawn_point);
@@ -316,7 +316,7 @@ public class events implements Listener {
     }
 
     @EventHandler
-    public void onPlayerChat(PlayerChatEvent evt) {
+    public void onPlayerChat(PlayerChatEvent evt) throws Exception {
         NginxPlayer np = NginxPlayer.getNginxPlayer(evt.getPlayer());
         if (np == null) {
             evt.setCancelled(true);

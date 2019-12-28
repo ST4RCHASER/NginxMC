@@ -7,8 +7,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca26d092-ea7e-4c26-b53a-2ee06f8f07bc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/CMI8_6_4_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/TAB_v2_6_1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NginxMC.iml" beforeDir="false" afterPath="$PROJECT_DIR$/NginxMC.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/NginxMC/NginxMC.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/NginxMC/NginxMC.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/AnimateFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/AnimateFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/AnimateRank.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/AnimateRank.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$LOG_TYPE.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$LOG_TYPE.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$SERVERGAMEMODE.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$SERVERGAMEMODE.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$popupchat$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$popupchat$1$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$popupchat$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$popupchat$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$popupchat.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$popupchat.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/res/plugin.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/me.starchaser.nginxmc/bukkit/core.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me.starchaser.nginxmc/bukkit/core.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/me.starchaser.nginxmc/bukkit/events.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me.starchaser.nginxmc/bukkit/events.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/me.starchaser.nginxmc/bukkit/papi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me.starchaser.nginxmc/bukkit/papi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/me.starchaser.nginxmc/bukkit/starchaser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me.starchaser.nginxmc/bukkit/starchaser.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,14 +79,14 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558621595760" />
     <property name="create.test.in.the.same.root" value="true" />
-    <property name="last_opened_file_path" value="D:/eTemps/craftbukkit-1.8-R0.1-SNAPSHOT-latest.jar!/" />
+    <property name="last_opened_file_path" value="D:/eTemps/TAB v2.6.1.jar!/" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.1640625" />
     <property name="project.structure.side.proportion" value="0.25467288" />
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
@@ -101,10 +121,10 @@
       <option name="SERVER_MODE" value="false" />
       <option name="SHMEM_ADDRESS" />
       <option name="HOST" value="siamcraft.net" />
-      <option name="PORT" value="19872" />
+      <option name="PORT" value="6586" />
       <option name="AUTO_RESTART" value="false" />
       <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="19872" />
+        <option name="DEBUG_PORT" value="6586" />
         <option name="LOCAL" value="false" />
       </RunnerSettings>
       <method v="2" />

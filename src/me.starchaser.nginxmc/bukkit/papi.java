@@ -1,11 +1,19 @@
 package me.starchaser.nginxmc.bukkit;
+import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import me.clip.placeholderapi.external.EZPlaceholderHook;
 import org.bukkit.entity.Player;
 
-public class papi extends EZPlaceholderHook {
+public class papi extends PlaceholderExpansion {
+    public String getIdentifier() {
+        return "nginx";
+    }
 
-    public papi(core plu) {
-        super(plu, "nginx");
+    public String getAuthor() {
+        return "_StarChaser, Ponlawat";
+    }
+
+    public String getVersion() {
+        return "1";
     }
     @Override
     public String onPlaceholderRequest(Player player, String identifier) {

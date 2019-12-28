@@ -1,7 +1,13 @@
 package me.starchaser.nginxmc.bukkit;
 
+import com.Zrips.CMI.CMI;
+import com.Zrips.CMI.Modules.Holograms.CMIHologram;
 import com.gmail.filoghost.holographicdisplays.api.Hologram;
 import com.gmail.filoghost.holographicdisplays.api.HologramsAPI;
+import me.neznamy.tab.platforms.bukkit.TabPlayer;
+import me.neznamy.tab.platforms.bukkit.unlimitedtags.NameTagLineManager;
+import me.neznamy.tab.shared.ITabPlayer;
+import me.neznamy.tab.shared.NameTag16;
 import me.starchaser.nginxmc.bukkit.NginxPlayer.PlayerClass;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
@@ -15,6 +21,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.sql.Array;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,6 +35,7 @@ public class starchaser {
     public static int max_level = 500;
     public static int gamemode_virtual_lobby_size = 18;
     public static int virtual_lobby_player_size = 1000;
+    public static boolean cmiHologramAPI = false;
 
 
     public static void giveItemLobby(Player p) {
@@ -193,7 +201,7 @@ public class starchaser {
         return true;
     }
 
-    public static void AddPlayerChatPOP(Player p, String message) {
+    public static void AddPlayerChatPOP(Player p, String message) throws Exception {
         Boolean allow = true;
         NginxPlayer np = NginxPlayer.getNginxPlayer(p);
         for (PotionEffect pot : p.getActivePotionEffects()) {
@@ -274,78 +282,153 @@ public class starchaser {
         boolean force_remove;
         Location last_loc;
 
-        popupchat(final Player player, final String chat) {
+        popupchat(final Player player, final String chat) throws Exception {
             this.player = player;
             last_loc = player.getLocation().add(0.0D, 2.0D, 0.0D);
             this.chat = chat;
-            if (servergamemode == SERVERGAMEMODE.Minigames && player.getLocation().getWorld() != core.main_world) return;
-            final Hologram hologram = HologramsAPI.createHologram(core.getNginxMC, player.getLocation().add(0.0D, 2.0D, 0.0D));
-            hologram.appendTextLine("§b" + chat);
-
-            for (Player target : Bukkit.getOnlinePlayers()) {
-                if (hologram != null && player != null) {
-                    if (target != player && target != null)
-                        if (starchaser.servergamemode == SERVERGAMEMODE.Lobby) {
-                            if (NginxPlayer.getNginxPlayer(player) != null && NginxPlayer.getNginxPlayer(target) != null && NginxPlayer.getNginxPlayer(player).getLobby_Number() == NginxPlayer.getNginxPlayer(target).getLobby_Number()) {
-                                hologram.getVisibilityManager().showTo(target);
-                            } else {
-                                hologram.getVisibilityManager().hideTo(target);
-                            }
-                        } else {
-                            hologram.getVisibilityManager().showTo(target);
-                        }
-                } else {
-                    hologram.getVisibilityManager().hideTo(target);
-                }
-            }
-            (new BukkitRunnable() {
-                int ticksRun;
-                int out_tricks = chat.length() * 5;
-                Location loc = player.getLocation();
-
-                public void run() {
-                    try {
-                        ++ticksRun;
-                        if (player != null) {
-                            loc = player.getLocation();
-                        }
-                        if (this.out_tricks < 100) {
-                            this.out_tricks = 100;
-                        }
-                        if (player == null || !player.isOnline() || popupchat.this.force_remove) {
-                            hologram.teleport(loc.clone().add(0.0D, 4.3D, 0.0D));
-                            new BukkitRunnable() {
-                                @Override
-                                public void run() {
-                                    hologram.delete();
-                                    this.cancel();
+            if (servergamemode == SERVERGAMEMODE.Minigames && player.getLocation().getWorld() != core.main_world)
+                return;
+            if (starchaser.cmiHologramAPI) {
+                /*
+                final CMIHologram hologram = new CMIHologram("cp_" + player.getName(), player.getLocation().add(0.0D, 2.0D, 0.0D));
+                player.sendMessage("1");
+                hologram.setLines(Arrays.asList("§b" + chat));
+                for (Player target : Bukkit.getOnlinePlayers()) {
+                    if (hologram != null && player != null) {
+                        if (target != player && target != null)
+                            if (starchaser.servergamemode == SERVERGAMEMODE.Lobby) {
+                                if (!(NginxPlayer.getNginxPlayer(player) != null && NginxPlayer.getNginxPlayer(target) != null && NginxPlayer.getNginxPlayer(player).getLobby_Number() == NginxPlayer.getNginxPlayer(target).getLobby_Number())) {
+                                    hologram.hide(player.getUniqueId());
                                 }
-                            }.runTaskLater(core.getNginxMC, 3L);
-                            this.cancel();
-                            return;
-                        }
-                        if (this.ticksRun > this.out_tricks) {
-                            hologram.teleport(loc.clone().add(0.0D, 4.3D, 0.0D));
-                        } else {
-                            if (!(player.getLocation().getBlockX() == last_loc.getBlockX() && player.getLocation().getBlockY() == last_loc.getBlockY() && player.getLocation().getBlockZ() == last_loc.getBlockZ())) {
-                                hologram.teleport(loc.clone().add(0.0D, 3.15D, 0.0D));
-                            } else {
-                                last_loc = player.getLocation();
                             }
-                        }
-
-                        if (this.ticksRun > this.out_tricks + 3) {
-                            hologram.delete();
-                            this.cancel();
-                        }
-                    } catch (IllegalArgumentException var2) {
-                        if (hologram != null && hologram.isDeleted() == false) {
-                            hologram.delete();
-                        }
-                        this.cancel();
+                    } else {
+                        hologram.hide(player.getUniqueId());
                     }
                 }
-            }).runTaskTimerAsynchronously(core.getNginxMC, 1L, 1L);
+                hologram.setSaveToFile(false);
+                hologram.setUpdateRange(0);
+                CMI.getInstance().getHologramManager().addHologram(hologram);
+                (new BukkitRunnable() {
+                    int ticksRun;
+                    int out_tricks = chat.length() * 5;
+                    Location loc = player.getLocation();
+
+                    public void run() {
+                        try {
+                            ++ticksRun;
+                            if (player != null) {
+                                loc = player.getLocation();
+                            }
+                            if (this.out_tricks < 100) {
+                                this.out_tricks = 100;
+                            }
+                            if (player == null || !player.isOnline() || popupchat.this.force_remove) {
+                                CMI.getInstance().getHologramManager().getByName(hologram.getName()).setLoc(loc.clone().add(0.0D, 4.3D, 0.0D));
+                                player.sendMessage("2");
+                                new BukkitRunnable() {
+                                    @Override
+                                    public void run() {
+                                        hologram.removeFromCache(player.getUniqueId());
+                                        this.cancel();
+                                    }
+                                }.runTaskLater(core.getNginxMC, 3L);
+                                this.cancel();
+                                return;
+                            }
+                            if (this.ticksRun > this.out_tricks) {
+                                CMI.getInstance().getHologramManager().getByName(hologram.getName()).setLoc(loc.clone().add(0.0D, 4.3D, 0.0D));
+                                player.sendMessage("3");
+                            } else {
+                                if (!(player.getLocation().getBlockX() == last_loc.getBlockX() && player.getLocation().getBlockY() == last_loc.getBlockY() && player.getLocation().getBlockZ() == last_loc.getBlockZ())) {
+                                    CMI.getInstance().getHologramManager().getByName(hologram.getName()).setLoc(loc.clone().add(0.0D, 3.15D, 0.0D));
+                                    player.sendMessage("4");
+                                } else {
+                                    last_loc = player.getLocation();
+                                }
+                            }
+
+                            if (this.ticksRun > this.out_tricks + 3) {
+                                CMI.getInstance().getHologramManager().getByName(hologram.getName()).hide();
+                                this.cancel();
+                            }
+                        } catch (IllegalArgumentException var2) {
+                            if (hologram != null && hologram.isEnabled() == true) {
+                                CMI.getInstance().getHologramManager().getByName(hologram.getName()).hide();
+                            }
+                            this.cancel();
+                        }
+                        CMI.getInstance().getHologramManager().getByName(hologram.getName()).refresh();
+                    }
+                }).runTaskTimerAsynchronously(core.getNginxMC, 1L, 1L); *///TODO: CMI-Hologram ChatPop
+            } else {
+                final Hologram hologram = HologramsAPI.createHologram(core.getNginxMC, player.getLocation().add(0.0D, 2.0D, 0.0D));
+                hologram.appendTextLine("§b" + chat);
+
+                for (Player target : Bukkit.getOnlinePlayers()) {
+                    if (hologram != null && player != null) {
+                        if (target != player && target != null)
+                            if (starchaser.servergamemode == SERVERGAMEMODE.Lobby) {
+                                if (NginxPlayer.getNginxPlayer(player) != null && NginxPlayer.getNginxPlayer(target) != null && NginxPlayer.getNginxPlayer(player).getLobby_Number() == NginxPlayer.getNginxPlayer(target).getLobby_Number()) {
+                                    hologram.getVisibilityManager().showTo(target);
+                                } else {
+                                    hologram.getVisibilityManager().hideTo(target);
+                                }
+                            } else {
+                                hologram.getVisibilityManager().showTo(target);
+                            }
+                    } else {
+                        hologram.getVisibilityManager().hideTo(target);
+                    }
+                }
+                (new BukkitRunnable() {
+                    int ticksRun;
+                    int out_tricks = chat.length() * 5;
+                    Location loc = player.getLocation();
+
+                    public void run() {
+                        try {
+                            ++ticksRun;
+                            if (player != null) {
+                                loc = player.getLocation();
+                            }
+                            if (this.out_tricks < 100) {
+                                this.out_tricks = 100;
+                            }
+                            if (player == null || !player.isOnline() || popupchat.this.force_remove) {
+                                hologram.teleport(loc.clone().add(0.0D, 4.3D, 0.0D));
+                                new BukkitRunnable() {
+                                    @Override
+                                    public void run() {
+                                        hologram.delete();
+                                        this.cancel();
+                                    }
+                                }.runTaskLater(core.getNginxMC, 3L);
+                                this.cancel();
+                                return;
+                            }
+                            if (this.ticksRun > this.out_tricks) {
+                                hologram.teleport(loc.clone().add(0.0D, 4.3D, 0.0D));
+                            } else {
+                                if (!(player.getLocation().getBlockX() == last_loc.getBlockX() && player.getLocation().getBlockY() == last_loc.getBlockY() && player.getLocation().getBlockZ() == last_loc.getBlockZ())) {
+                                    hologram.teleport(loc.clone().add(0.0D, 3.15D, 0.0D));
+                                } else {
+                                    last_loc = player.getLocation();
+                                }
+                            }
+
+                            if (this.ticksRun > this.out_tricks + 3) {
+                                hologram.delete();
+                                this.cancel();
+                            }
+                        } catch (IllegalArgumentException var2) {
+                            if (hologram != null && hologram.isDeleted() == false) {
+                                hologram.delete();
+                            }
+                            this.cancel();
+                        }
+                    }
+                }).runTaskTimerAsynchronously(core.getNginxMC, 1L, 1L);
+            }
         }
 
         public Player getOwner() {
