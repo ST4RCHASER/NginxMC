@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.ProxyServer;
+import net.md_5.bungee.api.chat.*;
 import net.md_5.bungee.api.config.ServerInfo;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.connection.Server;
@@ -89,15 +90,26 @@ public class evt extends Plugin implements Listener{
                                 Server sv = event.getPlayer().getServer();
                                 if (sv != null) {
                                     ServerInfo info = event.getPlayer().getServer().getInfo();
-                                    if (info != null && info.getName().contains("lobby")) {
+                                    if (info != null && info.getName().toLowerCase().contains("lobby")) {
                                         try {
                                             ResultSet result = core.getGetBungeeConn().createStatement().executeQuery("SELECT * FROM `players` WHERE `username` LIKE '" + event.getPlayer().getName() + "'");
                                             if (result.next()) {
                                                 int wp_count = result.getInt("wp");
                                                 if (wp_count > 2) {
-                                                    target.sendMessage("§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*");
-                                                    target.sendMessage(ChatColor.WHITE + "ตัวละครของคุณอยู่ในสถานะ ''ถูกระงับการใช้งาน'' นั้นอาจจะเป็นเพราะว่าคุณได้กระทำผิดเกิน 3 ครั้งจึงถูกระงับ หากพบข้อสงสัยหรือสอบถามใดๆ โปรดติตต่อที่เพจ Siamcraft https://goo.gl/nR49Zp สามารถคลิกได้ที่นี้ ขอบคุณครับ (จำนวน warnpoint ของคุณตอนนี้: " + wp_count + " )");
-                                                    target.sendMessage("§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*");
+                                                    TextComponent t1 = new TextComponent(
+                                                            "§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c* \n" +
+                                                                    "§7ตัวละครของคุณอยู่ในสถานะ §f\"§cถูกระงับการใช้งาน§f\"\n" +
+                                                                    "§7เพราะคุณได้กระทำความผิดเกินที่เซิฟเวอร์ได้กำหนดใว้ ซื่งในที่นี้ก็คือ §e3 §7ครั้งขึ้นไป\n" +
+                                                                    "\n" +
+                                                                    "§7หากพบข้อสงสัยหรือสอบถามใดๆ โปรดติตต่อที่เพจ §6");
+                                                    TextComponent t2 = new TextComponent("Minecraft Siamcraft");
+                                                    t2.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://goo.gl/nR49Zp"));
+                                                    t2.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,new ComponentBuilder("คลิกที่นี่เพื่อเข้าสู่เพจของเซิฟเวอร์").create()));
+                                                    TextComponent t3 = new TextComponent("\n§7*จำนวน §แwarnpoint §7ของคุณตอนนี้: §f" + wp_count + "\n" +
+                                                            "§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*");
+
+                                                    target.sendMessage(new ComponentBuilder(t1).append(t2).create());
+                                                    target.sendMessage(new ComponentBuilder(t3).create());
                                                     return;
                                                 }
                                             }

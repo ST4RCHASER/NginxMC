@@ -204,6 +204,20 @@ public class core extends JavaPlugin {
         for (Player pp : Bukkit.getOnlinePlayers()) {
             events.FastJoinTask(pp);
         }
+
+        (new BukkitRunnable(){
+            @Override
+            public void run() {
+                try{
+                    ResultSet res = core.getSqlConnection().createStatement().executeQuery("/* ping */ SELECT 1;");
+                    res.next();
+                } catch (SQLException ex){
+                    ex.printStackTrace();
+                    getNginxMC.getServer().getConsoleSender().sendMessage("§f[§bSQLManager§f] §cERROR! cannot Pinging to sql server!");
+                }
+            }
+        }).runTaskTimerAsynchronously(core.getNginxMC, 60*3L, 60*3L);
+
         Bukkit.getPluginManager().registerEvents(new events(), this);
     }
     public static Connection getSqlConnection(){

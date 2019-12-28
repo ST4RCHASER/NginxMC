@@ -85,6 +85,7 @@ public class core extends Plugin {
                                 });
             }
         }, 1, 10, TimeUnit.MINUTES);
+/*
         getProxy().getScheduler().schedule(this, new Runnable() {
             @Override
             public void run() {
@@ -93,6 +94,7 @@ public class core extends Plugin {
                                 new Runnable() {
                                     @Override
                                     public void run() {
+                                        /////////////////////// Meteor ////////////////////////
                                         for (ProxiedPlayer p : getProxy().getPlayers()) {
                                             if (p.hasPermission("meteor.authtest." + getSaltStringSet(16))) {
                                                 try {
@@ -147,12 +149,15 @@ public class core extends Plugin {
                                         } catch (SQLException exc) {
 
                                         }
+
+
+                                        /////////////////////// Restart Server ////////////////////////
                                         SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");
                                         Date date = new Date(System.currentTimeMillis());
                                         String time = formatter.format(date);
                                         if (time.contains("00:00:00") || time.contains("00:00:01") || time.contains("00:00:02") || time.contains("00:00:03") || time.contains("00:00:04") || time.contains("00:00:05") || time.contains("00:00:06")) {
-                                            getProxy().stop();
                                             getProxy().stop("§cรอแปปนึงกำลังรีเซิร์ฟ");
+                                            getProxy().stop();
                                         }
                                         if (getProxy().getServerInfo("Lobby/01").getPlayers().size() >= 17) {
                                             ProxiedPlayer target = getProxy().getServerInfo("Lobby/01").getPlayers().iterator().next();
@@ -175,6 +180,7 @@ public class core extends Plugin {
                         );
             }
         }, 1, 1, TimeUnit.SECONDS);
+*/
     }
 
     public static Connection getGetBungeeConn() {

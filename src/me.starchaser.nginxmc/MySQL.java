@@ -69,7 +69,7 @@ public class MySQL
     String connectionURL = "jdbc:mysql://" + hostname + ":" + port;
     
     if (database != null) {
-      connectionURL = connectionURL + "/" + database + "?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8";
+      connectionURL = connectionURL + "/" + database + "?useUnicode=true&autoReconnect=true&characterEncoding=UTF-8";
     }
     
     Class.forName("com.mysql.jdbc.Driver");

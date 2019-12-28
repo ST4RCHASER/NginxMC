@@ -281,6 +281,23 @@ public class starchaser {
             if (servergamemode == SERVERGAMEMODE.Minigames && player.getLocation().getWorld() != core.main_world) return;
             final Hologram hologram = HologramsAPI.createHologram(core.getNginxMC, player.getLocation().add(0.0D, 2.0D, 0.0D));
             hologram.appendTextLine("§b" + chat);
+
+            for (Player target : Bukkit.getOnlinePlayers()) {
+                if (hologram != null && player != null) {
+                    if (target != player && target != null)
+                        if (starchaser.servergamemode == SERVERGAMEMODE.Lobby) {
+                            if (NginxPlayer.getNginxPlayer(player) != null && NginxPlayer.getNginxPlayer(target) != null && NginxPlayer.getNginxPlayer(player).getLobby_Number() == NginxPlayer.getNginxPlayer(target).getLobby_Number()) {
+                                hologram.getVisibilityManager().showTo(target);
+                            } else {
+                                hologram.getVisibilityManager().hideTo(target);
+                            }
+                        } else {
+                            hologram.getVisibilityManager().showTo(target);
+                        }
+                } else {
+                    hologram.getVisibilityManager().hideTo(target);
+                }
+            }
             (new BukkitRunnable() {
                 int ticksRun;
                 int out_tricks = chat.length() * 5;
@@ -320,22 +337,6 @@ public class starchaser {
                         if (this.ticksRun > this.out_tricks + 3) {
                             hologram.delete();
                             this.cancel();
-                        }
-                        for (Player target : Bukkit.getOnlinePlayers()) {
-                            if (hologram != null && player != null) {
-                                if (target != player && target != null)
-                                    if (starchaser.servergamemode == SERVERGAMEMODE.Lobby) {
-                                        if (NginxPlayer.getNginxPlayer(player) != null && NginxPlayer.getNginxPlayer(target) != null && NginxPlayer.getNginxPlayer(player).getLobby_Number() == NginxPlayer.getNginxPlayer(target).getLobby_Number()) {
-                                            hologram.getVisibilityManager().showTo(target);
-                                        } else {
-                                            hologram.getVisibilityManager().hideTo(target);
-                                        }
-                                    } else {
-                                        hologram.getVisibilityManager().showTo(target);
-                                    }
-                            } else {
-                                hologram.getVisibilityManager().hideTo(target);
-                            }
                         }
                     } catch (IllegalArgumentException var2) {
                         if (hologram != null && hologram.isDeleted() == false) {
