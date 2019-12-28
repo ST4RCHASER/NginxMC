@@ -210,16 +210,25 @@ public class core extends JavaPlugin {
             @Override
             public void run() {
                 try{
-                    ResultSet res = core.getSqlConnection().createStatement().executeQuery("/* ping */ SELECT 1;");
-                    res.next();
+                    runSelPinging();
                 } catch (SQLException ex){
-                    ex.printStackTrace();
-                    getNginxMC.getServer().getConsoleSender().sendMessage("§f[§bSQLManager§f] §cERROR! cannot Pinging to sql server!");
+                    if(ex.getErrorCode() == 0){
+                        try{
+                            runSelPinging();
+                        } catch (SQLException e){}
+                    } else {
+                        ex.printStackTrace();
+                        getNginxMC.getServer().getConsoleSender().sendMessage("§f[§bSQLManager§f] §cERROR! cannot Pinging to sql server!");
+                    }
                 }
             }
         }).runTaskTimerAsynchronously(core.getNginxMC, core.keepalivetimerandom*3L, core.keepalivetimerandom*3L);
 
         Bukkit.getPluginManager().registerEvents(new events(), this);
+    }
+    public static void runSelPinging() throws SQLException{
+        ResultSet res = core.getSqlConnection().createStatement().executeQuery("/* ping */ SELECT 1;"); res.next();
+        ResultSet resn = core.getSqlConnection().createStatement().executeQuery("/* ping */ SELECT 1;"); resn.next();
     }
     public static Connection getSqlConnection(){
         try {
