@@ -38,6 +38,7 @@ public class core extends JavaPlugin {
     public static boolean manage_chat = false;
     public static boolean void_spawn = true;
     public static boolean clear_on_join = true;
+    public static int keepalivetimerandom = 60;
     @Override
     public void onEnable() {
         path = this.getDataFolder().getAbsoluteFile().getParentFile().getParentFile().getAbsolutePath() + File.separator;
@@ -216,7 +217,7 @@ public class core extends JavaPlugin {
                     getNginxMC.getServer().getConsoleSender().sendMessage("§f[§bSQLManager§f] §cERROR! cannot Pinging to sql server!");
                 }
             }
-        }).runTaskTimerAsynchronously(core.getNginxMC, 60*3L, 60*3L);
+        }).runTaskTimerAsynchronously(core.getNginxMC, core.keepalivetimerandom*3L, core.keepalivetimerandom*3L);
 
         Bukkit.getPluginManager().registerEvents(new events(), this);
     }
