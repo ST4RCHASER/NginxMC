@@ -7,39 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca26d092-ea7e-4c26-b53a-2ee06f8f07bc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/craftbukkit_1_12.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/me.starchaser.nginxmc/bukkit/ponlawat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/spigot18.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NginxMC.iml" beforeDir="false" afterPath="$PROJECT_DIR$/NginxMC.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/NginxMC/NginxMC.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/NginxMC/NginxMC.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/AnimateFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/AnimateFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/AnimateRank.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/AnimateRank.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/core.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/core.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/events$1$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/events$1$1$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/events$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/events$1$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/events$1$2$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/events$1$2$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/events$1$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/events$1$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/events$1$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/events$1$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/events$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/events$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/events$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/events$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/events$3$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/events$3$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/events$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/events$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/events.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/events.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$LOG_TYPE.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$LOG_TYPE.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$SERVERGAMEMODE.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$SERVERGAMEMODE.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$popupchat$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$popupchat$1$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$popupchat$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$popupchat$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$popupchat.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$popupchat.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/res/plugin.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/me.starchaser.nginxmc/bukkit/core.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me.starchaser.nginxmc/bukkit/core.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/me.starchaser.nginxmc/bukkit/events.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me.starchaser.nginxmc/bukkit/events.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/me.starchaser.nginxmc/bukkit/starchaser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me.starchaser.nginxmc/bukkit/starchaser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/me.starchaser.nginxmc/bukkit/ponlawat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me.starchaser.nginxmc/bukkit/ponlawat.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -90,7 +59,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558621595760" />
     <property name="create.test.in.the.same.root" value="true" />
-    <property name="last_opened_file_path" value="D:/eTemps/craftbukkit-1.12.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../BestViewDistance" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />

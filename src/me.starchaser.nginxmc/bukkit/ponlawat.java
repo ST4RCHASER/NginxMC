@@ -106,10 +106,12 @@ class lobbyevents implements Listener {
 	@EventHandler
 	public void movement(PlayerMoveEvent e){
 		Player p = e.getPlayer();
-		if(e.getPlayer().getGameMode() != GameMode.CREATIVE) {
-			//checkdoublejump
-			if (NginxPlayer.getNginxPlayer(p).getPlayerClass().getId() > 3 && p.isOnGround() && !p.getAllowFlight()){
-				p.setAllowFlight(true);
+		if(NginxPlayer.getNginxPlayer(p) != null){
+			if(e.getPlayer().getGameMode() != GameMode.CREATIVE) {
+				//checkdoublejump
+				if (NginxPlayer.getNginxPlayer(p).getPlayerClass().getId() > 3 && p.isOnGround() && !p.getAllowFlight()){
+					p.setAllowFlight(true);
+				}
 			}
 		}
 	}
