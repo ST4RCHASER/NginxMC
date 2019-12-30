@@ -57,9 +57,9 @@
     <orderEntry type="library" name="Vault" level="project" />
     <orderEntry type="library" name="HolographicDisplays" level="project" />
     <orderEntry type="library" name="PlaceholderAPI-2.9.21" level="project" />
-    <orderEntry type="library" name="spigot18" level="project" />
     <orderEntry type="library" name="MVdWPlaceholderAPI" level="project" />
     <orderEntry type="library" name="CMI8.6.4.3" level="project" />
     <orderEntry type="library" name="TAB v2.6.1" level="project" />
+    <orderEntry type="library" name="craftbukkit-1.12" level="project" />
   </component>
 </module>

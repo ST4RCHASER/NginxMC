@@ -1,7 +1,7 @@
 name: NginxMC
-version: 1.8.21a preview build
+version: 1.8.22a preview build
 description: a non-minecraft deluxe core plugin for siamcraft
-authors: [_StarChaser]
+authors: [_StarChaser, Ponlawat]
 main: me.starchaser.nginxmc.bukkit.core
 load: POSTWORLD
 softdepend:
@@ -17,3 +17,7 @@ commands:
     description: Main commands
     aliases: [bal,balance,money,coin]
     usage: /coins
+  server:
+    description: join server commands
+    aliases: [server, serv]
+    usage: /server

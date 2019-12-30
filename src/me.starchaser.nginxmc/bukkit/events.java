@@ -4,6 +4,7 @@ import com.comphenix.protocol.PacketType;
 import gnu.trove.impl.sync.TSynchronizedRandomAccessDoubleList;
 import org.bukkit.*;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -25,6 +26,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 import static me.starchaser.nginxmc.bukkit.core.*;
@@ -39,11 +41,12 @@ public class events implements Listener {
         Player p = evt.getPlayer();
         if (servergamemode == starchaser.SERVERGAMEMODE.Lobby){
             p.teleport(spawn_point);
+            p.setGameMode(GameMode.ADVENTURE);
         }
         if (servergamemode == starchaser.SERVERGAMEMODE.Minigames || servergamemode == starchaser.SERVERGAMEMODE.Lobby){
             evt.setJoinMessage(null);
             if (evt.getPlayer() != null) {
-                starchaser.AddPlayerChatPOP(evt.getPlayer(),"§b§lWELCOME! §7");
+                starchaser.AddPlayerChatPOP(evt.getPlayer(),"§e๐ §b§lWELCOME§f!§e ๐");
             }
             if (clear_on_join) {
                 evt.getPlayer().getInventory().clear();
@@ -55,21 +58,30 @@ public class events implements Listener {
     public void onPlayerItemHoldEvent(PlayerItemHeldEvent e){
         if (servergamemode == starchaser.SERVERGAMEMODE.Lobby && e.getPlayer().getWorld().equals(core.main_world)) {
             NginxPlayer np = NginxPlayer.getNginxPlayer(e.getPlayer());
-            if (e.getNewSlot() == 5) {
+            if (e.getNewSlot() == 5 || e.getNewSlot() == 6) {
                 if (true) {
                     if (np != null) {
                         np.setHideTitle(true);
                     }
-                    e.getPlayer().getInventory().setBoots(new ItemStack(Material.DIAMOND_BOOTS));
-                    e.getPlayer().getInventory().setChestplate(new ItemStack(Material.DIAMOND_CHESTPLATE));
-                    e.getPlayer().getInventory().setLeggings(new ItemStack(Material.DIAMOND_LEGGINGS));
-                    e.getPlayer().getInventory().setHelmet(new ItemStack(Material.DIAMOND_HELMET));
-                    e.getPlayer().sendMessage("§7PVP: §aได้เข้าสู่โหมด PVP แล้ว!");
+                    if(e.getNewSlot() == 6) {
+                        ItemStack arrow = new ItemStack(Material.ARROW, 64);
+                        e.getPlayer().getInventory().setItem(1, arrow);
+                    } else {
+                        e.getPlayer().getInventory().setItem(1, new ItemStack(Material.AIR));
+                    }
+                    if(e.getPreviousSlot() != 5 && e.getPreviousSlot() != 6){
+                        e.getPlayer().getInventory().setBoots(new ItemStack(Material.DIAMOND_BOOTS));
+                        e.getPlayer().getInventory().setChestplate(new ItemStack(Material.DIAMOND_CHESTPLATE));
+                        e.getPlayer().getInventory().setLeggings(new ItemStack(Material.DIAMOND_LEGGINGS));
+                        e.getPlayer().getInventory().setHelmet(new ItemStack(Material.DIAMOND_HELMET));
+                        e.getPlayer().sendMessage("§7PVP: §aได้เข้าสู่โหมด PVP แล้ว!");
+                    }
                 }
-            }else if (e.getPreviousSlot() == 5) {
+            }else if (e.getPreviousSlot() == 5 || e.getPreviousSlot() == 6) {
                 if (np != null) {
                     np.setHideTitle(false);
                 }
+                if(e.getPreviousSlot() == 6) e.getPlayer().getInventory().setItem(1, new ItemStack(Material.AIR));
                 e.getPlayer().getInventory().setBoots(new ItemStack(Material.AIR));
                 e.getPlayer().getInventory().setChestplate(new ItemStack(Material.AIR));
                 e.getPlayer().getInventory().setLeggings(new ItemStack(Material.AIR));
@@ -248,8 +260,8 @@ public class events implements Listener {
         if (servergamemode == starchaser.SERVERGAMEMODE.Lobby) {
             evt.setCancelled(true);
             if (evt.getEntity() instanceof Player) {
-                if (((Player) evt.getEntity()).getInventory().getHeldItemSlot() == 5){
-                    if (evt.getCause().equals(EntityDamageEvent.DamageCause.ENTITY_ATTACK)) {
+                if (((Player) evt.getEntity()).getInventory().getHeldItemSlot() == 5 || ((Player) evt.getEntity()).getInventory().getHeldItemSlot() == 6){
+                    if (evt.getCause().equals(EntityDamageEvent.DamageCause.ENTITY_ATTACK) || evt.getCause().equals(EntityDamageEvent.DamageCause.PROJECTILE)) {
                         evt.setCancelled(false);
                         return;
                     }
@@ -261,16 +273,32 @@ public class events implements Listener {
     public void PlayerDamagePVP(EntityDamageByEntityEvent evt) {
         if (servergamemode == starchaser.SERVERGAMEMODE.Lobby) {
             if (evt.getEntity().getWorld().equals(core.main_world)) {
-                if (evt.getEntity() instanceof Player && evt.getDamager() instanceof Player) {
-                    if (((Player) evt.getEntity()).getInventory().getHeldItemSlot() == 5 && ((Player) evt.getDamager()).getInventory().getHeldItemSlot() == 5){
+                if ((evt.getDamager() instanceof Player || evt.getDamager() instanceof Arrow) && evt.getEntity() instanceof Player) {
+                    if (
+                            (((Player) evt.getEntity()).getInventory().getHeldItemSlot() == 5 || ((Player) evt.getEntity()).getInventory().getHeldItemSlot() == 6) && (evt.getDamager() instanceof Arrow || (((Player) evt.getDamager()).getInventory().getHeldItemSlot() == 5 || ((Player) evt.getDamager()).getInventory().getHeldItemSlot() == 6))
+                    ){
                         if (((Player) evt.getEntity()).getHealth() <= evt.getDamage()) {
-                            starchaser.BoardCastMsg("§7PVP: §b" + evt.getEntity().getName() + " §cถูกสังหารโดย §b" + evt.getDamager().getName());
-                            NginxPlayer damager_np = NginxPlayer.getNginxPlayer((Player) evt.getDamager());
+                            String apt;
+                            String damagerName;
+                            Player ply;
+                            if(evt.getDamager() instanceof Arrow){
+                                Arrow a = ((Arrow) evt.getDamager());
+                                damagerName = ((Player) a.getShooter()).getDisplayName();
+                                apt = "ลูกธนูของ";
+                                ply = ((Player) a.getShooter());
+                            } else {
+                                damagerName = evt.getDamager().getName();
+                                apt = "";
+                                ply = ((Player) evt.getDamager());
+                            }
+                            starchaser.BoardCastMsg("§7PVP: §b" + evt.getEntity().getName() + " §cถูกสังหารโดย" + apt + " §b" + damagerName);
+                            NginxPlayer damager_np = NginxPlayer.getNginxPlayer(ply);
                             damager_np.getLevel().give_xp(10 , false);
-                            ((Player) evt.getDamager()).sendMessage("§7Level: §aคุณได้รับ 10 XP จากการสังหาร §7" + evt.getEntity().getName());
+                            ply.sendMessage("§7Level: §aคุณได้รับ 10 XP จากการสังหาร §7" + evt.getEntity().getName());
                             evt.getEntity().teleport(spawn_point);
                             ((Player) evt.getEntity()).setHealth(((Player) evt.getEntity()).getMaxHealth());
                             ((Player) evt.getEntity()).getInventory().setHeldItemSlot(0);
+                            ((Player) evt.getEntity()).getInventory().setItem(1, new ItemStack(Material.AIR));
                             ((Player) evt.getEntity()).getInventory().setBoots(new ItemStack(Material.AIR));
                             ((Player) evt.getEntity()).getInventory().setChestplate(new ItemStack(Material.AIR));
                             ((Player) evt.getEntity()).getInventory().setLeggings(new ItemStack(Material.AIR));

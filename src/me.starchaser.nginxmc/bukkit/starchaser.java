@@ -37,29 +37,34 @@ public class starchaser {
     public static int virtual_lobby_player_size = 1000;
     public static boolean cmiHologramAPI = false;
 
-
     public static void giveItemLobby(Player p) {
         ItemStack compass = new ItemStack(Material.COMPASS);
         ItemMeta compass_meta = compass.getItemMeta();
         compass_meta.setDisplayName("§bรายชื่อเซิร์ฟเวอร์ §7(คลิกขวา)");
-        compass_meta.setLore(Arrays.asList("§fคลิกขวาเพื่อเปิดรายชื่อเซิร์ฟเวอร์่ที่เปิดอยู่"));
+        compass_meta.setLore(Arrays.asList("§fคลิกขวาเพื่อเลือกเข้าเซิร์ฟเวอร์ต่างๆ"));
         compass.setItemMeta(compass_meta);
         p.getInventory().setItem(0, compass);
 
         ItemStack sword = new ItemStack(Material.DIAMOND_SWORD);
-        ItemMeta sword_meta = compass.getItemMeta();
-        sword_meta.setDisplayName("§7§k: §cดาบสังหาร §7§k:");
-        sword_meta.setLore(Arrays.asList("§b§nเมื่อถือแล้วจะคุณจะเข้าสู่โหมดนักล่าและสังหารผู้อื่นที่ถือดาบด้วยกันได้!"));
+        ItemMeta sword_meta = sword.getItemMeta();
+        sword_meta.setDisplayName("§7§k:§c ดาบสังหาร §7§k:");
+        sword_meta.setLore(Arrays.asList("§e§nเมื่อถือขึ้นมาแล้ว\n§e§nคุณจะเข้าสู่โหมดนักล่า และสังหารผู้อื่นที่ถืออาวุธด้วยกันได้! "));
         sword.setItemMeta(sword_meta);
         p.getInventory().setItem(5, sword);
+
+        ItemStack bow = new ItemStack(Material.BOW);
+        ItemMeta bow_meta = bow.getItemMeta();
+        bow_meta.setDisplayName("§7§k:§6 ธนูสังหาร §7§k:");
+        bow_meta.setLore(Arrays.asList("§e§nเมื่อถือขึ้นมาแล้ว\n§e§nคุณจะเข้าสู่โหมดนักล่า และสังหารผู้อื่นที่ถืออาวุธด้วยกันได้! "));
+        bow.setItemMeta(bow_meta);
+        p.getInventory().setItem(6, bow);
 
         ItemStack hopper = new ItemStack(Material.HOPPER);
         ItemMeta hopper_meta = hopper.getItemMeta();
         hopper_meta.setDisplayName("§eรายชื่อล๊อบบี้ §7(คลิกขวา)");
-        hopper_meta.setLore(Arrays.asList("§fคลิกขวาเพื่อเปิดรายชื่อเล๊อบบี้เปิดอยู่"));
+        hopper_meta.setLore(Arrays.asList("§fคลิกขวา เพื่อเปิดรายชื่อล๊อบบี้เปิดอยู่"));
         hopper.setItemMeta(hopper_meta);
 //        p.getInventory().setItem(8, hopper);
-
 
     }
 
@@ -192,6 +197,8 @@ public class starchaser {
                     Logger(starchaser.LOG_TYPE.PLAYER, "§aPlayer data get!... [" + player.getName() + "]");
                     player.sendMessage("§7Account: §eเรียบร้อยแล้ว!");
                     dp.getPlayerClass().updateRankLine(false);
+
+                    if(NginxPlayer.getNginxPlayer(player).getPlayerClass().getId() > 3) Bukkit.getScheduler().runTask(core.getNginxMC, () -> player.setAllowFlight(true));
                 } catch (Exception var6) {
                     var6.printStackTrace();
                     Logger(starchaser.LOG_TYPE.PLAYER, "§cError on get player data... [" + player.getName() + "]");

@@ -225,6 +225,9 @@ public class core extends JavaPlugin {
         }).runTaskTimerAsynchronously(core.getNginxMC, core.keepalivetimerandom*3L, core.keepalivetimerandom*3L);
 
         Bukkit.getPluginManager().registerEvents(new events(), this);
+        if (starchaser.servergamemode == starchaser.SERVERGAMEMODE.Lobby) Bukkit.getPluginManager().registerEvents(new lobbyevents(), this);
+        Bukkit.getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
+        getCommand("server").setExecutor(new serverCommand());
     }
     public static void runSelPinging() throws SQLException{
         ResultSet res = core.getSqlConnection().createStatement().executeQuery("/* ping */ SELECT 1;"); res.next();
@@ -266,6 +269,7 @@ public class core extends JavaPlugin {
             sender.sendMessage("§7Coins: §eเหรียญคงเหลือ §b" + NginxPlayer.getNginxPlayer((Player) sender).getCoins() + " §eเหรียญ");
             return true;
         }
+
         NginxPlayer nginxPlayer = null;
         if (sender instanceof Player) {
             nginxPlayer = NginxPlayer.getNginxPlayer((Player) sender);
