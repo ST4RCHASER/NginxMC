@@ -105,7 +105,7 @@ public class evt extends Plugin implements Listener{
                                                     TextComponent t2 = new TextComponent("Minecraft Siamcraft");
                                                     t2.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://goo.gl/nR49Zp"));
                                                     t2.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,new ComponentBuilder("คลิกที่นี่เพื่อเข้าสู่เพจของเซิฟเวอร์").create()));
-                                                    TextComponent t3 = new TextComponent("\n§7*จำนวน §แwarnpoint §7ของคุณตอนนี้: §f" + wp_count + "\n" +
+                                                    TextComponent t3 = new TextComponent("\n§7*จำนวน §cwarnpoint §7ของคุณตอนนี้: §f" + wp_count + "\n" +
                                                             "§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*");
 
                                                     target.sendMessage(new ComponentBuilder(t1).append(t2).create());

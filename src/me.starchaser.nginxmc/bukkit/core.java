@@ -16,6 +16,7 @@ import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
 
 import java.io.File;
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -68,14 +69,25 @@ public class core extends JavaPlugin {
                 starchaser.servergamemode = starchaser.SERVERGAMEMODE.valueOf(config.getString("server_gamemode"));
             }catch (Exception | Error ex) {
                 ex.printStackTrace();
-                Bukkit.getConsoleSender().sendMessage("§7NginxMC: §cCloud not load default server gamemode please check config and try again!");
+                Bukkit.getConsoleSender().sendMessage("§7NginxMC: §cCloud not load default server gamemode, please check config and try again!");
+                Bukkit.getPluginManager().disablePlugin(this);
+                return;
+            }
+            try{
+                starchaser.newMethodloadPlayer = config.getBoolean("newMeth_loadPlayerData.enabled");
+                if(starchaser.newMethodloadPlayer){
+                    starchaser.newMethodloadPlayer_period = config.getInt("newMeth_loadPlayerData.tick_period");
+                }
+            }catch (Exception | Error ex) {
+                ex.printStackTrace();
+                Bukkit.getConsoleSender().sendMessage("§7NginxMC: §cCloud not load loadPlayerData method, please check config and try again!");
                 Bukkit.getPluginManager().disablePlugin(this);
                 return;
             }
             try{
                 main_world = Bukkit.getWorld(config.getString("main_world.world_name"));
                 if (main_world == null) {
-                    Bukkit.getConsoleSender().sendMessage("§7NginxMC: §cCloud not load main world please check name or folder name and try again!");
+                    Bukkit.getConsoleSender().sendMessage("§7NginxMC: §cCloud not load main world, please check name or folder name and try again!");
                     Bukkit.getPluginManager().disablePlugin(this);
                     return;
                 }else {
@@ -204,6 +216,10 @@ public class core extends JavaPlugin {
         }catch (Exception ex) {}
         for (Player pp : Bukkit.getOnlinePlayers()) {
             events.FastJoinTask(pp);
+            if(starchaser.newMethodloadPlayer){
+                pp.sendMessage("§7Account: §eกำลังโหลดข้อมูล...");
+                ponlawat.join_playerdata.add(pp.getName());
+            }
         }
 
         (new BukkitRunnable(){
@@ -228,6 +244,7 @@ public class core extends JavaPlugin {
         if (starchaser.servergamemode == starchaser.SERVERGAMEMODE.Lobby) Bukkit.getPluginManager().registerEvents(new lobbyevents(), this);
         Bukkit.getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
         getCommand("server").setExecutor(new serverCommand());
+        if(starchaser.newMethodloadPlayer) events.loadJoinSQL();
     }
     public static void runSelPinging() throws SQLException{
         ResultSet res = core.getSqlConnection().createStatement().executeQuery("/* ping */ SELECT 1;"); res.next();

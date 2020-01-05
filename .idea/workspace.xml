@@ -7,8 +7,58 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca26d092-ea7e-4c26-b53a-2ee06f8f07bc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/me.starchaser.nginxmc/bungee/cms/wp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NginxMC.iml" beforeDir="false" afterPath="$PROJECT_DIR$/NginxMC.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/NginxMC/NginxMC.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/NginxMC/NginxMC.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/NginxMC_Master/NginxMC_Master.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/NginxMC_Master/NginxMC_Master.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/AnimateFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/AnimateFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/AnimateRank.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/AnimateRank.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/core$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/core$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/core$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/core$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/core$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/core$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/core.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/core.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/events$1$1$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/events$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/events$1$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/events$1$2$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/events$1$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/events$1$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/events$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/events$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/events$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/events$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/events$3$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/events$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/events$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/events.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/events.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/lobbyevents.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/lobbyevents.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/ponlawat.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/ponlawat.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/serverCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/serverCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$LOG_TYPE.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$LOG_TYPE.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$SERVERGAMEMODE.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$SERVERGAMEMODE.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$popupchat$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$popupchat$1$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$popupchat$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$popupchat$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$popupchat.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser$popupchat.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bukkit/starchaser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bungee/cms/hub_fun.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bungee/cms/hub_fun.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bungee/cms/report$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bungee/cms/report$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bungee/cms/report.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bungee/cms/report.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bungee/core$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bungee/core$1$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bungee/core$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bungee/core$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bungee/core.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bungee/core.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bungee/evt$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NginxMC/me/starchaser/nginxmc/bungee/evt$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/bungee.yml" beforeDir="false" afterPath="$PROJECT_DIR$/res/bungee.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/res/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/me.starchaser.nginxmc/bukkit/core.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me.starchaser.nginxmc/bukkit/core.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/me.starchaser.nginxmc/bukkit/events.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me.starchaser.nginxmc/bukkit/events.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/me.starchaser.nginxmc/bukkit/ponlawat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me.starchaser.nginxmc/bukkit/ponlawat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/me.starchaser.nginxmc/bukkit/starchaser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me.starchaser.nginxmc/bukkit/starchaser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/me.starchaser.nginxmc/bungee/cms/hub_fun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me.starchaser.nginxmc/bungee/cms/hub_fun.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/me.starchaser.nginxmc/bungee/cms/report.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me.starchaser.nginxmc/bungee/cms/report.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/me.starchaser.nginxmc/bungee/core.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me.starchaser.nginxmc/bungee/core.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/me.starchaser.nginxmc/bungee/evt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me.starchaser.nginxmc/bungee/evt.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,7 +95,11 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1Qy7JBoULOJuIqYl5cgfftH4Roi" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="GenerateAntBuildDialog.backupFiles" value="true" />
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
@@ -66,7 +120,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Facets" />
     <property name="project.structure.proportion" value="0.1640625" />
     <property name="project.structure.side.proportion" value="0.25467288" />
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
@@ -75,11 +129,14 @@
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="me.starchaser.nginxmc" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="me.starchaser.nginxmc.bukkit" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="G:\work\java_project\NginxMC\src" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="me.starchaser.nginxmc.bungee.cms" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="me.starchaser.nginxmc.bukkit" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -244,6 +301,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />

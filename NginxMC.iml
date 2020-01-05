@@ -19,10 +19,11 @@
     </facet>
     <facet type="IntelliGuard" name="Obfuscation">
       <configuration>
-        <option name="yGuardJar" value="I:\work\java_project\yguard-2.7.1\lib\yguard.jar" />
-        <option name="inFile" value="I:\work\java_project\NginxMC\out\artifacts\NginxMC\NginxMC.jar" />
-        <option name="outFile" value="I:\work\java_project\NginxMC\out\artifacts\NginxMC\obf.jar" />
+        <option name="yGuardJar" value="D:\eTemps\yguard-2.7.1\lib\yguard.jar" />
+        <option name="inFile" value="D:\PluginProjects\NginxMC\out\artifacts\NginxMC\NginxMC.jar" />
+        <option name="outFile" value="D:\PluginProjects\NginxMC\out\Obfuscate\NginxMC\NginxMC.jar" />
         <option name="mainclass" value="me.starchaser.nginxmc.bukkit.core" />
+        <option name="namingSafety" value="legal" />
         <option name="keepers">
           <list>
             <Keeper>
@@ -38,6 +39,7 @@
                 <option value="I:\work\java_project\NginxMC\out\production\NginxMC" />
                 <option value="I:\work\java_project\NginxMC\res\bungee.yml" />
                 <option value="I:\work\java_project\NginxMC\res\plugin.yml" />
+                <option value="D:\PluginProjects\NginxMC\out\production\NginxMC" />
               </list>
             </option>
           </JarConfig>

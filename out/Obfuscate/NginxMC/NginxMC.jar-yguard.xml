@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<yguard version="1.5">
+<!--
+  yGuard Bytecode Obfuscator, v2.7.1, a Product of yWorks GmbH - http://www.yworks.com
+
+  Logfile created on Mon Jan 06 00:39:51 ICT 2020
+
+  Jar file to be obfuscated:           NginxMC.jar
+  Target Jar file for obfuscated code: NginxMC.jar
+
+-->
+<!--
+  Memory in use after class data structure built: 227061464 bytes
+  Total memory available                        : 680792064 bytes
+-->
+<expose>
+  <class name="me.starchaser.nginxmc.bukkit.core"/>
+</expose>
+<map>
+  <class name="me.starchaser.nginxmc.bukkit.serverCommand" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.serverCommand" name="boolean onCommand(org.bukkit.command.CommandSender, org.bukkit.command.Command, java.lang.String, java.lang.String[])" map="onCommand"/>
+  <class name="me.starchaser.nginxmc.bukkit.mvdwpapi$9" map="9"/>
+  <method class="me.starchaser.nginxmc.bukkit.mvdwpapi$9" name="java.lang.String onPlaceholderReplace(be.maximvdw.placeholderapi.PlaceholderReplaceEvent)" map="onPlaceholderReplace"/>
+  <class name="me.starchaser.nginxmc.bukkit.mvdwpapi$8" map="8"/>
+  <method class="me.starchaser.nginxmc.bukkit.mvdwpapi$8" name="java.lang.String onPlaceholderReplace(be.maximvdw.placeholderapi.PlaceholderReplaceEvent)" map="onPlaceholderReplace"/>
+  <class name="me.starchaser.nginxmc.bukkit.mvdwpapi$7" map="7"/>
+  <method class="me.starchaser.nginxmc.bukkit.mvdwpapi$7" name="java.lang.String onPlaceholderReplace(be.maximvdw.placeholderapi.PlaceholderReplaceEvent)" map="onPlaceholderReplace"/>
+  <class name="me.starchaser.nginxmc.bukkit.mvdwpapi$6" map="6"/>
+  <method class="me.starchaser.nginxmc.bukkit.mvdwpapi$6" name="java.lang.String onPlaceholderReplace(be.maximvdw.placeholderapi.PlaceholderReplaceEvent)" map="onPlaceholderReplace"/>
+  <class name="me.starchaser.nginxmc.bukkit.mvdwpapi$15" map="15"/>
+  <method class="me.starchaser.nginxmc.bukkit.mvdwpapi$15" name="java.lang.String onPlaceholderReplace(be.maximvdw.placeholderapi.PlaceholderReplaceEvent)" map="onPlaceholderReplace"/>
+  <class name="me.starchaser.nginxmc.bukkit.mvdwpapi$5" map="5"/>
+  <method class="me.starchaser.nginxmc.bukkit.mvdwpapi$5" name="java.lang.String onPlaceholderReplace(be.maximvdw.placeholderapi.PlaceholderReplaceEvent)" map="onPlaceholderReplace"/>
+  <class name="me.starchaser.nginxmc.bukkit.mvdwpapi$14" map="14"/>
+  <method class="me.starchaser.nginxmc.bukkit.mvdwpapi$14" name="java.lang.String onPlaceholderReplace(be.maximvdw.placeholderapi.PlaceholderReplaceEvent)" map="onPlaceholderReplace"/>
+  <class name="me.starchaser.nginxmc.bukkit.mvdwpapi$13" map="13"/>
+  <method class="me.starchaser.nginxmc.bukkit.mvdwpapi$13" name="java.lang.String onPlaceholderReplace(be.maximvdw.placeholderapi.PlaceholderReplaceEvent)" map="onPlaceholderReplace"/>
+  <class name="me.starchaser.nginxmc.bukkit.mvdwpapi$4" map="4"/>
+  <method class="me.starchaser.nginxmc.bukkit.mvdwpapi$4" name="java.lang.String onPlaceholderReplace(be.maximvdw.placeholderapi.PlaceholderReplaceEvent)" map="onPlaceholderReplace"/>
+  <class name="me.starchaser.nginxmc.bukkit.mvdwpapi$12" map="12"/>
+  <method class="me.starchaser.nginxmc.bukkit.mvdwpapi$12" name="java.lang.String onPlaceholderReplace(be.maximvdw.placeholderapi.PlaceholderReplaceEvent)" map="onPlaceholderReplace"/>
+  <class name="me.starchaser.nginxmc.bukkit.mvdwpapi$3" map="3"/>
+  <method class="me.starchaser.nginxmc.bukkit.mvdwpapi$3" name="java.lang.String onPlaceholderReplace(be.maximvdw.placeholderapi.PlaceholderReplaceEvent)" map="onPlaceholderReplace"/>
+  <class name="me.starchaser.nginxmc.bukkit.mvdwpapi$2" map="2"/>
+  <method class="me.starchaser.nginxmc.bukkit.mvdwpapi$2" name="java.lang.String onPlaceholderReplace(be.maximvdw.placeholderapi.PlaceholderReplaceEvent)" map="onPlaceholderReplace"/>
+  <class name="me.starchaser.nginxmc.bukkit.mvdwpapi$11" map="11"/>
+  <method class="me.starchaser.nginxmc.bukkit.mvdwpapi$11" name="java.lang.String onPlaceholderReplace(be.maximvdw.placeholderapi.PlaceholderReplaceEvent)" map="onPlaceholderReplace"/>
+  <class name="me.starchaser.nginxmc.bukkit.mvdwpapi$10" map="10"/>
+  <method class="me.starchaser.nginxmc.bukkit.mvdwpapi$10" name="java.lang.String onPlaceholderReplace(be.maximvdw.placeholderapi.PlaceholderReplaceEvent)" map="onPlaceholderReplace"/>
+  <class name="me.starchaser.nginxmc.bukkit.mvdwpapi$1" map="1"/>
+  <method class="me.starchaser.nginxmc.bukkit.mvdwpapi$1" name="java.lang.String onPlaceholderReplace(be.maximvdw.placeholderapi.PlaceholderReplaceEvent)" map="onPlaceholderReplace"/>
+  <class name="me.starchaser.nginxmc.bukkit.mvdwpapi" map="B"/>
+  <method class="me.starchaser.nginxmc.bukkit.mvdwpapi" name="void registerMCdWAPI()" map="A"/>
+  <class name="me.starchaser.nginxmc.bukkit.core$3" map="3"/>
+  <field class="me.starchaser.nginxmc.bukkit.core$3" name="this$0" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.core$3" name="void run()" map="run"/>
+  <class name="me.starchaser.nginxmc.bukkit.core$2" map="2"/>
+  <field class="me.starchaser.nginxmc.bukkit.core$2" name="this$0" map="A"/>
+  <field class="me.starchaser.nginxmc.bukkit.core$2" name="auto_save_task" map="B"/>
+  <field class="me.starchaser.nginxmc.bukkit.core$2" name="timer" map="C"/>
+  <method class="me.starchaser.nginxmc.bukkit.core$2" name="void run()" map="run"/>
+  <class name="me.starchaser.nginxmc.bukkit.core$1" map="1"/>
+  <field class="me.starchaser.nginxmc.bukkit.core$1" name="this$0" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.core$1" name="void run()" map="run"/>
+  <field class="me.starchaser.nginxmc.bukkit.core" name="clear_on_join" map="A"/>
+  <field class="me.starchaser.nginxmc.bukkit.core" name="debug" map="B"/>
+  <field class="me.starchaser.nginxmc.bukkit.core" name="sql_SC" map="C"/>
+  <field class="me.starchaser.nginxmc.bukkit.core" name="manage_chat" map="D"/>
+  <field class="me.starchaser.nginxmc.bukkit.core" name="spawn_point" map="E"/>
+  <field class="me.starchaser.nginxmc.bukkit.core" name="main_world" map="F"/>
+  <field class="me.starchaser.nginxmc.bukkit.core" name="keepalivetimerandom" map="G"/>
+  <field class="me.starchaser.nginxmc.bukkit.core" name="world_scam" map="H"/>
+  <field class="me.starchaser.nginxmc.bukkit.core" name="SQL_CONNECTION" map="I"/>
+  <field class="me.starchaser.nginxmc.bukkit.core" name="void_spawn" map="J"/>
+  <field class="me.starchaser.nginxmc.bukkit.core" name="getNginxMC" map="K"/>
+  <field class="me.starchaser.nginxmc.bukkit.core" name="server_chat_pop" map="L"/>
+  <field class="me.starchaser.nginxmc.bukkit.core" name="PlayerRef" map="M"/>
+  <field class="me.starchaser.nginxmc.bukkit.core" name="AnimemateRankList" map="N"/>
+  <field class="me.starchaser.nginxmc.bukkit.core" name="SQL_CONNECTION_SC" map="O"/>
+  <field class="me.starchaser.nginxmc.bukkit.core" name="sql" map="P"/>
+  <field class="me.starchaser.nginxmc.bukkit.core" name="path" map="Q"/>
+  <method class="me.starchaser.nginxmc.bukkit.core" name="void onEnable()" map="onEnable"/>
+  <method class="me.starchaser.nginxmc.bukkit.core" name="java.sql.Connection getSqlConnectionAuthme()" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.core" name="void runSelPinging()" map="B"/>
+  <method class="me.starchaser.nginxmc.bukkit.core" name="boolean onCommand(org.bukkit.command.CommandSender, org.bukkit.command.Command, java.lang.String, java.lang.String[])" map="onCommand"/>
+  <method class="me.starchaser.nginxmc.bukkit.core" name="void onDisable()" map="onDisable"/>
+  <method class="me.starchaser.nginxmc.bukkit.core" name="java.sql.Connection getSqlConnection()" map="C"/>
+  <class name="me.starchaser.nginxmc.bukkit.ponlawat" map="C"/>
+  <field class="me.starchaser.nginxmc.bukkit.ponlawat" name="join_playerdata" map="A"/>
+  <field class="me.starchaser.nginxmc.bukkit.ponlawat" name="done_playerdata" map="B"/>
+  <field class="me.starchaser.nginxmc.bukkit.ponlawat" name="current_playerdata" map="C"/>
+  <method class="me.starchaser.nginxmc.bukkit.ponlawat" name="void sendLobby(org.bukkit.entity.Player, java.lang.String)" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.ponlawat" name="java.lang.Object[] getDone_playerdata(java.lang.String, java.util.ArrayList)" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.ponlawat" name="java.lang.String getCurrent_playerdata(java.lang.String)" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.ponlawat" name="boolean removeJoin_playerdata(java.lang.String)" map="B"/>
+  <method class="me.starchaser.nginxmc.bukkit.ponlawat" name="java.lang.String getJoin_playerdata(java.lang.String)" map="C"/>
+  <class name="me.starchaser.nginxmc.bukkit.AnimateRank" map="D"/>
+  <field class="me.starchaser.nginxmc.bukkit.AnimateRank" name="frame_step" map="A"/>
+  <field class="me.starchaser.nginxmc.bukkit.AnimateRank" name="class_id" map="B"/>
+  <field class="me.starchaser.nginxmc.bukkit.AnimateRank" name="animateFrame" map="C"/>
+  <field class="me.starchaser.nginxmc.bukkit.AnimateRank" name="current_frame" map="D"/>
+  <field class="me.starchaser.nginxmc.bukkit.AnimateRank" name="frame_speed" map="E"/>
+  <field class="me.starchaser.nginxmc.bukkit.AnimateRank" name="frame_state" map="F"/>
+  <method class="me.starchaser.nginxmc.bukkit.AnimateRank" name="void StartPlayFrame()" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.AnimateRank" name="void StopPlayFrame()" map="B"/>
+  <method class="me.starchaser.nginxmc.bukkit.AnimateRank" name="void setFrame(int)" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.AnimateRank" name="int getClassID()" map="C"/>
+  <method class="me.starchaser.nginxmc.bukkit.AnimateRank" name="java.lang.String getCurrentDisplay()" map="D"/>
+  <method class="me.starchaser.nginxmc.bukkit.AnimateRank" name="int getFrame()" map="E"/>
+  <method class="me.starchaser.nginxmc.bukkit.AnimateRank" name="void renderFrame()" map="F"/>
+  <class name="me.starchaser.nginxmc.bukkit.papi" map="E"/>
+  <method class="me.starchaser.nginxmc.bukkit.papi" name="java.lang.String getAuthor()" map="getAuthor"/>
+  <method class="me.starchaser.nginxmc.bukkit.papi" name="java.lang.String onPlaceholderRequest(org.bukkit.entity.Player, java.lang.String)" map="onPlaceholderRequest"/>
+  <method class="me.starchaser.nginxmc.bukkit.papi" name="java.lang.String getVersion()" map="getVersion"/>
+  <method class="me.starchaser.nginxmc.bukkit.papi" name="java.lang.String getIdentifier()" map="getIdentifier"/>
+  <class name="me.starchaser.nginxmc.bukkit.AnimateFrame" map="F"/>
+  <field class="me.starchaser.nginxmc.bukkit.AnimateFrame" name="class_data" map="A"/>
+  <field class="me.starchaser.nginxmc.bukkit.AnimateFrame" name="class_id" map="B"/>
+  <method class="me.starchaser.nginxmc.bukkit.AnimateFrame" name="java.lang.String getFrameString(int)" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.AnimateFrame" name="int getFrameSize()" map="A"/>
+  <class name="me.starchaser.nginxmc.bukkit.NginxPlayer$PlayerClass$1" map="1"/>
+  <field class="me.starchaser.nginxmc.bukkit.NginxPlayer$PlayerClass$1" name="this$1" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer$PlayerClass$1" name="void run()" map="run"/>
+  <class name="me.starchaser.nginxmc.bukkit.NginxPlayer$PlayerClass" map="_A"/>
+  <field class="me.starchaser.nginxmc.bukkit.NginxPlayer$PlayerClass" name="this$0" map="A"/>
+  <field class="me.starchaser.nginxmc.bukkit.NginxPlayer$PlayerClass" name="id" map="B"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer$PlayerClass" name="void reloadClassID()" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer$PlayerClass" name="java.lang.String getStr()" map="B"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer$PlayerClass" name="void updateRankLine(java.lang.Boolean)" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer$PlayerClass" name="int getId()" map="C"/>
+  <class name="me.starchaser.nginxmc.bukkit.NginxPlayer$2" map="2"/>
+  <field class="me.starchaser.nginxmc.bukkit.NginxPlayer$2" name="val$np" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer$2" name="void run()" map="run"/>
+  <class name="me.starchaser.nginxmc.bukkit.NginxPlayer$PlayerLevel$1" map="1"/>
+  <field class="me.starchaser.nginxmc.bukkit.NginxPlayer$PlayerLevel$1" name="val$dp" map="A"/>
+  <field class="me.starchaser.nginxmc.bukkit.NginxPlayer$PlayerLevel$1" name="this$1" map="B"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer$PlayerLevel$1" name="void run()" map="run"/>
+  <class name="me.starchaser.nginxmc.bukkit.NginxPlayer$PlayerLevel" map="_B"/>
+  <field class="me.starchaser.nginxmc.bukkit.NginxPlayer$PlayerLevel" name="this$0" map="A"/>
+  <field class="me.starchaser.nginxmc.bukkit.NginxPlayer$PlayerLevel" name="owner" map="B"/>
+  <field class="me.starchaser.nginxmc.bukkit.NginxPlayer$PlayerLevel" name="xp" map="C"/>
+  <field class="me.starchaser.nginxmc.bukkit.NginxPlayer$PlayerLevel" name="level" map="D"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer$PlayerLevel" name="void level_up_task()" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer$PlayerLevel" name="int getXPPercent()" map="B"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer$PlayerLevel" name="int getMaxXP()" map="C"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer$PlayerLevel" name="int set(int)" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer$PlayerLevel" name="void give_xp(int, boolean)" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer$PlayerLevel" name="void add_xp(int)" map="B"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer$PlayerLevel" name="int get_Int()" map="D"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer$PlayerLevel" name="java.lang.String getXPBar()" map="E"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer$PlayerLevel" name="void take_level(int)" map="C"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer$PlayerLevel" name="int getXP()" map="F"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer$PlayerLevel" name="int setXP(int)" map="D"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer$PlayerLevel" name="void take_xp(int)" map="E"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer$PlayerLevel" name="java.lang.String getOwner()" map="G"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer$PlayerLevel" name="java.lang.String getStr()" map="H"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer$PlayerLevel" name="void add_level(int)" map="F"/>
+  <class name="me.starchaser.nginxmc.bukkit.NginxPlayer$1" map="1"/>
+  <field class="me.starchaser.nginxmc.bukkit.NginxPlayer$1" name="this$0" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer$1" name="void run()" map="run"/>
+  <class name="me.starchaser.nginxmc.bukkit.NginxPlayer$NginxTitle" map="_C"/>
+  <field class="me.starchaser.nginxmc.bukkit.NginxPlayer$NginxTitle" name="this$0" map="A"/>
+  <field class="me.starchaser.nginxmc.bukkit.NginxPlayer$NginxTitle" name="title_data" map="B"/>
+  <field class="me.starchaser.nginxmc.bukkit.NginxPlayer$NginxTitle" name="title_id" map="C"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer$NginxTitle" name="java.lang.String getStr()" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer$NginxTitle" name="int getId()" map="B"/>
+  <class name="me.starchaser.nginxmc.bukkit.NginxPlayer" map="G"/>
+  <field class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="Lobby_Number" map="A"/>
+  <field class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="force_hide_title" map="B"/>
+  <field class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="paid_points" map="C"/>
+  <field class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="show_title" map="D"/>
+  <field class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="is_enter_password" map="E"/>
+  <field class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="playerClass" map="F"/>
+  <field class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="player_level" map="G"/>
+  <field class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="id" map="H"/>
+  <field class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="chat_pop" map="I"/>
+  <field class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="coins" map="J"/>
+  <field class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="feather_points" map="K"/>
+  <field class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="server_target" map="L"/>
+  <field class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="player_sb_team" map="M"/>
+  <field class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="ooc_count" map="N"/>
+  <field class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="reward_points" map="O"/>
+  <field class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="title" map="P"/>
+  <field class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="is_removed" map="Q"/>
+  <field class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="name" map="R"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="boolean setOOC_Count(int)" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="me.starchaser.nginxmc.bukkit.NginxPlayer$NginxTitle getTitle()" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="java.lang.String getRankAnimateCurrentFrame()" map="B"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="int getNewRewardPoints()" map="C"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="int access$302(me.starchaser.nginxmc.bukkit.NginxPlayer, int)" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="int getOOC_Count()" map="D"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="int getNewPaidPoints()" map="E"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="int getNewOOC_Count()" map="F"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="boolean isShow_title()" map="G"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="java.lang.String getTargetServer()" map="H"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="void addOOC_Count(int, boolean)" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="int access$102(me.starchaser.nginxmc.bukkit.NginxPlayer, int)" map="B"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="org.bukkit.entity.Player getPlayer()" map="I"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="void addPaid_points(int)" map="B"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="void removeNginxPlayer(org.bukkit.entity.Player)" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="org.bukkit.scoreboard.Team access$700(me.starchaser.nginxmc.bukkit.NginxPlayer)" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="void setPaid_points(int)" map="C"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="void setTitle(int)" map="D"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="void setLobby_Number(int)" map="E"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="int getLobby_Number()" map="J"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="void setEnterPassword(java.lang.String)" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="org.bukkit.entity.Player getBukkitPlayer()" map="K"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="int getCoins()" map="L"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="int getReward_points()" map="M"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="boolean isChatPOPEnabled()" map="N"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="int getId()" map="O"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="me.starchaser.nginxmc.bukkit.NginxPlayer$PlayerLevel getLevel()" map="P"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="void setChatPOP(java.lang.Boolean)" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="void addRedward_points(int)" map="F"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="me.starchaser.nginxmc.bukkit.NginxPlayer$PlayerClass access$800(me.starchaser.nginxmc.bukkit.NginxPlayer)" map="B"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="void takePaid_points(int)" map="G"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="boolean access$000(me.starchaser.nginxmc.bukkit.NginxPlayer)" map="C"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="void setHideTitle(java.lang.Boolean)" map="B"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="int getPaid_points()" map="Q"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="void setCoins(int)" map="H"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="void setTargetServer(java.lang.String)" map="B"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="void takeReward_points(int)" map="I"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="int access$600(me.starchaser.nginxmc.bukkit.NginxPlayer)" map="D"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="java.lang.String getName()" map="R"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="int access$400(me.starchaser.nginxmc.bukkit.NginxPlayer)" map="E"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="java.lang.String isEnterPassword()" map="S"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="void takeCoins(int)" map="J"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="int access$200(me.starchaser.nginxmc.bukkit.NginxPlayer)" map="F"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="void removeNginxPlayer(me.starchaser.nginxmc.bukkit.NginxPlayer)" map="G"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="me.starchaser.nginxmc.bukkit.NginxPlayer getNginxPlayer(org.bukkit.entity.Player)" map="B"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="void FillLobby()" map="T"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="int getFeather_points()" map="U"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="me.starchaser.nginxmc.bukkit.NginxPlayer$PlayerClass getPlayerClass()" map="V"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="void JoinLobby(int)" map="K"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="void addCoins(int, boolean)" map="B"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="void setReward_points(int)" map="L"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="void setRemoved()" map="W"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="void takeOOC_Count(int)" map="M"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="void addNginxPlayer(me.starchaser.nginxmc.bukkit.NginxPlayer)" map="H"/>
+  <method class="me.starchaser.nginxmc.bukkit.NginxPlayer" name="int access$502(me.starchaser.nginxmc.bukkit.NginxPlayer, int)" map="C"/>
+  <class name="me.starchaser.nginxmc.bukkit.lobbyevents" map="H"/>
+  <method class="me.starchaser.nginxmc.bukkit.lobbyevents" name="void blocks(org.bukkit.event.block.BlockDamageEvent)" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.lobbyevents" name="void blocks(org.bukkit.event.block.BlockPlaceEvent)" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.lobbyevents" name="void blocks(org.bukkit.event.block.BlockBreakEvent)" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.lobbyevents" name="void interact(org.bukkit.event.inventory.InventoryClickEvent)" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.lobbyevents" name="void interact(org.bukkit.event.player.PlayerInteractEvent)" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.lobbyevents" name="void movement(org.bukkit.event.player.PlayerMoveEvent)" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.lobbyevents" name="void fly(org.bukkit.event.player.PlayerToggleFlightEvent)" map="A"/>
+  <class name="me.starchaser.nginxmc.bukkit.starchaser$LOG_TYPE" map="_A"/>
+  <field class="me.starchaser.nginxmc.bukkit.starchaser$LOG_TYPE" name="BC" map="A"/>
+  <field class="me.starchaser.nginxmc.bukkit.starchaser$LOG_TYPE" name="WORLD" map="B"/>
+  <field class="me.starchaser.nginxmc.bukkit.starchaser$LOG_TYPE" name="$VALUES" map="C"/>
+  <field class="me.starchaser.nginxmc.bukkit.starchaser$LOG_TYPE" name="PLUGIN" map="D"/>
+  <field class="me.starchaser.nginxmc.bukkit.starchaser$LOG_TYPE" name="DEFAULT" map="E"/>
+  <field class="me.starchaser.nginxmc.bukkit.starchaser$LOG_TYPE" name="SQL" map="F"/>
+  <field class="me.starchaser.nginxmc.bukkit.starchaser$LOG_TYPE" name="NONE" map="G"/>
+  <field class="me.starchaser.nginxmc.bukkit.starchaser$LOG_TYPE" name="COMMAND" map="H"/>
+  <field class="me.starchaser.nginxmc.bukkit.starchaser$LOG_TYPE" name="DEBUG" map="I"/>
+  <field class="me.starchaser.nginxmc.bukkit.starchaser$LOG_TYPE" name="GAME" map="J"/>
+  <field class="me.starchaser.nginxmc.bukkit.starchaser$LOG_TYPE" name="PLAYER" map="K"/>
+  <field class="me.starchaser.nginxmc.bukkit.starchaser$LOG_TYPE" name="CHAT" map="L"/>
+  <method class="me.starchaser.nginxmc.bukkit.starchaser$LOG_TYPE" name="me.starchaser.nginxmc.bukkit.starchaser$LOG_TYPE valueOf(java.lang.String)" map="valueOf"/>
+  <method class="me.starchaser.nginxmc.bukkit.starchaser$LOG_TYPE" name="me.starchaser.nginxmc.bukkit.starchaser$LOG_TYPE[] values()" map="values"/>
+  <class name="me.starchaser.nginxmc.bukkit.starchaser$4" map="4"/>
+  <field class="me.starchaser.nginxmc.bukkit.starchaser$4" name="val$dp" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.starchaser$4" name="void run()" map="run"/>
+  <class name="me.starchaser.nginxmc.bukkit.starchaser$3" map="3"/>
+  <field class="me.starchaser.nginxmc.bukkit.starchaser$3" name="val$popupchat" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.starchaser$3" name="void run()" map="run"/>
+  <class name="me.starchaser.nginxmc.bukkit.starchaser$2" map="2"/>
+  <field class="me.starchaser.nginxmc.bukkit.starchaser$2" name="val$preData" map="A"/>
+  <field class="me.starchaser.nginxmc.bukkit.starchaser$2" name="val$player" map="B"/>
+  <method class="me.starchaser.nginxmc.bukkit.starchaser$2" name="void run()" map="run"/>
+  <method class="me.starchaser.nginxmc.bukkit.starchaser$2" name="void lambda$run$0(org.bukkit.entity.Player)" map="A"/>
+  <class name="me.starchaser.nginxmc.bukkit.starchaser$1" map="1"/>
+  <field class="me.starchaser.nginxmc.bukkit.starchaser$1" name="val$message" map="A"/>
+  <field class="me.starchaser.nginxmc.bukkit.starchaser$1" name="val$lt" map="B"/>
+  <method class="me.starchaser.nginxmc.bukkit.starchaser$1" name="void run()" map="run"/>
+  <class name="me.starchaser.nginxmc.bukkit.starchaser$SERVERGAMEMODE" map="_B"/>
+  <field class="me.starchaser.nginxmc.bukkit.starchaser$SERVERGAMEMODE" name="Lobby" map="A"/>
+  <field class="me.starchaser.nginxmc.bukkit.starchaser$SERVERGAMEMODE" name="$VALUES" map="B"/>
+  <field class="me.starchaser.nginxmc.bukkit.starchaser$SERVERGAMEMODE" name="MINIGAMES_HOOK" map="C"/>
+  <field class="me.starchaser.nginxmc.bukkit.starchaser$SERVERGAMEMODE" name="Minigames" map="D"/>
+  <field class="me.starchaser.nginxmc.bukkit.starchaser$SERVERGAMEMODE" name="Disabled" map="E"/>
+  <method class="me.starchaser.nginxmc.bukkit.starchaser$SERVERGAMEMODE" name="me.starchaser.nginxmc.bukkit.starchaser$SERVERGAMEMODE[] values()" map="values"/>
+  <method class="me.starchaser.nginxmc.bukkit.starchaser$SERVERGAMEMODE" name="me.starchaser.nginxmc.bukkit.starchaser$SERVERGAMEMODE valueOf(java.lang.String)" map="valueOf"/>
+  <class name="me.starchaser.nginxmc.bukkit.starchaser$popupchat$1$1" map="1"/>
+  <field class="me.starchaser.nginxmc.bukkit.starchaser$popupchat$1$1" name="this$1" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.starchaser$popupchat$1$1" name="void run()" map="run"/>
+  <class name="me.starchaser.nginxmc.bukkit.starchaser$popupchat$1" map="1"/>
+  <field class="me.starchaser.nginxmc.bukkit.starchaser$popupchat$1" name="this$0" map="A"/>
+  <field class="me.starchaser.nginxmc.bukkit.starchaser$popupchat$1" name="val$chat" map="B"/>
+  <field class="me.starchaser.nginxmc.bukkit.starchaser$popupchat$1" name="val$hologram" map="C"/>
+  <field class="me.starchaser.nginxmc.bukkit.starchaser$popupchat$1" name="ticksRun" map="D"/>
+  <field class="me.starchaser.nginxmc.bukkit.starchaser$popupchat$1" name="out_tricks" map="E"/>
+  <field class="me.starchaser.nginxmc.bukkit.starchaser$popupchat$1" name="val$player" map="F"/>
+  <field class="me.starchaser.nginxmc.bukkit.starchaser$popupchat$1" name="loc" map="G"/>
+  <method class="me.starchaser.nginxmc.bukkit.starchaser$popupchat$1" name="void run()" map="run"/>
+  <class name="me.starchaser.nginxmc.bukkit.starchaser$popupchat" map="_C"/>
+  <field class="me.starchaser.nginxmc.bukkit.starchaser$popupchat" name="force_remove" map="A"/>
+  <field class="me.starchaser.nginxmc.bukkit.starchaser$popupchat" name="last_loc" map="B"/>
+  <field class="me.starchaser.nginxmc.bukkit.starchaser$popupchat" name="chat" map="C"/>
+  <field class="me.starchaser.nginxmc.bukkit.starchaser$popupchat" name="player" map="D"/>
+  <method class="me.starchaser.nginxmc.bukkit.starchaser$popupchat" name="void setForce_remove(boolean)" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.starchaser$popupchat" name="org.bukkit.entity.Player getOwner()" map="A"/>
+  <class name="me.starchaser.nginxmc.bukkit.starchaser" map="I"/>
+  <field class="me.starchaser.nginxmc.bukkit.starchaser" name="cmiHologramAPI" map="A"/>
+  <field class="me.starchaser.nginxmc.bukkit.starchaser" name="max_level" map="B"/>
+  <field class="me.starchaser.nginxmc.bukkit.starchaser" name="virtual_lobby_player_size" map="C"/>
+  <field class="me.starchaser.nginxmc.bukkit.starchaser" name="gamemode_virtual_lobby_size" map="D"/>
+  <field class="me.starchaser.nginxmc.bukkit.starchaser" name="servergamemode" map="E"/>
+  <field class="me.starchaser.nginxmc.bukkit.starchaser" name="newMethodloadPlayer_period" map="F"/>
+  <field class="me.starchaser.nginxmc.bukkit.starchaser" name="newMethodloadPlayer" map="G"/>
+  <method class="me.starchaser.nginxmc.bukkit.starchaser" name="java.lang.String getSaltStringSet(int)" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.starchaser" name="void AddPlayerChatPOP(org.bukkit.entity.Player, java.lang.String)" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.starchaser" name="void giveItemLobby(org.bukkit.entity.Player)" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.starchaser" name="void BoardCastMsg(java.lang.String)" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.starchaser" name="boolean CreateAccount(org.bukkit.entity.Player)" map="B"/>
+  <method class="me.starchaser.nginxmc.bukkit.starchaser" name="java.util.ArrayList getPlayerLobby(int)" map="B"/>
+  <method class="me.starchaser.nginxmc.bukkit.starchaser" name="void Logger(me.starchaser.nginxmc.bukkit.starchaser$LOG_TYPE, java.lang.String)" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.starchaser" name="boolean sendPlayerData(org.bukkit.entity.Player)" map="C"/>
+  <method class="me.starchaser.nginxmc.bukkit.starchaser" name="boolean getPlayerData(org.bukkit.entity.Player, java.lang.Object[])" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.starchaser" name="int getClassID(org.bukkit.entity.Player)" map="D"/>
+  <method class="me.starchaser.nginxmc.bukkit.starchaser" name="boolean sendPlayerData(me.starchaser.nginxmc.bukkit.NginxPlayer)" map="A"/>
+  <class name="me.starchaser.nginxmc.bukkit.events$6$1" map="1"/>
+  <field class="me.starchaser.nginxmc.bukkit.events$6$1" name="this$1" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.events$6$1" name="void run()" map="run"/>
+  <class name="me.starchaser.nginxmc.bukkit.events$6" map="6"/>
+  <field class="me.starchaser.nginxmc.bukkit.events$6" name="this$0" map="A"/>
+  <field class="me.starchaser.nginxmc.bukkit.events$6" name="val$evt" map="B"/>
+  <method class="me.starchaser.nginxmc.bukkit.events$6" name="void run()" map="run"/>
+  <class name="me.starchaser.nginxmc.bukkit.events$5" map="5"/>
+  <field class="me.starchaser.nginxmc.bukkit.events$5" name="this$0" map="A"/>
+  <field class="me.starchaser.nginxmc.bukkit.events$5" name="val$evt" map="B"/>
+  <method class="me.starchaser.nginxmc.bukkit.events$5" name="void run()" map="run"/>
+  <class name="me.starchaser.nginxmc.bukkit.events$4" map="4"/>
+  <method class="me.starchaser.nginxmc.bukkit.events$4" name="void run()" map="run"/>
+  <class name="me.starchaser.nginxmc.bukkit.events$3" map="3"/>
+  <field class="me.starchaser.nginxmc.bukkit.events$3" name="val$p" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.events$3" name="void run()" map="run"/>
+  <class name="me.starchaser.nginxmc.bukkit.events$2$1" map="1"/>
+  <field class="me.starchaser.nginxmc.bukkit.events$2$1" name="this$0" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.events$2$1" name="void run()" map="run"/>
+  <class name="me.starchaser.nginxmc.bukkit.events$2" map="2"/>
+  <field class="me.starchaser.nginxmc.bukkit.events$2" name="val$p" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.events$2" name="void run()" map="run"/>
+  <class name="me.starchaser.nginxmc.bukkit.events$1$1" map="1"/>
+  <field class="me.starchaser.nginxmc.bukkit.events$1$1" name="this$0" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.events$1$1" name="void run()" map="run"/>
+  <class name="me.starchaser.nginxmc.bukkit.events$1" map="1"/>
+  <field class="me.starchaser.nginxmc.bukkit.events$1" name="val$p" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.events$1" name="void run()" map="run"/>
+  <class name="me.starchaser.nginxmc.bukkit.events$7" map="7"/>
+  <field class="me.starchaser.nginxmc.bukkit.events$7" name="this$0" map="A"/>
+  <field class="me.starchaser.nginxmc.bukkit.events$7" name="val$evt" map="B"/>
+  <method class="me.starchaser.nginxmc.bukkit.events$7" name="void run()" map="run"/>
+  <class name="me.starchaser.nginxmc.bukkit.events" map="J"/>
+  <field class="me.starchaser.nginxmc.bukkit.events" name="kick_msg" map="A"/>
+  <field class="me.starchaser.nginxmc.bukkit.events" name="chat_history" map="B"/>
+  <method class="me.starchaser.nginxmc.bukkit.events" name="void onJoin(org.bukkit.event.player.PlayerJoinEvent)" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.events" name="void onPlayerItemHoldEvent(org.bukkit.event.player.PlayerItemHeldEvent)" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.events" name="void PlayerDamage(org.bukkit.event.entity.EntityDamageEvent)" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.events" name="void loadJoinSQL_task()" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.events" name="void lambda$loadJoinSQL_task$0(org.bukkit.entity.Player)" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.events" name="void PlayerDamagePVP(org.bukkit.event.entity.EntityDamageByEntityEvent)" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.events" name="void ongamemodeChange(org.bukkit.event.player.PlayerGameModeChangeEvent)" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.events" name="org.bukkit.scheduler.BukkitTask loadJoinSQL()" map="B"/>
+  <method class="me.starchaser.nginxmc.bukkit.events" name="void lambda$PlayerDamagePVP$2(org.bukkit.event.entity.EntityDamageByEntityEvent)" map="B"/>
+  <method class="me.starchaser.nginxmc.bukkit.events" name="void onPlayerLeave(org.bukkit.event.player.PlayerQuitEvent)" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.events" name="void onBlockPlace(org.bukkit.event.block.BlockPlaceEvent)" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.events" name="void onPlayerChat(org.bukkit.event.player.AsyncPlayerChatEvent)" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.events" name="void PlayerMoveEvt(org.bukkit.event.player.PlayerMoveEvent)" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.events" name="void lambda$loadJoinSQL_task$1(org.bukkit.entity.Player)" map="B"/>
+  <method class="me.starchaser.nginxmc.bukkit.events" name="void asyncJoin(org.bukkit.event.player.AsyncPlayerPreLoginEvent)" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.events" name="void onPlayerClick(org.bukkit.event.player.PlayerInteractEvent)" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.events" name="void onWeather(org.bukkit.event.weather.WeatherChangeEvent)" map="A"/>
+  <method class="me.starchaser.nginxmc.bukkit.events" name="void FastJoinTask(org.bukkit.entity.Player)" map="C"/>
+  <method class="me.starchaser.nginxmc.bukkit.events" name="void onFoodLevelChange(org.bukkit.event.entity.FoodLevelChangeEvent)" map="A"/>
+  <package name="me.starchaser.nginxmc.api" map="A"/>
+  <class name="me.starchaser.nginxmc.api.NginxAPI_Bungee" map="A"/>
+  <class name="me.starchaser.nginxmc.api.NginxAPI$3" map="3"/>
+  <field class="me.starchaser.nginxmc.api.NginxAPI$3" name="this$0" map="A"/>
+  <field class="me.starchaser.nginxmc.api.NginxAPI$3" name="val$player" map="B"/>
+  <method class="me.starchaser.nginxmc.api.NginxAPI$3" name="void run()" map="run"/>
+  <class name="me.starchaser.nginxmc.api.NginxAPI$2" map="2"/>
+  <field class="me.starchaser.nginxmc.api.NginxAPI$2" name="this$0" map="A"/>
+  <field class="me.starchaser.nginxmc.api.NginxAPI$2" name="val$player" map="B"/>
+  <method class="me.starchaser.nginxmc.api.NginxAPI$2" name="void run()" map="run"/>
+  <class name="me.starchaser.nginxmc.api.NginxAPI$1" map="1"/>
+  <field class="me.starchaser.nginxmc.api.NginxAPI$1" name="this$0" map="A"/>
+  <field class="me.starchaser.nginxmc.api.NginxAPI$1" name="val$player" map="B"/>
+  <method class="me.starchaser.nginxmc.api.NginxAPI$1" name="void run()" map="run"/>
+  <class name="me.starchaser.nginxmc.api.NginxAPI" map="B"/>
+  <method class="me.starchaser.nginxmc.api.NginxAPI" name="void ReloadPlayerData(org.bukkit.entity.Player, java.lang.Boolean)" map="A"/>
+  <method class="me.starchaser.nginxmc.api.NginxAPI" name="me.starchaser.nginxmc.bukkit.NginxPlayer getNginxPlayer(org.bukkit.entity.Player)" map="A"/>
+  <package name="me.starchaser.nginxmc.bungee" map="B"/>
+  <package name="me.starchaser.nginxmc.bungee.cms" map="A"/>
+  <class name="me.starchaser.nginxmc.bungee.cms.report$1" map="1"/>
+  <field class="me.starchaser.nginxmc.bungee.cms.report$1" name="this$0" map="A"/>
+  <field class="me.starchaser.nginxmc.bungee.cms.report$1" name="val$args" map="B"/>
+  <field class="me.starchaser.nginxmc.bungee.cms.report$1" name="val$sender" map="C"/>
+  <method class="me.starchaser.nginxmc.bungee.cms.report$1" name="void run()" map="run"/>
+  <class name="me.starchaser.nginxmc.bungee.cms.report" map="A"/>
+  <method class="me.starchaser.nginxmc.bungee.cms.report" name="void execute(net.md_5.bungee.api.CommandSender, java.lang.String[])" map="execute"/>
+  <class name="me.starchaser.nginxmc.bungee.cms.gbc" map="B"/>
+  <method class="me.starchaser.nginxmc.bungee.cms.gbc" name="void execute(net.md_5.bungee.api.CommandSender, java.lang.String[])" map="execute"/>
+  <class name="me.starchaser.nginxmc.bungee.cms.punisher$2" map="2"/>
+  <field class="me.starchaser.nginxmc.bungee.cms.punisher$2" name="this$0" map="A"/>
+  <field class="me.starchaser.nginxmc.bungee.cms.punisher$2" name="val$name" map="B"/>
+  <field class="me.starchaser.nginxmc.bungee.cms.punisher$2" name="val$count" map="C"/>
+  <field class="me.starchaser.nginxmc.bungee.cms.punisher$2" name="val$res_str" map="D"/>
+  <method class="me.starchaser.nginxmc.bungee.cms.punisher$2" name="void run()" map="run"/>
+  <class name="me.starchaser.nginxmc.bungee.cms.punisher$1" map="1"/>
+  <field class="me.starchaser.nginxmc.bungee.cms.punisher$1" name="this$0" map="A"/>
+  <field class="me.starchaser.nginxmc.bungee.cms.punisher$1" name="val$args" map="B"/>
+  <field class="me.starchaser.nginxmc.bungee.cms.punisher$1" name="val$sender" map="C"/>
+  <method class="me.starchaser.nginxmc.bungee.cms.punisher$1" name="void run()" map="run"/>
+  <class name="me.starchaser.nginxmc.bungee.cms.punisher" map="C"/>
+  <method class="me.starchaser.nginxmc.bungee.cms.punisher" name="void give_wp(java.lang.String, int, java.lang.String)" map="A"/>
+  <method class="me.starchaser.nginxmc.bungee.cms.punisher" name="void execute(net.md_5.bungee.api.CommandSender, java.lang.String[])" map="execute"/>
+  <class name="me.starchaser.nginxmc.bungee.cms.ooc$1" map="1"/>
+  <field class="me.starchaser.nginxmc.bungee.cms.ooc$1" name="this$0" map="A"/>
+  <field class="me.starchaser.nginxmc.bungee.cms.ooc$1" name="val$var11" map="B"/>
+  <field class="me.starchaser.nginxmc.bungee.cms.ooc$1" name="val$commandSender" map="C"/>
+  <field class="me.starchaser.nginxmc.bungee.cms.ooc$1" name="val$id" map="D"/>
+  <method class="me.starchaser.nginxmc.bungee.cms.ooc$1" name="void run()" map="run"/>
+  <class name="me.starchaser.nginxmc.bungee.cms.ooc" map="D"/>
+  <field class="me.starchaser.nginxmc.bungee.cms.ooc" name="cooldown_player" map="A"/>
+  <method class="me.starchaser.nginxmc.bungee.cms.ooc" name="void execute(net.md_5.bungee.api.CommandSender, java.lang.String[])" map="execute"/>
+  <class name="me.starchaser.nginxmc.bungee.cms.lobby" map="E"/>
+  <method class="me.starchaser.nginxmc.bungee.cms.lobby" name="void execute(net.md_5.bungee.api.CommandSender, java.lang.String[])" map="execute"/>
+  <class name="me.starchaser.nginxmc.bungee.cms.op" map="F"/>
+  <method class="me.starchaser.nginxmc.bungee.cms.op" name="void execute(net.md_5.bungee.api.CommandSender, java.lang.String[])" map="execute"/>
+  <class name="me.starchaser.nginxmc.bungee.cms.hub_fun" map="G"/>
+  <method class="me.starchaser.nginxmc.bungee.cms.hub_fun" name="void execute(net.md_5.bungee.api.CommandSender, java.lang.String[])" map="execute"/>
+  <class name="me.starchaser.nginxmc.bungee.evt$3" map="3"/>
+  <field class="me.starchaser.nginxmc.bungee.evt$3" name="this$0" map="A"/>
+  <field class="me.starchaser.nginxmc.bungee.evt$3" name="val$target" map="B"/>
+  <field class="me.starchaser.nginxmc.bungee.evt$3" name="val$event" map="C"/>
+  <field class="me.starchaser.nginxmc.bungee.evt$3" name="val$target_server" map="D"/>
+  <method class="me.starchaser.nginxmc.bungee.evt$3" name="void run()" map="run"/>
+  <class name="me.starchaser.nginxmc.bungee.evt$2" map="2"/>
+  <field class="me.starchaser.nginxmc.bungee.evt$2" name="val$player" map="A"/>
+  <method class="me.starchaser.nginxmc.bungee.evt$2" name="void run()" map="run"/>
+  <class name="me.starchaser.nginxmc.bungee.evt$1" map="1"/>
+  <field class="me.starchaser.nginxmc.bungee.evt$1" name="this$0" map="A"/>
+  <field class="me.starchaser.nginxmc.bungee.evt$1" name="val$event" map="B"/>
+  <method class="me.starchaser.nginxmc.bungee.evt$1" name="void run()" map="run"/>
+  <class name="me.starchaser.nginxmc.bungee.evt" map="A"/>
+  <field class="me.starchaser.nginxmc.bungee.evt" name="connected_player" map="A"/>
+  <method class="me.starchaser.nginxmc.bungee.evt" name="void onSwitch(net.md_5.bungee.api.event.ServerConnectEvent)" map="A"/>
+  <method class="me.starchaser.nginxmc.bungee.evt" name="void CreateAccount(net.md_5.bungee.api.connection.ProxiedPlayer)" map="A"/>
+  <method class="me.starchaser.nginxmc.bungee.evt" name="void onDisconnect(net.md_5.bungee.api.event.PlayerDisconnectEvent)" map="A"/>
+  <method class="me.starchaser.nginxmc.bungee.evt" name="void onPostLogin(net.md_5.bungee.api.event.PostLoginEvent)" map="A"/>
+  <class name="me.starchaser.nginxmc.bungee.core$1$1" map="1"/>
+  <field class="me.starchaser.nginxmc.bungee.core$1$1" name="this$1" map="A"/>
+  <method class="me.starchaser.nginxmc.bungee.core$1$1" name="void run()" map="run"/>
+  <class name="me.starchaser.nginxmc.bungee.core$1" map="1"/>
+  <field class="me.starchaser.nginxmc.bungee.core$1" name="this$0" map="A"/>
+  <method class="me.starchaser.nginxmc.bungee.core$1" name="void run()" map="run"/>
+  <class name="me.starchaser.nginxmc.bungee.core" map="B"/>
+  <field class="me.starchaser.nginxmc.bungee.core" name="SQL_CONNECTION" map="A"/>
+  <field class="me.starchaser.nginxmc.bungee.core" name="sql" map="B"/>
+  <field class="me.starchaser.nginxmc.bungee.core" name="getBungeeDeluxe" map="C"/>
+  <method class="me.starchaser.nginxmc.bungee.core" name="void sendToServer(net.md_5.bungee.api.connection.ProxiedPlayer, net.md_5.bungee.api.config.ServerInfo)" map="A"/>
+  <method class="me.starchaser.nginxmc.bungee.core" name="void onEnable()" map="onEnable"/>
+  <method class="me.starchaser.nginxmc.bungee.core" name="void sendhelpinfo(net.md_5.bungee.api.connection.ProxiedPlayer)" map="A"/>
+  <method class="me.starchaser.nginxmc.bungee.core" name="java.sql.Connection getGetBungeeConn()" map="A"/>
+  <method class="me.starchaser.nginxmc.bungee.core" name="int getClassID(net.md_5.bungee.api.connection.ProxiedPlayer)" map="B"/>
+  <class name="me.starchaser.nginxmc.YamlReader" map="A"/>
+  <field class="me.starchaser.nginxmc.YamlReader" name="Loc" map="A"/>
+  <method class="me.starchaser.nginxmc.YamlReader" name="java.lang.Boolean getBoolean(java.lang.String)" map="A"/>
+  <method class="me.starchaser.nginxmc.YamlReader" name="org.bukkit.configuration.ConfigurationSection getConfigSelection(java.lang.String)" map="B"/>
+  <method class="me.starchaser.nginxmc.YamlReader" name="java.util.List getStringList(java.lang.String)" map="C"/>
+  <method class="me.starchaser.nginxmc.YamlReader" name="java.lang.String getString(java.lang.String)" map="D"/>
+  <method class="me.starchaser.nginxmc.YamlReader" name="int getInt(java.lang.String)" map="E"/>
+  <class name="me.starchaser.nginxmc.MySQL" map="B"/>
+  <field class="me.starchaser.nginxmc.MySQL" name="hostname" map="B"/>
+  <field class="me.starchaser.nginxmc.MySQL" name="port" map="C"/>
+  <field class="me.starchaser.nginxmc.MySQL" name="user" map="D"/>
+  <field class="me.starchaser.nginxmc.MySQL" name="password" map="E"/>
+  <field class="me.starchaser.nginxmc.MySQL" name="database" map="F"/>
+  <method class="me.starchaser.nginxmc.MySQL" name="java.sql.Connection openConnection()" map="D"/>
+  <class name="me.starchaser.nginxmc.Database" map="C"/>
+  <field class="me.starchaser.nginxmc.Database" name="connection" map="A"/>
+  <method class="me.starchaser.nginxmc.Database" name="java.sql.ResultSet querySQL(java.lang.String)" map="A"/>
+  <method class="me.starchaser.nginxmc.Database" name="boolean closeConnection()" map="A"/>
+  <method class="me.starchaser.nginxmc.Database" name="boolean checkConnection()" map="B"/>
+  <method class="me.starchaser.nginxmc.Database" name="int updateSQL(java.lang.String)" map="B"/>
+  <method class="me.starchaser.nginxmc.Database" name="java.sql.Connection getConnection()" map="C"/>
+  <method class="me.starchaser.nginxmc.Database" name="java.sql.Connection openConnection()" map="D"/>
+</map>
+</yguard>

@@ -8,6 +8,7 @@ import me.starchaser.nginxmc.bungee.cms.report;
 import me.starchaser.nginxmc.bungee.cms.punisher;
 import me.starchaser.nginxmc.bungee.cms.hub_fun;
 import me.starchaser.nginxmc.bungee.cms.lobby;
+import me.starchaser.nginxmc.bungee.cms.wp;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -48,6 +49,7 @@ public class core extends Plugin {
         this.getProxy().getPluginManager().registerCommand(this, new op());
         this.getProxy().getPluginManager().registerCommand(this, new lobby());
         this.getProxy().getPluginManager().registerCommand(this, new hub_fun());
+        this.getProxy().getPluginManager().registerCommand(this, new wp());
         try {
             SQL_CONNECTION = sql.openConnection();
         } catch (Exception ex) {
@@ -195,31 +197,8 @@ public class core extends Plugin {
     }
 
     public static void sendToServer(ProxiedPlayer p, ServerInfo sv) {
-        try {
-            if (sv.equals(getBungeeDeluxe.getProxy().getServerInfo("Lobby"))) {
-                ServerInfo l1 = getBungeeDeluxe.getProxy().getServerInfo("Lobby/01");
-                ServerInfo l2 = getBungeeDeluxe.getProxy().getServerInfo("Lobby/02");
-                ServerInfo l3 = getBungeeDeluxe.getProxy().getServerInfo("Lobby/03");
-                ServerInfo auth = getBungeeDeluxe.getProxy().getServerInfo("Auth");
-                ServerInfo svr = sv;
-                if (l1.getPlayers().size() <= 15) {
-                    svr = l1;
-                } else if (l2.getPlayers().size() <= 15) {
-                    svr = l2;
-                } else if (l3.getPlayers().size() <= 15) {
-                    svr = l3;
-                } else {
-                    p.sendMessage(ChatColor.GRAY + "Lobby: " + ChatColor.RED + "ขณะนี้ Lobby กำลังเต็มทุกห้องทำให้คุณไม่สามารถเข้า Lobby ได้ในตอนนี้ ขออภัยในความไม่สะดวก!");
-                    svr = auth;
-                }
-                p.connect(svr);
-                p.sendMessage(ChatColor.GRAY + "Portal: " + ChatColor.YELLOW + "คุณถูกย้าย " + p.getServer().getInfo().getName() + " > " + svr.getName());
-            } else {
-                p.connect(sv);
-                p.sendMessage(ChatColor.GRAY + "Portal: " + ChatColor.YELLOW + "คุณถูกย้าย " + p.getServer().getInfo().getName() + " > " + sv.getName());
-            }
-        } catch (Exception ee) {
-        }
+        p.connect(sv);
+        p.sendMessage(ChatColor.GRAY + "Portal: " + ChatColor.YELLOW + "กำลังย้ายคุณจากเซิฟเวอร์ " + p.getServer().getInfo().getName() + " -> " + sv.getName());
     }
 
     public static void sendhelpinfo(ProxiedPlayer p) {

@@ -36,6 +36,8 @@ public class starchaser {
     public static int gamemode_virtual_lobby_size = 18;
     public static int virtual_lobby_player_size = 1000;
     public static boolean cmiHologramAPI = false;
+    public static boolean newMethodloadPlayer = false;
+    public static long newMethodloadPlayer_period = 40;
 
     public static void giveItemLobby(Player p) {
         ItemStack compass = new ItemStack(Material.COMPASS);
@@ -48,14 +50,14 @@ public class starchaser {
         ItemStack sword = new ItemStack(Material.DIAMOND_SWORD);
         ItemMeta sword_meta = sword.getItemMeta();
         sword_meta.setDisplayName("§7§k:§c ดาบสังหาร §7§k:");
-        sword_meta.setLore(Arrays.asList("§e§nเมื่อถือขึ้นมาแล้ว\n§e§nคุณจะเข้าสู่โหมดนักล่า และสังหารผู้อื่นที่ถืออาวุธด้วยกันได้! "));
+        sword_meta.setLore(Arrays.asList("§e§nเมื่อถือขึ้นมาแล้ว","§e§nคุณจะเข้าสู่โหมดนักล่า","และสังหารผู้อื่นที่ถืออาวุธด้วยกันได้! "));
         sword.setItemMeta(sword_meta);
         p.getInventory().setItem(5, sword);
 
         ItemStack bow = new ItemStack(Material.BOW);
         ItemMeta bow_meta = bow.getItemMeta();
         bow_meta.setDisplayName("§7§k:§6 ธนูสังหาร §7§k:");
-        bow_meta.setLore(Arrays.asList("§e§nเมื่อถือขึ้นมาแล้ว\n§e§nคุณจะเข้าสู่โหมดนักล่า และสังหารผู้อื่นที่ถืออาวุธด้วยกันได้! "));
+        bow_meta.setLore(Arrays.asList("§e§nเมื่อถือขึ้นมาแล้ว","§e§nคุณจะเข้าสู่โหมดนักล่า","และสังหารผู้อื่นที่ถืออาวุธด้วยกันได้! "));
         bow.setItemMeta(bow_meta);
         p.getInventory().setItem(6, bow);
 
@@ -180,25 +182,37 @@ public class starchaser {
         }
     }
 
-    public static boolean getPlayerData(Player player) {
+    public static boolean getPlayerData(Player player, Object[] preData) {
         new BukkitRunnable() {
             @Override
             public void run() {
                 try {
-                    int class_id = getClassID(player);
-                    ResultSet resultSet = core.getSqlConnection().createStatement().executeQuery("SELECT * FROM `players` WHERE `username` LIKE '" + player.getName() + "'");
-                    resultSet.next();
-                    NginxPlayer dp = new NginxPlayer(resultSet.getInt("id"), resultSet.getString("username"), class_id, resultSet.getInt("level"), resultSet.getInt("xp"), resultSet.getInt("title"), resultSet.getInt("coins"), true, resultSet.getInt("feather"));
-                    NginxPlayer.addNginxPlayer(dp);
-                    Logger(starchaser.LOG_TYPE.DEBUG, "ID:" + dp.getId());
-                    Logger(starchaser.LOG_TYPE.DEBUG, "String: " + dp.getName());
-                    Logger(starchaser.LOG_TYPE.DEBUG, "Level:" + dp.getLevel().get_Int());
-                    Logger(starchaser.LOG_TYPE.DEBUG, "XP: " + dp.getLevel().getXP());
-                    Logger(starchaser.LOG_TYPE.PLAYER, "§aPlayer data get!... [" + player.getName() + "]");
-                    player.sendMessage("§7Account: §eเรียบร้อยแล้ว!");
-                    dp.getPlayerClass().updateRankLine(false);
+                    if(NginxPlayer.getNginxPlayer(player) == null) {
+                        int class_id = getClassID(player);
+                        NginxPlayer dp;
+                        if (preData != null) {
+                            //id[0], username[1], level[2], xp[3], title[4], coins[5], feather[6]
+                            dp = new NginxPlayer((int) preData[0], (String) preData[1], class_id, (int) preData[2], (int) preData[3], (int) preData[4], (int) preData[5], true, (int) preData[6]);
+                        } else {
+                            ResultSet resultSet = core.getSqlConnection().createStatement().executeQuery("SELECT * FROM `players` WHERE `username` LIKE '" + player.getName() + "'");
+                            resultSet.next();
+                            //id[0], username[1], level[2], xp[3], title[4], coins[5], feather[6]
+                            dp = new NginxPlayer(resultSet.getInt("id"), resultSet.getString("username"), class_id, resultSet.getInt("level"), resultSet.getInt("xp"), resultSet.getInt("title"), resultSet.getInt("coins"), true, resultSet.getInt("feather"));
+                        }
+                        NginxPlayer.addNginxPlayer(dp);
+                        Logger(starchaser.LOG_TYPE.DEBUG, "ID:" + dp.getId());
+                        Logger(starchaser.LOG_TYPE.DEBUG, "String: " + dp.getName());
+                        Logger(starchaser.LOG_TYPE.DEBUG, "Level:" + dp.getLevel().get_Int());
+                        Logger(starchaser.LOG_TYPE.DEBUG, "XP: " + dp.getLevel().getXP());
+                        Logger(starchaser.LOG_TYPE.PLAYER, "§aPlayer data get!... [" + player.getName() + "]");
+                        player.sendMessage("§7Account: §eเรียบร้อยแล้ว!");
+                        dp.getPlayerClass().updateRankLine(false);
 
-                    if(NginxPlayer.getNginxPlayer(player).getPlayerClass().getId() > 3) Bukkit.getScheduler().runTask(core.getNginxMC, () -> player.setAllowFlight(true));
+                        if (NginxPlayer.getNginxPlayer(player).getPlayerClass().getId() > 3)
+                            Bukkit.getScheduler().runTask(core.getNginxMC, () -> player.setAllowFlight(true));
+                    } else {
+                        player.sendMessage("§7Account: §6เรียบร้อยแล้ว!");
+                    }
                 } catch (Exception var6) {
                     var6.printStackTrace();
                     Logger(starchaser.LOG_TYPE.PLAYER, "§cError on get player data... [" + player.getName() + "]");

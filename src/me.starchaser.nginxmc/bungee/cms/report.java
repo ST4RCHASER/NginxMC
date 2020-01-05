@@ -1,9 +1,5 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package me.starchaser.nginxmc.bungee.cms;
+
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

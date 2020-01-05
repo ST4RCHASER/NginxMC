@@ -24,8 +24,43 @@ import org.bukkit.util.Vector;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class ponlawat {
+	public static ArrayList<String> join_playerdata = new ArrayList<>();
+	public static ArrayList<String> current_playerdata = new ArrayList<>();
+	public static ArrayList<Object[]> done_playerdata = new ArrayList<>();
+
+	public static String getJoin_playerdata(String p) {
+		for (String k : join_playerdata)
+			if (k.toLowerCase().equalsIgnoreCase(p.toLowerCase())) return k;
+		return null;
+	}
+	public static boolean removeJoin_playerdata(String p) {
+		for (String k : join_playerdata)
+			if (k.toLowerCase().equalsIgnoreCase(p.toLowerCase())) {
+				join_playerdata.remove(k);
+				return true;
+			}
+		return false;
+	}
+	public static String getCurrent_playerdata(String p) {
+		for (String k : current_playerdata)
+			if (k.toLowerCase().equalsIgnoreCase(p.toLowerCase())) return k;
+		return null;
+	}
+	public static Object[] getDone_playerdata(String p, ArrayList<Object[]> customObj) {
+		if (customObj != null) {
+			for (Object[] k : customObj)
+				if (((String) k[1]).toLowerCase().equalsIgnoreCase(p.toLowerCase())) return k;
+		} else {
+			for (Object[] k : done_playerdata)
+				if (((String) k[1]).toLowerCase().equalsIgnoreCase(p.toLowerCase())) return k;
+		}
+		return null;
+	}
+
 	public static void sendLobby(Player p, String serverName) {
 		ByteArrayOutputStream b = new ByteArrayOutputStream();
 		DataOutputStream out = new DataOutputStream(b);
@@ -71,11 +106,11 @@ class serverCommand implements CommandExecutor {
 class lobbyevents implements Listener {
 	@EventHandler
 	public void interact(InventoryClickEvent e){
-		if(e.getWhoClicked().getGameMode() == GameMode.ADVENTURE && (e.getSlotType() == InventoryType.SlotType.QUICKBAR || e.getSlotType() == InventoryType.SlotType.ARMOR)) e.setResult(Event.Result.DENY);
+		if(e.getWhoClicked().getGameMode() == GameMode.ADVENTURE) e.setResult(Event.Result.DENY);
 	}
 	@EventHandler
-	public void interact(PlayerInteractEvent e){
-		if(e.getPlayer().getGameMode() == GameMode.ADVENTURE && e.getClickedBlock() != null && !(e.getAction() == Action.LEFT_CLICK_BLOCK && e.getItem().getType() == Material.BOW)) e.setCancelled(true);
+	public void interact(InventoryInteractEvent e){
+		if(e.getWhoClicked().getGameMode() == GameMode.ADVENTURE) e.setResult(Event.Result.DENY);
 	}
 	@EventHandler
 	public void blocks(BlockBreakEvent e){
@@ -92,7 +127,7 @@ class lobbyevents implements Listener {
 	@EventHandler
 	public void fly(PlayerToggleFlightEvent e){
 		Player p = e.getPlayer();
-		if(NginxPlayer.getNginxPlayer(p).getPlayerClass().getId() > 3 && e.getPlayer().getGameMode() != GameMode.CREATIVE) {
+		if(NginxPlayer.getNginxPlayer(p) != null && NginxPlayer.getNginxPlayer(p).getPlayerClass().getId() > 3 && e.getPlayer().getGameMode() != GameMode.CREATIVE) {
 			e.setCancelled(true);
 			p.playSound(p.getLocation(), Sound.ENTITY_IRONGOLEM_ATTACK, 10.0F, -10.0F);
 			p.playEffect(p.getLocation(), org.bukkit.Effect.MOBSPAWNER_FLAMES, 10);

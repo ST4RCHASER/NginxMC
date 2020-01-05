@@ -23,13 +23,13 @@ public class hub_fun extends Command implements Listener {
     ProxiedPlayer player = (ProxiedPlayer)sender;
     if (!player.getServer().getInfo().getName().equalsIgnoreCase("lobby/01") && !player.getServer().getInfo().getName().equalsIgnoreCase("lobby/02") && !player.getServer().getInfo().getName().equalsIgnoreCase("lobby/03") && !player.getServer().getInfo().getName().equalsIgnoreCase("lobby")) {
       if (player.getServer().getInfo().getName().equalsIgnoreCase("lobbymaster")) {
-        player.sendMessage(new TextComponent(ChatColor.GRAY + "CORE: " + ChatColor.RED + "/hub now allow on this server!"));
+        player.sendMessage(new TextComponent(ChatColor.GRAY + "CORE: " + ChatColor.RED + "/hub not allow on this server!"));
       } else if (player.getServer().getInfo().getName().equalsIgnoreCase("auth")) {
-        player.sendMessage(new TextComponent(ChatColor.GRAY + "CORE: " + ChatColor.RED + "/hub now allow on this server!"));
+        player.sendMessage(new TextComponent(ChatColor.GRAY + "CORE: " + ChatColor.RED + "/hub not allow on this server!"));
       } else if (player.getServer().getInfo().getName().equalsIgnoreCase("Realms")) {
-        player.sendMessage(ChatColor.GRAY + "CORE: " + ChatColor.RED + "/hub now allow on this server!");
+        player.sendMessage(ChatColor.GRAY + "CORE: " + ChatColor.RED + "/hut now allow on this server!");
       } else {
-        player.sendMessage(new TextComponent(ChatColor.GRAY + "Portal: " + ChatColor.YELLOW + "คุณถูกย้าย " + player.getServer().getInfo().getName() + " > Lobby"));
+        player.sendMessage(new TextComponent(ChatColor.GRAY + "Portal: " + ChatColor.YELLOW + "คุณถูกย้ายจาก " + player.getServer().getInfo().getName() + " > Lobby"));
         player.sendMessage(new TextComponent(ChatColor.GRAY + "Portal: " + ChatColor.YELLOW + "คุณกำลังถูกส่งกลับไปที่ล๊อบบี้"));
         player.connect(ProxyServer.getInstance().getServerInfo("Lobby"));
       }
