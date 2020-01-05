@@ -1,14 +1,7 @@
 package me.starchaser.nginxmc.bukkit;
 
-import com.comphenix.protocol.PacketType;
-import gnu.trove.impl.sync.TSynchronizedRandomAccessDoubleList;
-import me.neznamy.tab.platforms.bukkit.packets.DataWatcher;
-import net.minecraft.server.v1_12_R1.DataWatcherObject;
-import net.minecraft.server.v1_12_R1.DataWatcherRegistry;
 import org.bukkit.*;
-import org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -18,8 +11,6 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
-import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.event.weather.WeatherChangeEvent;
 import org.bukkit.inventory.Inventory;
@@ -32,8 +23,6 @@ import org.bukkit.scheduler.BukkitTask;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Random;
 
 import static me.starchaser.nginxmc.bukkit.core.*;
 import static me.starchaser.nginxmc.bukkit.starchaser.*;
@@ -95,9 +84,9 @@ public class events implements Listener {
                     }
                     if(e.getNewSlot() == 6) {
                         ItemStack arrow = new ItemStack(Material.ARROW, 64);
-                        e.getPlayer().getInventory().setItem(1, arrow);
+                        e.getPlayer().getInventory().setItem(2, arrow);
                     } else {
-                        e.getPlayer().getInventory().setItem(1, new ItemStack(Material.AIR));
+                        e.getPlayer().getInventory().setItem(2, new ItemStack(Material.AIR));
                     }
                     if(e.getPreviousSlot() != 5 && e.getPreviousSlot() != 6){
                         e.getPlayer().getInventory().setBoots(new ItemStack(Material.DIAMOND_BOOTS));
@@ -334,17 +323,12 @@ public class events implements Listener {
     }
 
     @EventHandler
-    public void pickupArrow(PlayerPickupArrowEvent e) {
-    	if(servergamemode == starchaser.SERVERGAMEMODE.Lobby && e.getPlayer().getGameMode() == GameMode.ADVENTURE) e.setCancelled(true);
-    }
-
-    @EventHandler
     public void onPlayerClick(PlayerInteractEvent e) {
-        if (servergamemode == starchaser.SERVERGAMEMODE.Lobby && e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK && e.getPlayer().getInventory().getItemInMainHand() != null) {
-        	if (e.getPlayer().getInventory().getItemInMainHand().getType() == Material.COMPASS && e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName() != null && e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals("§bรายชื่อเซิร์ฟเวอร์ §7(คลิกขวา)")) {
+        if (servergamemode == starchaser.SERVERGAMEMODE.Lobby && e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK && core.getNms().getPlayerMainHand(e.getPlayer()) != null) {
+        	if (core.getNms().getPlayerMainHand(e.getPlayer()).getType() == Material.COMPASS && core.getNms().getPlayerMainHand(e.getPlayer()).getItemMeta().getDisplayName() != null && core.getNms().getPlayerMainHand(e.getPlayer()).getItemMeta().getDisplayName().equals("§bรายชื่อเซิร์ฟเวอร์ §7(คลิกขวา)")) {
                 Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "dm open server " + e.getPlayer().getName());
             }
-            if (e.getPlayer().getInventory().getItemInMainHand().getType() == Material.HOPPER && e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName() != null && e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals("§eรายชื่อล๊อบบี้ §7(คลิกขวา)")) {
+            if (core.getNms().getPlayerMainHand(e.getPlayer()).getType() == Material.HOPPER && core.getNms().getPlayerMainHand(e.getPlayer()).getItemMeta().getDisplayName() != null && core.getNms().getPlayerMainHand(e.getPlayer()).getItemMeta().getDisplayName().equals("§eรายชื่อล๊อบบี้ §7(คลิกขวา)")) {
                 if (NginxPlayer.getNginxPlayer(e.getPlayer()) == null) return;
                 Inventory inventory = Bukkit.createInventory(null,36,"§a§l▶ §b§nรายชื่อล๊อบบี้§r §a§l◀");
                 ItemStack is = new ItemStack(Material.STAINED_GLASS_PANE,1,(byte)1);
@@ -387,7 +371,7 @@ public class events implements Listener {
     }
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent e) {
-        if (e.getPlayer().getInventory().getItemInMainHand().getType() == Material.HOPPER && e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName() != null && e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals("§eรายชื่อล๊อบบี้ §7(คลิกขวา)")){
+        if (core.getNms().getPlayerMainHand(e.getPlayer()).getType() == Material.HOPPER && core.getNms().getPlayerMainHand(e.getPlayer()).getItemMeta().getDisplayName() != null && core.getNms().getPlayerMainHand(e.getPlayer()).getItemMeta().getDisplayName().equals("§eรายชื่อล๊อบบี้ §7(คลิกขวา)")){
             e.setCancelled(true);
         }
     }
@@ -423,7 +407,7 @@ public class events implements Listener {
                                 damagerName = ((Player) a.getShooter()).getDisplayName();
                                 apt = "ลูกธนูของ";
                                 ply = ((Player) a.getShooter());
-                                Bukkit.getScheduler().runTaskLater(core.getNginxMC,() -> ((CraftPlayer)evt.getEntity()).getHandle().getDataWatcher().set(new DataWatcherObject<>(10, DataWatcherRegistry.b),0), 5L);
+                                core.getNms().removeArrowonPlayer((Player)evt.getEntity());
                             } else {
                                 damagerName = evt.getDamager().getName();
                                 apt = "";

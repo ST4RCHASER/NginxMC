@@ -40,10 +40,12 @@ public class core extends JavaPlugin {
     public static boolean void_spawn = true;
     public static boolean clear_on_join = true;
     public static int keepalivetimerandom = 60;
+    public static NMS nms;
     @Override
     public void onEnable() {
-        path = this.getDataFolder().getAbsoluteFile().getParentFile().getParentFile().getAbsolutePath() + File.separator;
         getNginxMC = this;
+        ponlawat.setUpNms();
+        path = this.getDataFolder().getAbsoluteFile().getParentFile().getParentFile().getAbsolutePath() + File.separator;
         File f = new File(path+".mc-deluxe/nginx.yml");
         PlayerRef = new ArrayList<>();
         AnimemateRankList = new ArrayList<>();
@@ -217,7 +219,6 @@ public class core extends JavaPlugin {
         for (Player pp : Bukkit.getOnlinePlayers()) {
             events.FastJoinTask(pp);
             if(starchaser.newMethodloadPlayer){
-                pp.sendMessage("§7Account: §eกำลังโหลดข้อมูล...");
                 ponlawat.join_playerdata.add(pp.getName());
             }
         }
@@ -245,6 +246,9 @@ public class core extends JavaPlugin {
         Bukkit.getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
         getCommand("server").setExecutor(new serverCommand());
         if(starchaser.newMethodloadPlayer) events.loadJoinSQL();
+    }
+    public static NMS getNms() {
+        return nms;
     }
     public static void runSelPinging() throws SQLException{
         ResultSet res = core.getSqlConnection().createStatement().executeQuery("/* ping */ SELECT 1;"); res.next();

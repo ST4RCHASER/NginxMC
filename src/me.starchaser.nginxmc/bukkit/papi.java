@@ -1,6 +1,5 @@
 package me.starchaser.nginxmc.bukkit;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
-import me.clip.placeholderapi.external.EZPlaceholderHook;
 import org.bukkit.entity.Player;
 
 public class papi extends PlaceholderExpansion {

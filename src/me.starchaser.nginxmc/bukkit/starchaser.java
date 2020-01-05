@@ -205,13 +205,13 @@ public class starchaser {
                         Logger(starchaser.LOG_TYPE.DEBUG, "Level:" + dp.getLevel().get_Int());
                         Logger(starchaser.LOG_TYPE.DEBUG, "XP: " + dp.getLevel().getXP());
                         Logger(starchaser.LOG_TYPE.PLAYER, "§aPlayer data get!... [" + player.getName() + "]");
-                        player.sendMessage("§7Account: §eเรียบร้อยแล้ว!");
+                        player.sendMessage("§7Account: §eดึงข้อมูลเรียบร้อย!");
                         dp.getPlayerClass().updateRankLine(false);
 
                         if (NginxPlayer.getNginxPlayer(player).getPlayerClass().getId() > 3)
                             Bukkit.getScheduler().runTask(core.getNginxMC, () -> player.setAllowFlight(true));
                     } else {
-                        player.sendMessage("§7Account: §6เรียบร้อยแล้ว!");
+                        player.sendMessage("§7Account: §6ดึงข้อมูลเรียบร้อย!");
                     }
                 } catch (Exception var6) {
                     var6.printStackTrace();

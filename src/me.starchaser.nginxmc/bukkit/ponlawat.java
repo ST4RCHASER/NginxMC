@@ -1,5 +1,8 @@
 package me.starchaser.nginxmc.bukkit;
 
+import me.starchaser.nginxmc.bukkit.NMSManage.v1_12_R1;
+import me.starchaser.nginxmc.bukkit.NMSManage.v1_12_R1_Events;
+import me.starchaser.nginxmc.bukkit.NMSManage.v1_8_R3;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
@@ -31,6 +34,7 @@ public class ponlawat {
 	public static ArrayList<String> join_playerdata = new ArrayList<>();
 	public static ArrayList<String> current_playerdata = new ArrayList<>();
 	public static ArrayList<Object[]> done_playerdata = new ArrayList<>();
+	public static String version;
 
 	public static String getJoin_playerdata(String p) {
 		for (String k : join_playerdata)
@@ -72,6 +76,33 @@ public class ponlawat {
 		}
 		catch(IOException eee){}
 		p.sendPluginMessage(core.getNginxMC, "BungeeCord", b.toByteArray());
+	}
+	public static Boolean setUpNms() {
+		try {
+			version = Bukkit.getServer().getClass().getPackage().getName().replace(".", ",").split(",")[3];
+
+			switch (version) {
+				case "v1_8_R3":
+					core.nms = new v1_8_R3();
+					break;
+				case "v1_12_R1": case "v1_15_R1":
+					core.nms = new v1_12_R1();
+					Bukkit.getPluginManager().registerEvents(new v1_12_R1_Events(), core.getNginxMC);
+					break;
+			}
+			if (core.nms != null) {
+				core.getNginxMC.getLogger().info("§7Your server is running version §e" + version);
+				return true;
+			} else {
+				core.getNginxMC.getLogger().info("§7This plugin doesn't support for §e" + version + " §7disabled...");
+				Bukkit.getPluginManager().disablePlugin(core.getNginxMC);
+				return false;
+			}
+		} catch (ArrayIndexOutOfBoundsException whatVersionAreYouUsingException) {
+			core.getNginxMC.getLogger().info("§7This plugin cannot find the server version. disabled...");
+			Bukkit.getPluginManager().disablePlugin(core.getNginxMC);
+			return false;
+		}
 	}
 }
 
@@ -129,7 +160,7 @@ class lobbyevents implements Listener {
 		Player p = e.getPlayer();
 		if(NginxPlayer.getNginxPlayer(p) != null && NginxPlayer.getNginxPlayer(p).getPlayerClass().getId() > 3 && e.getPlayer().getGameMode() != GameMode.CREATIVE) {
 			e.setCancelled(true);
-			p.playSound(p.getLocation(), Sound.ENTITY_IRONGOLEM_ATTACK, 10.0F, -10.0F);
+			p.playSound(p.getLocation(), core.getNms().getSound("IRONGOLEM_THROW"), 10.0F, -10.0F);
 			p.playEffect(p.getLocation(), org.bukkit.Effect.MOBSPAWNER_FLAMES, 10);
 
 			Vector v = p.getLocation().getDirection().multiply(1).setY(1);

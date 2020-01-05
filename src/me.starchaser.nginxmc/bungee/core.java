@@ -1,6 +1,7 @@
 package me.starchaser.nginxmc.bungee;
 
 import me.starchaser.nginxmc.MySQL;
+import me.starchaser.nginxmc.bukkit.NMS;
 import me.starchaser.nginxmc.bungee.cms.gbc;
 import me.starchaser.nginxmc.bungee.cms.ooc;
 import me.starchaser.nginxmc.bungee.cms.op;
