@@ -173,6 +173,21 @@ public class punisher extends Command implements Listener {
                                         targetplayer.sendMessage("§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*");
                                     }
 
+                                    if (targetplayer != null && new_wp >= 5) {
+                                        TextComponent t1 = new TextComponent(
+                                                "§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c* \n" +
+                                                        "§7สวัสดี §f\"§e" + targetplayer.getName() + "§f\"\n" +
+                                                        "§7ตัวละครของคุณอยู่ในสถานะ §f\"§cถูกระงับการใช้งาน§f\"\n" +
+                                                        "§7เพราะคุณได้กระทำความผิดเกินที่เซิฟเวอร์ได้กำหนดใว้ ซื่งในที่นี้ก็คือ §e3 §7ครั้งขึ้นไป\n" +
+                                                        "\n§7หากพบข้อสงสัยหรือสอบถามใดๆ โปรดติตต่อที่เพจ §6Minecraft Siamcraft\n" +
+                                                        "\nhttps://goo.gl/nR49Zp\n" +
+                                                        "" +
+                                                        "\n§7*จำนวน §cwarnpoint §7ของคุณตอนนี้: §f" + new_wp + "\n" +
+                                                        "§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*"
+                                        );
+                                        targetplayer.disconnect(new ComponentBuilder(t1).create());
+                                    }
+
                                     if (new_wp >= 3 && targetplayer != null) {
                                         core.sendToServer(targetplayer, ProxyServer.getInstance().getServerInfo("Lobby"));
                                     }

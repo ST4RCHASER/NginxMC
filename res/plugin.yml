@@ -1,5 +1,5 @@
 name: NginxMC
-version: 1.9.0a preview build
+version: 1.9.1a preview build
 description: a non-minecraft deluxe core plugin for siamcraft
 authors: [_StarChaser, Ponlawat]
 main: me.starchaser.nginxmc.bukkit.core

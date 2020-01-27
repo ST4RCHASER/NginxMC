@@ -37,6 +37,23 @@ public class evt extends Plugin implements Listener{
                                     if (!result_player.isBeforeFirst()) {
                                         core.getBungeeDeluxe.getProxy().getConsole().sendMessage("§f[§bPlayerManager§f] §bAccount §7" + event.getPlayer().getName() + "§b not found Creating...");
                                         CreateAccount(event.getPlayer());
+                                    } else {
+                                        result_player.next();
+                                        int wp_count = result_player.getInt("wp");
+                                        if (wp_count > 4) {
+                                            TextComponent t1 = new TextComponent(
+                                                    "§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c* \n" +
+                                                            "§7สวัสดี §f\"§e" + event.getPlayer().getName() + "§f\"\n" +
+                                                            "§7ตัวละครของคุณอยู่ในสถานะ §f\"§cถูกระงับการใช้งาน§f\"\n" +
+                                                            "§7เพราะคุณได้กระทำความผิดเกินที่เซิฟเวอร์ได้กำหนดใว้ ซื่งในที่นี้ก็คือ §e3 §7ครั้งขึ้นไป\n" +
+                                                            "\n§7หากพบข้อสงสัยหรือสอบถามใดๆ โปรดติตต่อที่เพจ §6Minecraft Siamcraft\n" +
+                                                            "\nhttps://goo.gl/nR49Zp\n" +
+                                                            "" +
+                                                            "\n§7*จำนวน §cwarnpoint §7ของคุณตอนนี้: §f" + wp_count + "\n" +
+                                                            "§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*§f-§c*"
+                                            );
+                                            event.getPlayer().disconnect(new ComponentBuilder(t1).create());
+                                        }
                                     }
                                 } catch (SQLException var3) {
                                     var3.printStackTrace();
