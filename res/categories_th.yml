@@ -1,0 +1,25 @@
+---
+slimefun:
+  weapons: อาวุธ
+  tools: เครื่องมือ
+  items: รายการที่มีประโยชน์
+  food: อาหาร
+  basic_machines: เครื่องจักรพื้นฐาน
+  electricity: พลังงานและไฟฟ้า
+  gps: เครื่องที่ใช้ GPS
+  armor: เกราะ
+  magical_items: รายการที่มีมนต์ขลัง
+  magical_gadgets: อุปกรณ์มหัศจรรย์
+  misc: รายการเบ็ดเตล็ด
+  technical_gadgets: แกดเจ็ตทางเทคนิค
+  resources: ทรัพยากร
+  cargo: การจัดการขนส่งสินค้า
+  tech_misc: องค์ประกอบทางเทคนิค
+  magical_armor: เกราะวิเศษ
+  talismans: เครื่องรางของขลัง (เทียร์ I)
+  ender_talismans: เครื่องรางของขลัง Ender (ระดับ II)
+  christmas: คริสต์มาส (ธันวาคม)
+  valentines_day: วันวาเลนไทน์ (14 กุมภาพันธ์)
+  easter: อีสเตอร์ (เมษายน)
+  birthday: วันเกิดของ TheBusyBiscuit (26 ตุลาคม)
+  halloween: วันฮาโลวีน (31 ตุลาคม)
